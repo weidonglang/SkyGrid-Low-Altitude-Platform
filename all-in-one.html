@@ -1,0 +1,3616 @@
+<!doctype html>
+<html lang='zh-CN'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>单页合集 - 低空平台文档</title>
+<link rel='stylesheet' href='assets/style.css'>
+</head>
+<body>
+<div class='layout'>
+<aside class='sidebar'>
+  <h1>低空时空资源协同调度平台文档</h1>
+  <div class='sub'>Phase 08 Markdown HTML 阅读版<br>打开左侧任意文档即可查看。</div>
+  <input id='searchBox' class='search' placeholder='搜索文档标题/路径...'>
+  <a style='color:#bfdbfe;display:block;margin-bottom:8px' href='index.html'>文档首页</a>
+  <a style='color:#bfdbfe;display:block;margin-bottom:12px' href='all-in-one.html'>单页合集</a>
+  <div class='nav'>
+<div class='nav-group'>交付文档</div>
+<a class='' data-doc-link data-path='docs/api-reference.md' href='pages/docs__api-reference.html'>核心接口文档</a>
+<a class='' data-doc-link data-path='docs/database-initialization.md' href='pages/docs__database-initialization.html'>数据库初始化说明</a>
+<a class='' data-doc-link data-path='docs/demo-script.md' href='pages/docs__demo-script.html'>演示流程脚本</a>
+<a class='' data-doc-link data-path='docs/deployment-guide.md' href='pages/docs__deployment-guide.html'>部署与运行说明</a>
+<a class='' data-doc-link data-path='docs/environment-ports.md' href='pages/docs__environment-ports.html'>环境变量、端口与账号速查</a>
+<a class='' data-doc-link data-path='docs/frontend-running-guide.md' href='pages/docs__frontend-running-guide.html'>前端运行与页面说明</a>
+<a class='' data-doc-link data-path='docs/monitoring-guide.md' href='pages/docs__monitoring-guide.html'>监控、治理与压测说明</a>
+<a class='' data-doc-link data-path='docs/quick-start-windows.md' href='pages/docs__quick-start-windows.html'>Windows 本地快速启动说明</a>
+<a class='' data-doc-link data-path='docs/release-checklist.md' href='pages/docs__release-checklist.html'>最终交付检查清单</a>
+<a class='' data-doc-link data-path='docs/RUNNING_ON_WINDOWS_WITH_LOCAL_MYSQL.md' href='pages/docs__RUNNING_ON_WINDOWS_WITH_LOCAL_MYSQL.html'>Windows + local MySQL(root / 123123) runbook</a>
+<a class='' data-doc-link data-path='docs/screenshot-checklist.md' href='pages/docs__screenshot-checklist.html'>截图清单</a>
+<a class='' data-doc-link data-path='docs/testing-report.md' href='pages/docs__testing-report.html'>测试与验收记录</a>
+<a class='' data-doc-link data-path='docs/troubleshooting.md' href='pages/docs__troubleshooting.html'>常见问题排查</a>
+<a class='' data-doc-link data-path='docs/verification-commands.md' href='pages/docs__verification-commands.html'>常用验证命令</a>
+<div class='nav-group'>阶段文档</div>
+<a class='' data-doc-link data-path='docs/phase-01-api.md' href='pages/docs__phase-01-api.html'>Phase 01 接口说明</a>
+<a class='' data-doc-link data-path='docs/phase-01-architecture.md' href='pages/docs__phase-01-architecture.html'>Phase 01 架构说明</a>
+<a class='' data-doc-link data-path='docs/phase-02-api.md' href='pages/docs__phase-02-api.html'>Phase 02 API 速查</a>
+<a class='' data-doc-link data-path='docs/phase-02-development-summary.md' href='pages/docs__phase-02-development-summary.html'>Phase 02 开发说明：用户组织与低空资源基础数据</a>
+<a class='' data-doc-link data-path='docs/phase-02-hotfix-loadbalancer.md' href='pages/docs__phase-02-hotfix-loadbalancer.html'>Phase 02 Hotfix: Gateway lb:// 路由 503 修复</a>
+<a class='' data-doc-link data-path='docs/phase-02-next-plan.md' href='pages/docs__phase-02-next-plan.html'>Phase 02 下一步开发计划草案</a>
+<a class='' data-doc-link data-path='docs/phase-03-api.md' href='pages/docs__phase-03-api.html'>Phase 03 API 说明</a>
+<a class='' data-doc-link data-path='docs/phase-03-development-summary.md' href='pages/docs__phase-03-development-summary.html'>Phase 03 开发总结：预约申请与审批业务闭环</a>
+<a class='' data-doc-link data-path='docs/phase-03-next-plan.md' href='pages/docs__phase-03-next-plan.html'>Phase 03 下一阶段计划：预约申请与审批主流程</a>
+<a class='' data-doc-link data-path='docs/phase-04-development-summary.md' href='pages/docs__phase-04-development-summary.html'>Phase 04 开发总结：冲突检测与低空规则</a>
+<a class='' data-doc-link data-path='docs/phase-04-next-plan.md' href='pages/docs__phase-04-next-plan.html'>Phase 04 下一阶段计划：冲突检测与低空规则</a>
+<a class='' data-doc-link data-path='docs/phase-05-development-summary.md' href='pages/docs__phase-05-development-summary.html'>Phase 05：低空资源可视化前端开发总结</a>
+<a class='' data-doc-link data-path='docs/phase-06-development-summary.md' href='pages/docs__phase-06-development-summary.html'>Phase 06 开发总结：RabbitMQ、本地消息表与最终一致性</a>
+<a class='' data-doc-link data-path='docs/phase-07-development-summary.md' href='pages/docs__phase-07-development-summary.html'>Phase 07 · 限流、降级、监控与压测</a>
+<a class='' data-doc-link data-path='docs/phase-08-delivery-summary.md' href='pages/docs__phase-08-delivery-summary.html'>Phase 08 交付总结</a>
+<div class='nav-group'>前端文档</div>
+<a class='' data-doc-link data-path='low-altitude-web/README.md' href='pages/low-altitude-web__README.html'>low-altitude-web</a>
+<div class='nav-group'>README</div>
+<a class='' data-doc-link data-path='README.md' href='pages/README.html'>低空时空资源协同调度与冲突消解平台</a>
+</div>
+</aside>
+<main class='main'>
+  <div class='topbar'>
+    <span></span>
+    <span>本地静态 HTML，可直接双击打开</span>
+  </div>
+  <article class='doc'>
+  <h1>Markdown 文档单页合集</h1><p>此页面把所有文档串在一起，适合浏览器全文搜索 Ctrl+F。</p>
+<section id='docs__api-reference.md'><div class='meta'><span class='badge'>交付文档</span>docs/api-reference.md</div>
+<h1>核心接口文档</h1>
+<h2>1. 通用说明</h2>
+<p>网关地址：</p>
+<pre><code class="language-text">http://127.0.0.1:8080
+</code></pre>
+<p>统一响应格式：</p>
+<pre><code class="language-json">{
+  &quot;success&quot;: true,
+  &quot;code&quot;: &quot;OK&quot;,
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;data&quot;: {},
+  &quot;timestamp&quot;: &quot;2026-05-29T00:00:00+08:00&quot;
+}
+</code></pre>
+<p>除 <code>/api/auth/dev-token</code> 和 actuator 相关接口外，其余业务接口建议携带：</p>
+<pre><code class="language-text">Authorization: Bearer &lt;accessToken&gt;
+</code></pre>
+<p>获取开发 token：</p>
+<pre><code class="language-bat">curl -X POST &quot;http://127.0.0.1:8080/api/auth/dev-token?username=demo&amp;role=ADMIN&quot;
+</code></pre>
+<hr />
+<h2>2. 认证接口</h2>
+<table>
+<thead>
+<tr>
+  <th>方法</th>
+  <th>路径</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>POST</td>
+  <td><code>/api/auth/dev-token?username=demo&amp;role=ADMIN</code></td>
+  <td>获取开发调试 token</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. 用户组织服务</h2>
+<h3>3.1 组织</h3>
+<table>
+<thead>
+<tr>
+  <th>方法</th>
+  <th>路径</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>GET</td>
+  <td><code>/api/user-org/organizations</code></td>
+  <td>查询组织列表</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/user-org/organizations/{id}</code></td>
+  <td>查询组织详情</td>
+</tr>
+<tr>
+  <td>POST</td>
+  <td><code>/api/user-org/organizations</code></td>
+  <td>创建组织</td>
+</tr>
+<tr>
+  <td>PUT</td>
+  <td><code>/api/user-org/organizations/{id}</code></td>
+  <td>更新组织</td>
+</tr>
+<tr>
+  <td>DELETE</td>
+  <td><code>/api/user-org/organizations/{id}</code></td>
+  <td>删除组织</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 角色</h3>
+<table>
+<thead>
+<tr>
+  <th>方法</th>
+  <th>路径</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>GET</td>
+  <td><code>/api/user-org/roles</code></td>
+  <td>查询角色列表</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/user-org/roles/{id}</code></td>
+  <td>查询角色详情</td>
+</tr>
+<tr>
+  <td>POST</td>
+  <td><code>/api/user-org/roles</code></td>
+  <td>创建角色</td>
+</tr>
+<tr>
+  <td>PUT</td>
+  <td><code>/api/user-org/roles/{id}</code></td>
+  <td>更新角色</td>
+</tr>
+<tr>
+  <td>DELETE</td>
+  <td><code>/api/user-org/roles/{id}</code></td>
+  <td>删除角色</td>
+</tr>
+</tbody>
+</table>
+<h3>3.3 用户</h3>
+<table>
+<thead>
+<tr>
+  <th>方法</th>
+  <th>路径</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>GET</td>
+  <td><code>/api/user-org/users</code></td>
+  <td>查询用户列表</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/user-org/users/{id}</code></td>
+  <td>查询用户基本信息</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/user-org/users/{id}/detail</code></td>
+  <td>查询用户详情</td>
+</tr>
+<tr>
+  <td>POST</td>
+  <td><code>/api/user-org/users</code></td>
+  <td>创建用户</td>
+</tr>
+<tr>
+  <td>PUT</td>
+  <td><code>/api/user-org/users/{id}</code></td>
+  <td>更新用户</td>
+</tr>
+<tr>
+  <td>DELETE</td>
+  <td><code>/api/user-org/users/{id}</code></td>
+  <td>删除用户</td>
+</tr>
+<tr>
+  <td>POST</td>
+  <td><code>/api/user-org/users/{userId}/roles/{roleId}</code></td>
+  <td>分配角色</td>
+</tr>
+<tr>
+  <td>DELETE</td>
+  <td><code>/api/user-org/users/{userId}/roles/{roleId}</code></td>
+  <td>移除角色</td>
+</tr>
+</tbody>
+</table>
+<h3>3.4 审批配置</h3>
+<table>
+<thead>
+<tr>
+  <th>方法</th>
+  <th>路径</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>GET</td>
+  <td><code>/api/user-org/approver-configs</code></td>
+  <td>查询审批配置</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/user-org/approver-configs/{id}</code></td>
+  <td>查询配置详情</td>
+</tr>
+<tr>
+  <td>POST</td>
+  <td><code>/api/user-org/approver-configs</code></td>
+  <td>创建审批配置</td>
+</tr>
+<tr>
+  <td>PUT</td>
+  <td><code>/api/user-org/approver-configs/{id}</code></td>
+  <td>更新审批配置</td>
+</tr>
+<tr>
+  <td>DELETE</td>
+  <td><code>/api/user-org/approver-configs/{id}</code></td>
+  <td>删除审批配置</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 低空资源服务</h2>
+<h3>4.1 Grid 网格</h3>
+<table>
+<thead>
+<tr>
+  <th>方法</th>
+  <th>路径</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>GET</td>
+  <td><code>/api/resources/grids</code></td>
+  <td>查询网格列表，支持 <code>keyword</code>、<code>status</code></td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/resources/grids/{id}</code></td>
+  <td>查询网格详情</td>
+</tr>
+<tr>
+  <td>POST</td>
+  <td><code>/api/resources/grids</code></td>
+  <td>创建网格</td>
+</tr>
+<tr>
+  <td>PUT</td>
+  <td><code>/api/resources/grids/{id}</code></td>
+  <td>更新网格</td>
+</tr>
+<tr>
+  <td>DELETE</td>
+  <td><code>/api/resources/grids/{id}</code></td>
+  <td>删除网格</td>
+</tr>
+</tbody>
+</table>
+<h3>4.2 高度层</h3>
+<table>
+<thead>
+<tr>
+  <th>方法</th>
+  <th>路径</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>GET</td>
+  <td><code>/api/resources/levels</code></td>
+  <td>查询高度层</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/resources/levels/{id}</code></td>
+  <td>查询高度层详情</td>
+</tr>
+<tr>
+  <td>POST</td>
+  <td><code>/api/resources/levels</code></td>
+  <td>创建高度层</td>
+</tr>
+<tr>
+  <td>PUT</td>
+  <td><code>/api/resources/levels/{id}</code></td>
+  <td>更新高度层</td>
+</tr>
+<tr>
+  <td>DELETE</td>
+  <td><code>/api/resources/levels/{id}</code></td>
+  <td>删除高度层</td>
+</tr>
+</tbody>
+</table>
+<h3>4.3 时间片</h3>
+<table>
+<thead>
+<tr>
+  <th>方法</th>
+  <th>路径</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>GET</td>
+  <td><code>/api/resources/time-slots</code></td>
+  <td>查询时间片</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/resources/time-slots/{id}</code></td>
+  <td>查询时间片详情</td>
+</tr>
+<tr>
+  <td>POST</td>
+  <td><code>/api/resources/time-slots</code></td>
+  <td>创建时间片</td>
+</tr>
+<tr>
+  <td>PUT</td>
+  <td><code>/api/resources/time-slots/{id}</code></td>
+  <td>更新时间片</td>
+</tr>
+<tr>
+  <td>DELETE</td>
+  <td><code>/api/resources/time-slots/{id}</code></td>
+  <td>删除时间片</td>
+</tr>
+</tbody>
+</table>
+<h3>4.4 航线模板</h3>
+<table>
+<thead>
+<tr>
+  <th>方法</th>
+  <th>路径</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>GET</td>
+  <td><code>/api/resources/route-templates</code></td>
+  <td>查询航线模板</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/resources/route-templates/{id}</code></td>
+  <td>查询航线模板详情</td>
+</tr>
+<tr>
+  <td>POST</td>
+  <td><code>/api/resources/route-templates</code></td>
+  <td>创建航线模板</td>
+</tr>
+<tr>
+  <td>PUT</td>
+  <td><code>/api/resources/route-templates/{id}</code></td>
+  <td>更新航线模板</td>
+</tr>
+<tr>
+  <td>DELETE</td>
+  <td><code>/api/resources/route-templates/{id}</code></td>
+  <td>删除航线模板</td>
+</tr>
+<tr>
+  <td>POST</td>
+  <td><code>/api/resources/route-templates/{routeTemplateId}/grids</code></td>
+  <td>添加航线网格点</td>
+</tr>
+<tr>
+  <td>PUT</td>
+  <td><code>/api/resources/route-templates/{routeTemplateId}/grids/{routeGridId}</code></td>
+  <td>更新航线网格点</td>
+</tr>
+<tr>
+  <td>DELETE</td>
+  <td><code>/api/resources/route-templates/{routeTemplateId}/grids/{routeGridId}</code></td>
+  <td>删除航线网格点</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. 预约审批服务</h2>
+<table>
+<thead>
+<tr>
+  <th>方法</th>
+  <th>路径</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>GET</td>
+  <td><code>/api/bookings</code></td>
+  <td>查询预约列表</td>
+</tr>
+<tr>
+  <td>POST</td>
+  <td><code>/api/bookings/pre-check</code></td>
+  <td>提交前冲突预检查</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/bookings/conflicts</code></td>
+  <td>查询全局冲突记录</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/bookings/{id}</code></td>
+  <td>查询预约详情</td>
+</tr>
+<tr>
+  <td>POST</td>
+  <td><code>/api/bookings</code></td>
+  <td>提交预约申请</td>
+</tr>
+<tr>
+  <td>POST</td>
+  <td><code>/api/bookings/{id}/approve</code></td>
+  <td>审批通过</td>
+</tr>
+<tr>
+  <td>POST</td>
+  <td><code>/api/bookings/{id}/reject</code></td>
+  <td>审批驳回</td>
+</tr>
+<tr>
+  <td>POST</td>
+  <td><code>/api/bookings/{id}/cancel</code></td>
+  <td>取消申请并释放资源</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/bookings/{id}/flows</code></td>
+  <td>查询审批流转</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/bookings/{id}/occupancies</code></td>
+  <td>查询资源占用</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/bookings/{id}/conflicts</code></td>
+  <td>查询该申请冲突记录</td>
+</tr>
+</tbody>
+</table>
+<h3>5.1 提交预约示例</h3>
+<pre><code class="language-json">{
+  &quot;taskName&quot;: &quot;园区光伏板巡检&quot;,
+  &quot;orgId&quot;: 1,
+  &quot;applicantUserId&quot;: 1,
+  &quot;applicantName&quot;: &quot;demo&quot;,
+  &quot;routeTemplateId&quot;: 1,
+  &quot;levelId&quot;: 1,
+  &quot;bookingDate&quot;: &quot;2026-06-01&quot;,
+  &quot;timeSlotIds&quot;: [1, 2],
+  &quot;applyReason&quot;: &quot;例行巡检&quot;,
+  &quot;description&quot;: &quot;demo booking&quot;
+}
+</code></pre>
+<h3>5.2 审批通过示例</h3>
+<pre><code class="language-json">{
+  &quot;operatorUserId&quot;: 1,
+  &quot;operatorName&quot;: &quot;admin&quot;,
+  &quot;comment&quot;: &quot;审批通过&quot;
+}
+</code></pre>
+<h3>5.3 取消申请示例</h3>
+<pre><code class="language-json">{
+  &quot;operatorUserId&quot;: 1,
+  &quot;operatorName&quot;: &quot;admin&quot;,
+  &quot;cancelReason&quot;: &quot;测试完成&quot;
+}
+</code></pre>
+<hr />
+<h2>6. Outbox 消息接口</h2>
+<table>
+<thead>
+<tr>
+  <th>方法</th>
+  <th>路径</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>GET</td>
+  <td><code>/api/bookings/outbox</code></td>
+  <td>查询 outbox 消息</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/bookings/outbox/summary</code></td>
+  <td>查询 outbox 统计</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/bookings/outbox/{id}</code></td>
+  <td>查询 outbox 详情</td>
+</tr>
+<tr>
+  <td>POST</td>
+  <td><code>/api/bookings/outbox/dispatch</code></td>
+  <td>派发待发送消息</td>
+</tr>
+<tr>
+  <td>POST</td>
+  <td><code>/api/bookings/outbox/{id}/requeue</code></td>
+  <td>失败消息重新入队</td>
+</tr>
+<tr>
+  <td>POST</td>
+  <td><code>/api/bookings/outbox/{id}/republish</code></td>
+  <td>重复投递，用于幂等演示</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>7. 通知审计服务</h2>
+<table>
+<thead>
+<tr>
+  <th>方法</th>
+  <th>路径</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>GET</td>
+  <td><code>/api/notifications/summary</code></td>
+  <td>通知审计统计</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/notifications/records</code></td>
+  <td>查询通知记录</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/notifications/audits</code></td>
+  <td>查询审计日志</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/notifications/idempotent</code></td>
+  <td>查询幂等消费记录</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>8. 治理与监控接口</h2>
+<table>
+<thead>
+<tr>
+  <th>方法</th>
+  <th>路径</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>GET</td>
+  <td><code>/api/bookings/governance/summary</code></td>
+  <td>业务治理汇总</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/bookings/governance/rate-limited</code></td>
+  <td>限流演示</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/bookings/governance/circuit?fail=true</code></td>
+  <td>降级演示</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/api/bookings/governance/retry?key=demo&amp;failTimes=2</code></td>
+  <td>重试演示</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/actuator/health</code></td>
+  <td>健康检查</td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/actuator/prometheus</code></td>
+  <td>Prometheus 指标</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>9. 常用 curl 示例</h2>
+<pre><code class="language-bat">curl -X POST &quot;http://127.0.0.1:8080/api/auth/dev-token?username=demo&amp;role=ADMIN&quot;
+
+curl -H &quot;Authorization: Bearer &lt;token&gt;&quot; http://127.0.0.1:8080/api/resources/grids
+
+curl -H &quot;Authorization: Bearer &lt;token&gt;&quot; http://127.0.0.1:8080/api/bookings/governance/summary
+
+curl -H &quot;Authorization: Bearer &lt;token&gt;&quot; http://127.0.0.1:8080/api/notifications/summary
+</code></pre>
+
+</section><hr>
+<section id='docs__database-initialization.md'><div class='meta'><span class='badge'>交付文档</span>docs/database-initialization.md</div>
+<h1>数据库初始化说明</h1>
+<h2>1. 数据库列表</h2>
+<p>项目使用四个业务库：</p>
+<table>
+<thead>
+<tr>
+  <th>数据库</th>
+  <th>服务</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>low_altitude_user_org</code></td>
+  <td>user-org-service</td>
+  <td>用户、角色、组织、审批员配置</td>
+</tr>
+<tr>
+  <td><code>low_altitude_resource</code></td>
+  <td>resource-service</td>
+  <td>Grid、Level、TimeSlot、航线模板</td>
+</tr>
+<tr>
+  <td><code>low_altitude_booking</code></td>
+  <td>booking-service</td>
+  <td>预约、审批流、占用、冲突、Outbox</td>
+</tr>
+<tr>
+  <td><code>low_altitude_conflict_notify</code></td>
+  <td>conflict-notify-service</td>
+  <td>通知记录、审计日志、幂等消费记录</td>
+</tr>
+</tbody>
+</table>
+<h2>2. 初始化命令</h2>
+<pre><code class="language-bat">mysql -uroot -p123123 --default-character-set=utf8mb4 &lt; docker\mysql\local-root-init.sql
+</code></pre>
+<p>必须使用 <code>--default-character-set=utf8mb4</code>，否则 Windows CMD/PowerShell 导入中文数据时可能出现 <code>Incorrect string value</code>。</p>
+<h2>3. 核心表</h2>
+<h3>3.1 用户组织库</h3>
+<table>
+<thead>
+<tr>
+  <th>表</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>organization</code></td>
+  <td>组织信息</td>
+</tr>
+<tr>
+  <td><code>sys_role</code></td>
+  <td>角色信息</td>
+</tr>
+<tr>
+  <td><code>user_account</code></td>
+  <td>用户账户</td>
+</tr>
+<tr>
+  <td><code>user_role</code></td>
+  <td>用户角色关联</td>
+</tr>
+<tr>
+  <td><code>approver_config</code></td>
+  <td>审批员配置</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 低空资源库</h3>
+<table>
+<thead>
+<tr>
+  <th>表</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>grid</code></td>
+  <td>区域网格</td>
+</tr>
+<tr>
+  <td><code>altitude_level</code></td>
+  <td>高度层</td>
+</tr>
+<tr>
+  <td><code>time_slot</code></td>
+  <td>时间片</td>
+</tr>
+<tr>
+  <td><code>route_template</code></td>
+  <td>航线模板</td>
+</tr>
+<tr>
+  <td><code>route_template_grid</code></td>
+  <td>航线经过网格序列</td>
+</tr>
+</tbody>
+</table>
+<h3>3.3 预约审批库</h3>
+<table>
+<thead>
+<tr>
+  <th>表</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>booking_record</code></td>
+  <td>预约申请主表</td>
+</tr>
+<tr>
+  <td><code>booking_time_slot</code></td>
+  <td>预约申请时间片关联</td>
+</tr>
+<tr>
+  <td><code>booking_flow_record</code></td>
+  <td>审批流转记录</td>
+</tr>
+<tr>
+  <td><code>resource_occupancy</code></td>
+  <td>资源占用记录</td>
+</tr>
+<tr>
+  <td><code>conflict_record</code></td>
+  <td>冲突记录</td>
+</tr>
+<tr>
+  <td><code>outbox_message</code></td>
+  <td>本地消息表</td>
+</tr>
+</tbody>
+</table>
+<h3>3.4 通知审计库</h3>
+<table>
+<thead>
+<tr>
+  <th>表</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>notify_record</code></td>
+  <td>通知记录</td>
+</tr>
+<tr>
+  <td><code>audit_log</code></td>
+  <td>审计日志</td>
+</tr>
+<tr>
+  <td><code>idempotent_record</code></td>
+  <td>幂等消费记录</td>
+</tr>
+</tbody>
+</table>
+<h2>4. 默认数据</h2>
+<p>初始化后包含：</p>
+<pre><code class="language-text">默认组织：ORG_DEFAULT
+默认用户：admin
+默认角色：APPLICANT / APPROVER / ADMIN
+默认审批员：admin
+默认 Grid：G-01-01、G-01-02、G-02-01、G-02-02
+默认高度层：L1、L2、L3
+默认时间片：AM-01、AM-02、PM-01、PM-02
+默认航线：RT-DEMO-01、RT-NOFLY-01
+</code></pre>
+<p>其中：</p>
+<pre><code class="language-text">G-02-01 = RISK 风险网格
+G-02-02 = NO_FLY 禁飞网格
+RT-DEMO-01 = 经过 G-01-01 / G-01-02 / G-02-01
+RT-NOFLY-01 = 经过 G-02-02
+</code></pre>
+<h2>5. 常用检查命令</h2>
+<pre><code class="language-bat">mysql -uroot -p123123 -e &quot;SHOW DATABASES LIKE 'low_altitude_%';&quot;
+mysql -uroot -p123123 -e &quot;USE low_altitude_user_org; SELECT * FROM sys_role;&quot;
+mysql -uroot -p123123 -e &quot;USE low_altitude_resource; SELECT * FROM grid;&quot;
+mysql -uroot -p123123 -e &quot;USE low_altitude_resource; SELECT * FROM route_template;&quot;
+mysql -uroot -p123123 -e &quot;USE low_altitude_booking; SHOW TABLES;&quot;
+mysql -uroot -p123123 -e &quot;USE low_altitude_conflict_notify; SHOW TABLES;&quot;
+</code></pre>
+<h2>6. 数据重置</h2>
+<p>如需清空重新开始：</p>
+<pre><code class="language-bat">mysql -uroot -p123123 -e &quot;DROP DATABASE IF EXISTS low_altitude_user_org; DROP DATABASE IF EXISTS low_altitude_resource; DROP DATABASE IF EXISTS low_altitude_booking; DROP DATABASE IF EXISTS low_altitude_conflict_notify;&quot;
+mysql -uroot -p123123 --default-character-set=utf8mb4 &lt; docker\mysql\local-root-init.sql
+</code></pre>
+
+</section><hr>
+<section id='docs__demo-script.md'><div class='meta'><span class='badge'>交付文档</span>docs/demo-script.md</div>
+<h1>演示流程脚本</h1>
+<p>本文档用于人工演示，不依赖图形文件或 PPT。</p>
+<h2>1. 演示前准备</h2>
+<p>确认服务启动：</p>
+<pre><code class="language-bat">curl http://127.0.0.1:8080/actuator/health
+</code></pre>
+<p>确认前端：</p>
+<pre><code class="language-text">http://127.0.0.1:5173
+</code></pre>
+<p>确认 Nacos：</p>
+<pre><code class="language-text">http://127.0.0.1:8848/nacos/
+</code></pre>
+<p>确认 RabbitMQ：</p>
+<pre><code class="language-text">http://127.0.0.1:15672/
+</code></pre>
+<p>确认 Grafana：</p>
+<pre><code class="language-text">http://127.0.0.1:3000/
+</code></pre>
+<h2>2. 演示一：基础运行状态</h2>
+<ol>
+<li>打开前端运行状态页。</li>
+<li>展示 Gateway health 为 UP。</li>
+<li>获取 ADMIN Token。</li>
+<li>在 Nacos 控制台展示 5 个服务注册成功。</li>
+</ol>
+<p>讲解要点：系统采用 Spring Cloud Gateway + Nacos，服务通过注册中心发现，前端统一访问网关。</p>
+<h2>3. 演示二：低空资源模型</h2>
+<ol>
+<li>进入“资源网格”页面。</li>
+<li>展示 <code>G-01-01</code>、<code>G-01-02</code>、<code>G-02-01</code>、<code>G-02-02</code>。</li>
+<li>说明：<ul>
+<li><code>G-02-01</code> 是风险网格；</li>
+<li><code>G-02-02</code> 是禁飞网格；</li>
+<li>航线模板由多个 Grid 组成；</li>
+<li>资源占用的核心粒度是 <code>Date + Grid + Level + TimeSlot</code>。</li>
+</ul>
+</li>
+</ol>
+<h2>4. 演示三：预约提交与审批占用</h2>
+<ol>
+<li>进入“预约申请 / Pre-check”。</li>
+<li>选择默认航线 <code>RT-DEMO-01</code>。</li>
+<li>选择 L1、日期、时间片。</li>
+<li>执行 Pre-check。</li>
+<li>提交预约申请。</li>
+<li>进入审批工作台。</li>
+<li>审批通过。</li>
+<li>展示资源占用记录。</li>
+</ol>
+<p>讲解要点：审批通过后，系统根据航线经过的 Grid 和申请的 TimeSlot 自动生成多条 <code>resource_occupancy</code>。</p>
+<h2>5. 演示四：冲突检测</h2>
+<ol>
+<li>在已有占用未释放时，再次提交相同日期、航线、高度层、时间片的申请。</li>
+<li>执行 Pre-check。</li>
+<li>展示 <code>SAME_GRID_LEVEL_TIME</code> 硬冲突。</li>
+<li>尝试提交，系统返回冲突阻断。</li>
+</ol>
+<p>讲解要点：硬冲突会阻断提交或审批，避免同一低空时空切片被重复占用。</p>
+<h2>6. 演示五：禁飞区与风险网格</h2>
+<ol>
+<li>选择禁飞航线 <code>RT-NOFLY-01</code>。</li>
+<li>执行 Pre-check。</li>
+<li>展示 <code>NO_FLY_GRID</code> 阻断。</li>
+<li>切换到默认航线，展示经过 <code>RISK</code> 网格时产生风险提示但允许提交。</li>
+</ol>
+<p>讲解要点：系统区分硬阻断与风险提示，支持低空巡检任务中的分级处理。</p>
+<h2>7. 演示六：RabbitMQ 与最终一致性</h2>
+<p>可以用脚本演示：</p>
+<pre><code class="language-bat">scripts\phase06-smoke-test.bat
+</code></pre>
+<p>讲解要点：</p>
+<pre><code class="language-text">审批通过
+→ 写业务数据和 outbox_message
+→ 派发 RabbitMQ
+→ 通知服务消费
+→ 写 notify_record
+→ 写 audit_log
+→ 幂等记录防止重复消费
+</code></pre>
+<p>重点展示：</p>
+<ul>
+<li>outbox 消息状态；</li>
+<li>notify_record；</li>
+<li>audit_log；</li>
+<li>duplicate skipped 幂等记录。</li>
+</ul>
+<h2>8. 演示七：限流、降级、重试与监控</h2>
+<p>运行：</p>
+<pre><code class="language-bat">scripts\phase07-smoke-test.bat
+</code></pre>
+<p>展示：</p>
+<ul>
+<li>RateLimiter 限流；</li>
+<li>CircuitBreaker 降级；</li>
+<li>Retry 第三次成功；</li>
+<li>Prometheus 指标；</li>
+<li>Grafana 面板。</li>
+</ul>
+<h2>9. 演示八：取消释放</h2>
+<ol>
+<li>在审批工作台选择已审批申请。</li>
+<li>点击取消。</li>
+<li>查看资源占用状态从 <code>OCCUPIED</code> 变为 <code>RELEASED</code>。</li>
+</ol>
+<p>讲解要点：资源释放后，对应时空切片可以被后续任务重新申请。</p>
+<h2>10. 演示兜底方案</h2>
+<p>如果前端临时不可用，使用脚本演示：</p>
+<pre><code class="language-bat">scripts\phase03-smoke-test.bat
+scripts\phase04-smoke-test.bat
+scripts\phase06-smoke-test.bat
+scripts\phase07-smoke-test.bat
+</code></pre>
+<p>如果 Grafana 未启动，使用 Actuator 和脚本输出证明监控指标已暴露：</p>
+<pre><code class="language-bat">curl http://127.0.0.1:8103/actuator/prometheus
+</code></pre>
+
+</section><hr>
+<section id='docs__deployment-guide.md'><div class='meta'><span class='badge'>交付文档</span>docs/deployment-guide.md</div>
+<h1>部署与运行说明</h1>
+<h2>1. 部署模式</h2>
+<p>当前项目推荐三种运行模式。</p>
+<h3>模式 A：本地开发模式</h3>
+<p>适合日常开发与调试：</p>
+<pre><code class="language-text">中间件：Docker Desktop
+MySQL：本机 MySQL root / 123123
+后端服务：IDEA 逐个启动
+前端：Vite dev server
+监控：按需启动 Prometheus / Grafana
+</code></pre>
+<p>这是当前已经验证最多的模式。</p>
+<h3>模式 B：后端 jar 运行模式</h3>
+<p>适合不使用 IDEA 的演示机：</p>
+<pre><code class="language-bat">mvn clean package -DskipTests
+java -jar user-org-service\target\user-org-service-*.jar
+java -jar resource-service\target\resource-service-*.jar
+java -jar booking-service\target\booking-service-*.jar
+java -jar conflict-notify-service\target\conflict-notify-service-*.jar
+java -jar low-altitude-gateway\target\low-altitude-gateway-*.jar
+</code></pre>
+<p>每个命令窗口需要配置同样的环境变量。</p>
+<h3>模式 C：前端打包部署模式</h3>
+<p>用于把前端构建为静态资源：</p>
+<pre><code class="language-bat">cd low-altitude-web
+npm install
+npm run build
+</code></pre>
+<p>构建产物位于：</p>
+<pre><code class="language-text">low-altitude-web/dist
+</code></pre>
+<p>当前推荐答辩演示使用 Vite dev server，操作更简单。</p>
+<h2>2. 后端启动顺序</h2>
+<p>必须先启动中间件，再启动业务服务。</p>
+<pre><code class="language-text">1. Nacos / RabbitMQ / Redis / MySQL
+2. user-org-service
+3. resource-service
+4. booking-service
+5. conflict-notify-service
+6. low-altitude-gateway
+</code></pre>
+<p>Gateway 最后启动，便于它通过 Nacos 发现已注册服务。</p>
+<h2>3. 中间件启动</h2>
+<p>本机 MySQL 模式：</p>
+<pre><code class="language-bat">scripts\start-middleware-no-mysql.bat
+</code></pre>
+<p>Docker 全量模式：</p>
+<pre><code class="language-bat">scripts\start-infra.bat
+</code></pre>
+<p>停止：</p>
+<pre><code class="language-bat">scripts\stop-infra.bat
+</code></pre>
+<h2>4. 数据库初始化</h2>
+<pre><code class="language-bat">mysql -uroot -p123123 --default-character-set=utf8mb4 &lt; docker\mysql\local-root-init.sql
+</code></pre>
+<p>如果要重置数据库，可手动删除四个库后重新导入：</p>
+<pre><code class="language-bat">mysql -uroot -p123123 -e &quot;DROP DATABASE IF EXISTS low_altitude_user_org; DROP DATABASE IF EXISTS low_altitude_resource; DROP DATABASE IF EXISTS low_altitude_booking; DROP DATABASE IF EXISTS low_altitude_conflict_notify;&quot;
+mysql -uroot -p123123 --default-character-set=utf8mb4 &lt; docker\mysql\local-root-init.sql
+</code></pre>
+<h2>5. 健康检查</h2>
+<pre><code class="language-bat">curl http://127.0.0.1:8080/actuator/health
+curl http://127.0.0.1:8101/actuator/health
+curl http://127.0.0.1:8102/actuator/health
+curl http://127.0.0.1:8103/actuator/health
+curl http://127.0.0.1:8104/actuator/health
+</code></pre>
+<h2>6. 交付验收</h2>
+<p>推荐最终验收顺序：</p>
+<pre><code class="language-bat">scripts\phase08-acceptance-check.bat
+scripts\phase03-smoke-test.bat
+scripts\phase04-smoke-test.bat
+scripts\phase06-smoke-test.bat
+scripts\phase07-smoke-test.bat
+</code></pre>
+<p>说明：Phase 03/04/06 脚本会写入测试数据；Phase 08 脚本主要做非破坏性检查。</p>
+
+</section><hr>
+<section id='docs__environment-ports.md'><div class='meta'><span class='badge'>交付文档</span>docs/environment-ports.md</div>
+<h1>环境变量、端口与账号速查</h1>
+<h2>1. 服务端口</h2>
+<table>
+<thead>
+<tr>
+  <th>服务</th>
+  <th style="text-align:right">端口</th>
+  <th>地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Gateway</td>
+  <td style="text-align:right">8080</td>
+  <td><a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a></td>
+</tr>
+<tr>
+  <td>user-org-service</td>
+  <td style="text-align:right">8101</td>
+  <td><a href="http://127.0.0.1:8101">http://127.0.0.1:8101</a></td>
+</tr>
+<tr>
+  <td>resource-service</td>
+  <td style="text-align:right">8102</td>
+  <td><a href="http://127.0.0.1:8102">http://127.0.0.1:8102</a></td>
+</tr>
+<tr>
+  <td>booking-service</td>
+  <td style="text-align:right">8103</td>
+  <td><a href="http://127.0.0.1:8103">http://127.0.0.1:8103</a></td>
+</tr>
+<tr>
+  <td>conflict-notify-service</td>
+  <td style="text-align:right">8104</td>
+  <td><a href="http://127.0.0.1:8104">http://127.0.0.1:8104</a></td>
+</tr>
+<tr>
+  <td>前端 Vite</td>
+  <td style="text-align:right">5173</td>
+  <td><a href="http://127.0.0.1:5173">http://127.0.0.1:5173</a></td>
+</tr>
+<tr>
+  <td>Nacos</td>
+  <td style="text-align:right">8848</td>
+  <td><a href="http://127.0.0.1:8848/nacos/">http://127.0.0.1:8848/nacos/</a></td>
+</tr>
+<tr>
+  <td>RabbitMQ 管理台</td>
+  <td style="text-align:right">15672</td>
+  <td><a href="http://127.0.0.1:15672/">http://127.0.0.1:15672/</a></td>
+</tr>
+<tr>
+  <td>RabbitMQ AMQP</td>
+  <td style="text-align:right">5672</td>
+  <td>127.0.0.1:5672</td>
+</tr>
+<tr>
+  <td>MySQL</td>
+  <td style="text-align:right">3306</td>
+  <td>127.0.0.1:3306</td>
+</tr>
+<tr>
+  <td>Redis</td>
+  <td style="text-align:right">6379</td>
+  <td>127.0.0.1:6379</td>
+</tr>
+<tr>
+  <td>Prometheus</td>
+  <td style="text-align:right">9090</td>
+  <td><a href="http://127.0.0.1:9090">http://127.0.0.1:9090</a></td>
+</tr>
+<tr>
+  <td>Grafana</td>
+  <td style="text-align:right">3000</td>
+  <td><a href="http://127.0.0.1:3000">http://127.0.0.1:3000</a></td>
+</tr>
+</tbody>
+</table>
+<h2>2. 账号密码</h2>
+<table>
+<thead>
+<tr>
+  <th>组件</th>
+  <th>账号</th>
+  <th>密码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>MySQL 本机</td>
+  <td>root</td>
+  <td>123123</td>
+</tr>
+<tr>
+  <td>RabbitMQ</td>
+  <td>lowaltitude</td>
+  <td>lowaltitude123</td>
+</tr>
+<tr>
+  <td>Grafana</td>
+  <td>admin</td>
+  <td>lowaltitude123</td>
+</tr>
+<tr>
+  <td>Nacos</td>
+  <td>nacos</td>
+  <td>nacos</td>
+</tr>
+</tbody>
+</table>
+<h2>3. 后端环境变量</h2>
+<pre><code class="language-text">NACOS_ADDR=127.0.0.1:8848;NACOS_REGISTER_IP=127.0.0.1;MYSQL_USER=root;MYSQL_PASSWORD=123123;REDIS_HOST=127.0.0.1;REDIS_PORT=6379;RABBITMQ_HOST=127.0.0.1;RABBITMQ_USER=lowaltitude;RABBITMQ_PASSWORD=lowaltitude123
+</code></pre>
+<h2>4. 常用 health 地址</h2>
+<pre><code class="language-text">http://127.0.0.1:8080/actuator/health
+http://127.0.0.1:8101/actuator/health
+http://127.0.0.1:8102/actuator/health
+http://127.0.0.1:8103/actuator/health
+http://127.0.0.1:8104/actuator/health
+</code></pre>
+<h2>5. Prometheus 指标地址</h2>
+<pre><code class="language-text">http://127.0.0.1:8080/actuator/prometheus
+http://127.0.0.1:8101/actuator/prometheus
+http://127.0.0.1:8102/actuator/prometheus
+http://127.0.0.1:8103/actuator/prometheus
+http://127.0.0.1:8104/actuator/prometheus
+</code></pre>
+
+</section><hr>
+<section id='docs__frontend-running-guide.md'><div class='meta'><span class='badge'>交付文档</span>docs/frontend-running-guide.md</div>
+<h1>前端运行与页面说明</h1>
+<h2>1. 前端目录</h2>
+<pre><code class="language-text">low-altitude-web
+</code></pre>
+<p>技术栈：</p>
+<pre><code class="language-text">Vue 3
+Vite
+Element Plus
+Axios
+ECharts 预留
+</code></pre>
+<h2>2. 启动方式</h2>
+<p>确保后端 Gateway 已运行在：</p>
+<pre><code class="language-text">http://127.0.0.1:8080
+</code></pre>
+<p>然后执行：</p>
+<pre><code class="language-bat">scripts\start-web.bat
+</code></pre>
+<p>或手动：</p>
+<pre><code class="language-bat">cd low-altitude-web
+npm install
+npm run dev
+</code></pre>
+<p>浏览器打开：</p>
+<pre><code class="language-text">http://127.0.0.1:5173
+</code></pre>
+<h2>3. 页面功能</h2>
+<table>
+<thead>
+<tr>
+  <th>页面</th>
+  <th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>运行状态</td>
+  <td>查看 Gateway health、服务发现状态、获取开发 token</td>
+</tr>
+<tr>
+  <td>资源网格</td>
+  <td>展示 Grid 二维网格、Grid 状态、航线模板经过网格</td>
+</tr>
+<tr>
+  <td>预约申请 / Pre-check</td>
+  <td>填写申请、执行预检查、展示硬冲突和风险提示</td>
+</tr>
+<tr>
+  <td>审批工作台</td>
+  <td>查询预约、审批、驳回、取消、查看流程和占用</td>
+</tr>
+<tr>
+  <td>冲突记录</td>
+  <td>查看 HARD / RISK 冲突记录</td>
+</tr>
+</tbody>
+</table>
+<h2>4. 推荐演示流程</h2>
+<ol>
+<li>打开运行状态页面。</li>
+<li>点击获取 ADMIN Token。</li>
+<li>刷新基础数据。</li>
+<li>进入资源网格页面，展示 ACTIVE / RISK / NO_FLY 网格。</li>
+<li>进入预约申请页面，选择默认航线、L1、高度层、时间片，执行 Pre-check。</li>
+<li>提交预约申请。</li>
+<li>进入审批工作台，审批通过。</li>
+<li>查看生成的资源占用记录。</li>
+<li>再提交相同资源申请，展示 HARD 冲突阻断。</li>
+<li>选择禁飞航线 <code>RT-NOFLY-01</code>，展示 NO_FLY 阻断。</li>
+<li>进入冲突记录页面查看记录。</li>
+</ol>
+<h2>5. 常见问题</h2>
+<h3>页面无法访问后端</h3>
+<p>检查 Gateway：</p>
+<pre><code class="language-bat">curl http://127.0.0.1:8080/actuator/health
+</code></pre>
+<h3>token 失效</h3>
+<p>重新在运行状态页面获取 ADMIN Token。</p>
+<h3>前端依赖安装失败</h3>
+<p>删除 <code>node_modules</code> 和 <code>package-lock.json</code> 后重新安装：</p>
+<pre><code class="language-bat">cd low-altitude-web
+rmdir /s /q node_modules
+del package-lock.json
+npm install
+</code></pre>
+<h3>中文显示问题</h3>
+<p>前端页面通常能正常显示中文；CMD/PowerShell 中看到乱码多半是终端编码问题，不代表后端数据错误。</p>
+
+</section><hr>
+<section id='docs__monitoring-guide.md'><div class='meta'><span class='badge'>交付文档</span>docs/monitoring-guide.md</div>
+<h1>监控、治理与压测说明</h1>
+<h2>1. 监控目标</h2>
+<p>Phase 07 已加入：</p>
+<pre><code class="language-text">Actuator
+Micrometer Prometheus Registry
+Prometheus
+Grafana
+Resilience4j RateLimiter / CircuitBreaker / Retry
+JMeter 压测脚本
+</code></pre>
+<p>监控目标包括：</p>
+<pre><code class="language-text">服务健康状态
+HTTP 请求量和延迟
+JVM 内存和线程
+Outbox pending / failed
+资源占用数量
+冲突记录数量
+通知发送数量
+审计日志数量
+幂等消费数量
+限流、降级、重试指标
+</code></pre>
+<h2>2. 启动监控栈</h2>
+<pre><code class="language-bat">scripts\start-monitor.bat
+</code></pre>
+<p>访问：</p>
+<pre><code class="language-text">Prometheus: http://127.0.0.1:9090
+Grafana:    http://127.0.0.1:3000
+</code></pre>
+<p>Grafana：</p>
+<pre><code class="language-text">admin / lowaltitude123
+</code></pre>
+<p>停止：</p>
+<pre><code class="language-bat">scripts\stop-monitor.bat
+</code></pre>
+<h2>3. Prometheus 抓取目标</h2>
+<p>Prometheus 配置文件：</p>
+<pre><code class="language-text">docker/prometheus/prometheus.yml
+</code></pre>
+<p>默认通过 <code>host.docker.internal</code> 抓取本机 IDEA 启动的服务：</p>
+<pre><code class="language-text">low-altitude-gateway:     8080/actuator/prometheus
+user-org-service:         8101/actuator/prometheus
+resource-service:         8102/actuator/prometheus
+booking-service:          8103/actuator/prometheus
+conflict-notify-service:  8104/actuator/prometheus
+</code></pre>
+<h2>4. Grafana 面板</h2>
+<p>Grafana 已预置：</p>
+<pre><code class="language-text">docker/grafana/dashboards/low-altitude-overview.json
+</code></pre>
+<p>如果面板未自动出现，检查容器是否正常：</p>
+<pre><code class="language-bat">docker ps
+</code></pre>
+<h2>5. 治理演示接口</h2>
+<table>
+<thead>
+<tr>
+  <th>接口</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>GET /api/bookings/governance/summary</code></td>
+  <td>系统治理状态汇总</td>
+</tr>
+<tr>
+  <td><code>GET /api/bookings/governance/rate-limited</code></td>
+  <td>限流演示</td>
+</tr>
+<tr>
+  <td><code>GET /api/bookings/governance/circuit?fail=true</code></td>
+  <td>熔断/降级演示</td>
+</tr>
+<tr>
+  <td><code>GET /api/bookings/governance/retry?key=demo&amp;failTimes=2</code></td>
+  <td>重试演示</td>
+</tr>
+</tbody>
+</table>
+<h2>6. 验证治理能力</h2>
+<pre><code class="language-bat">scripts\phase07-smoke-test.bat
+</code></pre>
+<p>该脚本会验证：</p>
+<pre><code class="language-text">Prometheus actuator 可访问
+summary 接口可访问
+Outbox / Notification summary 可访问
+RateLimiter 能拒绝突发请求
+CircuitBreaker 能返回降级响应
+Retry 能在瞬时失败后成功
+业务指标能在 actuator/prometheus 中出现
+</code></pre>
+<h2>7. JMeter 压测</h2>
+<p>JMeter 脚本：</p>
+<pre><code class="language-text">performance/jmeter/phase07-rate-limiter.jmx
+</code></pre>
+<p>使用 GUI 打开或命令行运行：</p>
+<pre><code class="language-bat">jmeter -n -t performance\jmeter\phase07-rate-limiter.jmx -l performance\jmeter\phase07-result.jtl
+</code></pre>
+<p>压测目标：</p>
+<pre><code class="language-text">http://127.0.0.1:8103/api/bookings/governance/rate-limited
+</code></pre>
+<p>预期现象：一部分请求成功，一部分请求返回限流响应。</p>
+<h2>8. 监控演示建议</h2>
+<p>答辩或验收时可按以下顺序展示：</p>
+<ol>
+<li>打开 Grafana 面板。</li>
+<li>运行 <code>phase07-smoke-test.bat</code>。</li>
+<li>观察限流、HTTP 请求、业务指标变化。</li>
+<li>打开 Prometheus 查询：</li>
+</ol>
+<pre><code class="language-text">low_altitude_outbox_pending
+low_altitude_resource_occupancy_occupied
+low_altitude_notify_sent
+low_altitude_governance_rate_limited_total
+</code></pre>
+
+</section><hr>
+<section id='docs__phase-01-api.md'><div class='meta'><span class='badge'>阶段文档</span>docs/phase-01-api.md</div>
+<h1>Phase 01 接口说明</h1>
+<h2>1. 获取开发 Token</h2>
+<pre><code class="language-http">POST /api/auth/dev-token?username=demo&amp;role=APPLICANT
+</code></pre>
+<p>角色可选：</p>
+<ul>
+<li><code>APPLICANT</code></li>
+<li><code>APPROVER</code></li>
+<li><code>ADMIN</code></li>
+</ul>
+<p>响应中 <code>data.accessToken</code> 用于后续接口。</p>
+<h2>2. 用户组织服务占位接口</h2>
+<pre><code class="language-http">GET /api/users/bootstrap
+Authorization: Bearer &lt;token&gt;
+</code></pre>
+<p>用于验证网关鉴权、下游请求头透传、用户组织服务路由。</p>
+<h2>3. 资源服务占位接口</h2>
+<pre><code class="language-http">GET /api/resources/bootstrap
+Authorization: Bearer &lt;token&gt;
+</code></pre>
+<p>用于验证资源服务路由，并返回 Grid / Level / TimeSlot / RouteTemplate 领域模型说明。</p>
+<h2>4. 申请审批服务占位接口</h2>
+<pre><code class="language-http">GET /api/bookings/bootstrap
+Authorization: Bearer &lt;token&gt;
+</code></pre>
+<p>用于验证申请审批服务路由，并返回后续状态机与事务边界说明。</p>
+<h2>5. 冲突检测与通知服务占位接口</h2>
+<pre><code class="language-http">GET /api/conflicts/bootstrap
+Authorization: Bearer &lt;token&gt;
+</code></pre>
+<p>用于验证冲突检测服务路由，并返回后续冲突规则与消息链路说明。</p>
+<h2>6. Actuator</h2>
+<p>每个服务都开放：</p>
+<pre><code class="language-http">GET /actuator/health
+GET /actuator/metrics
+</code></pre>
+<p>网关额外开放：</p>
+<pre><code class="language-http">GET /actuator/gateway/routes
+</code></pre>
+
+</section><hr>
+<section id='docs__phase-01-architecture.md'><div class='meta'><span class='badge'>阶段文档</span>docs/phase-01-architecture.md</div>
+<h1>Phase 01 架构说明</h1>
+<h2>1. 阶段目标</h2>
+<p>第一次开发的目标是完成“可继续开发”的微服务工程骨架。此阶段不追求完整业务功能，而是把服务边界、公共规范、网关入口、中间件和运行方式先定下来。</p>
+<h2>2. 服务边界</h2>
+<table>
+<thead>
+<tr>
+  <th>服务</th>
+  <th style="text-align:right">端口</th>
+  <th>职责</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>low-altitude-gateway</td>
+  <td style="text-align:right">8080</td>
+  <td>统一入口、路由、JWT 鉴权过滤</td>
+</tr>
+<tr>
+  <td>user-org-service</td>
+  <td style="text-align:right">8101</td>
+  <td>用户、角色、组织、审批员配置；Phase 01 只提供开发 token 与 bootstrap 接口</td>
+</tr>
+<tr>
+  <td>resource-service</td>
+  <td style="text-align:right">8102</td>
+  <td>Grid、Level、TimeSlot、RouteTemplate；Phase 01 只提供领域模型说明接口</td>
+</tr>
+<tr>
+  <td>booking-service</td>
+  <td style="text-align:right">8103</td>
+  <td>预约申请、审批流转、占用写入；Phase 01 只提供状态与事务边界说明接口</td>
+</tr>
+<tr>
+  <td>conflict-notify-service</td>
+  <td style="text-align:right">8104</td>
+  <td>冲突检测、通知、审计、补偿；Phase 01 只提供规则链与消息链路说明接口</td>
+</tr>
+</tbody>
+</table>
+<h2>3. 第一阶段已固定的工程约定</h2>
+<ul>
+<li>包名前缀：<code>com.lowaltitude</code>。</li>
+<li>网关统一入口：<code>http://localhost:8080</code>。</li>
+<li>服务注册发现：Nacos。</li>
+<li>服务间调用：OpenFeign。</li>
+<li>鉴权方式：Gateway 校验 Bearer Token，并向下游透传 <code>X-User-*</code> 请求头。</li>
+<li>业务响应体：<code>ApiResponse&lt;T&gt;</code>。</li>
+<li>业务异常：<code>BusinessException</code> + <code>ErrorCode</code>。</li>
+<li>数据库：按服务拆分数据库，便于后续微服务边界清晰。</li>
+</ul>
+<h2>4. 低空领域主模型</h2>
+<p>项目后续围绕如下模型展开：</p>
+<pre><code class="language-text">Grid 区域网格
+Level 高度层
+TimeSlot 离散时间片
+RouteTemplate 航线模板
+</code></pre>
+<p>核心资源占用单元：</p>
+<pre><code class="language-text">GridId + LevelId + TimeSlotId
+</code></pre>
+<p>后续冲突检测、预约审批、资源释放、可视化展示都围绕这个单元展开。</p>
+<h2>5. 后续演进顺序</h2>
+<pre><code class="language-text">Phase 01 工程骨架
+→ Phase 02 用户组织与低空资源基础数据
+→ Phase 03 预约申请与审批业务闭环
+→ Phase 04 冲突检测规则链
+→ Phase 05 前端可视化
+→ Phase 06 RabbitMQ + Outbox 最终一致性
+→ Phase 07 治理、监控、压测
+→ Phase 08 部署、论文材料、答辩演示
+</code></pre>
+
+</section><hr>
+<section id='docs__phase-02-api.md'><div class='meta'><span class='badge'>阶段文档</span>docs/phase-02-api.md</div>
+<h1>Phase 02 API 速查</h1>
+<p>所有接口都建议通过 Gateway <code>http://127.0.0.1:8080</code> 访问。除 <code>/api/auth/**</code> 外，接口需要请求头：</p>
+<pre><code class="language-http">Authorization: Bearer &lt;token&gt;
+</code></pre>
+<p>先获取开发 token：</p>
+<pre><code class="language-bat">curl -X POST &quot;http://127.0.0.1:8080/api/auth/dev-token?username=demo&amp;role=ADMIN&quot;
+</code></pre>
+<h2>1. 用户组织服务</h2>
+<h3>组织</h3>
+<pre><code class="language-http">GET    /api/user-org/organizations?keyword=默认
+GET    /api/user-org/organizations/{id}
+POST   /api/user-org/organizations
+PUT    /api/user-org/organizations/{id}
+DELETE /api/user-org/organizations/{id}
+</code></pre>
+<p>创建组织示例：</p>
+<pre><code class="language-json">{
+  &quot;orgCode&quot;: &quot;ORG_TEST&quot;,
+  &quot;orgName&quot;: &quot;测试巡检组织&quot;,
+  &quot;parentId&quot;: null,
+  &quot;contactName&quot;: &quot;张三&quot;,
+  &quot;contactPhone&quot;: &quot;13800000000&quot;,
+  &quot;enabled&quot;: true,
+  &quot;description&quot;: &quot;用于 Phase 02 联调&quot;
+}
+</code></pre>
+<h3>角色</h3>
+<pre><code class="language-http">GET    /api/user-org/roles
+GET    /api/user-org/roles/{id}
+POST   /api/user-org/roles
+PUT    /api/user-org/roles/{id}
+DELETE /api/user-org/roles/{id}
+</code></pre>
+<h3>用户</h3>
+<pre><code class="language-http">GET    /api/user-org/users?keyword=admin
+GET    /api/user-org/users/{id}
+GET    /api/user-org/users/{id}/detail
+POST   /api/user-org/users
+PUT    /api/user-org/users/{id}
+DELETE /api/user-org/users/{id}
+POST   /api/user-org/users/{userId}/roles/{roleId}
+DELETE /api/user-org/users/{userId}/roles/{roleId}
+</code></pre>
+<p>创建用户示例：</p>
+<pre><code class="language-json">{
+  &quot;username&quot;: &quot;pilot01&quot;,
+  &quot;passwordHash&quot;: &quot;DEV_NOT_ENCRYPTED&quot;,
+  &quot;realName&quot;: &quot;巡检员01&quot;,
+  &quot;phone&quot;: &quot;13900000001&quot;,
+  &quot;email&quot;: &quot;pilot01@example.com&quot;,
+  &quot;orgId&quot;: 1,
+  &quot;enabled&quot;: true
+}
+</code></pre>
+<h3>审批员配置</h3>
+<pre><code class="language-http">GET    /api/user-org/approver-configs?orgId=1
+GET    /api/user-org/approver-configs/{id}
+POST   /api/user-org/approver-configs
+PUT    /api/user-org/approver-configs/{id}
+DELETE /api/user-org/approver-configs/{id}
+</code></pre>
+<p>创建审批配置示例：</p>
+<pre><code class="language-json">{
+  &quot;orgId&quot;: 1,
+  &quot;approverUserId&quot;: 1,
+  &quot;levelOrder&quot;: 1,
+  &quot;enabled&quot;: true,
+  &quot;description&quot;: &quot;默认一审审批员&quot;
+}
+</code></pre>
+<h2>2. 低空资源服务</h2>
+<h3>Grid 网格</h3>
+<pre><code class="language-http">GET    /api/resources/grids?keyword=G-01&amp;status=ACTIVE
+GET    /api/resources/grids/{id}
+POST   /api/resources/grids
+PUT    /api/resources/grids/{id}
+DELETE /api/resources/grids/{id}
+</code></pre>
+<p>创建 Grid 示例：</p>
+<pre><code class="language-json">{
+  &quot;gridCode&quot;: &quot;G-03-01&quot;,
+  &quot;gridName&quot;: &quot;A区-3行1列&quot;,
+  &quot;rowIndex&quot;: 3,
+  &quot;colIndex&quot;: 1,
+  &quot;centerLon&quot;: 113.9360000,
+  &quot;centerLat&quot;: 22.5350000,
+  &quot;status&quot;: &quot;ACTIVE&quot;,
+  &quot;description&quot;: &quot;测试新增网格&quot;
+}
+</code></pre>
+<p>允许的 Grid 状态：</p>
+<ul>
+<li><code>ACTIVE</code></li>
+<li><code>RISK</code></li>
+<li><code>NO_FLY</code></li>
+<li><code>DISABLED</code></li>
+</ul>
+<h3>高度层</h3>
+<pre><code class="language-http">GET    /api/resources/levels?enabled=true
+GET    /api/resources/levels/{id}
+POST   /api/resources/levels
+PUT    /api/resources/levels/{id}
+DELETE /api/resources/levels/{id}
+</code></pre>
+<p>创建高度层示例：</p>
+<pre><code class="language-json">{
+  &quot;levelCode&quot;: &quot;L4&quot;,
+  &quot;levelName&quot;: &quot;低空四层 200-300m&quot;,
+  &quot;minAltitudeM&quot;: 200,
+  &quot;maxAltitudeM&quot;: 300,
+  &quot;sortOrder&quot;: 4,
+  &quot;enabled&quot;: true,
+  &quot;description&quot;: &quot;测试高度层&quot;
+}
+</code></pre>
+<h3>时间片</h3>
+<pre><code class="language-http">GET    /api/resources/time-slots?enabled=true
+GET    /api/resources/time-slots/{id}
+POST   /api/resources/time-slots
+PUT    /api/resources/time-slots/{id}
+DELETE /api/resources/time-slots/{id}
+</code></pre>
+<p>创建时间片示例：</p>
+<pre><code class="language-json">{
+  &quot;slotCode&quot;: &quot;EV-01&quot;,
+  &quot;slotName&quot;: &quot;傍晚 18:00-20:00&quot;,
+  &quot;startTime&quot;: &quot;18:00:00&quot;,
+  &quot;endTime&quot;: &quot;20:00:00&quot;,
+  &quot;sortOrder&quot;: 5,
+  &quot;enabled&quot;: true,
+  &quot;description&quot;: &quot;测试时间片&quot;
+}
+</code></pre>
+<h3>航线模板</h3>
+<pre><code class="language-http">GET    /api/resources/route-templates?enabled=true
+GET    /api/resources/route-templates/{id}
+POST   /api/resources/route-templates
+PUT    /api/resources/route-templates/{id}
+DELETE /api/resources/route-templates/{id}
+POST   /api/resources/route-templates/{routeTemplateId}/grids
+PUT    /api/resources/route-templates/{routeTemplateId}/grids/{routeGridId}
+DELETE /api/resources/route-templates/{routeTemplateId}/grids/{routeGridId}
+</code></pre>
+<p>创建航线模板示例：</p>
+<pre><code class="language-json">{
+  &quot;routeCode&quot;: &quot;RT-TEST-01&quot;,
+  &quot;routeName&quot;: &quot;测试巡检航线&quot;,
+  &quot;description&quot;: &quot;用于验证多网格航线模板&quot;,
+  &quot;enabled&quot;: true,
+  &quot;createdBy&quot;: &quot;demo&quot;
+}
+</code></pre>
+<p>向航线模板追加网格示例：</p>
+<pre><code class="language-json">{
+  &quot;gridId&quot;: 1,
+  &quot;sequenceNo&quot;: 1,
+  &quot;plannedDurationMinutes&quot;: 5
+}
+</code></pre>
+
+</section><hr>
+<section id='docs__phase-02-development-summary.md'><div class='meta'><span class='badge'>阶段文档</span>docs/phase-02-development-summary.md</div>
+<h1>Phase 02 开发说明：用户组织与低空资源基础数据</h1>
+<p>本阶段目标是把 Phase 01 的“可启动微服务骨架”推进到“基础业务数据可落库、可查询、可维护”的状态。完成后，用户组织域与低空资源域不再只是 bootstrap 占位接口，而是具备真实 MySQL 表、MyBatis Mapper、Service 校验逻辑与 REST CRUD 接口。</p>
+<h2>1. 本阶段边界</h2>
+<p>已完成：</p>
+<ul>
+<li>用户组织服务：组织、角色、用户、用户角色、审批员配置。</li>
+<li>资源服务：Grid 区域网格、AltitudeLevel 高度层、TimeSlot 时间片、RouteTemplate 航线模板。</li>
+<li>MySQL 表结构与默认数据初始化。</li>
+<li>Gateway 路由补充 <code>/api/user-org/**</code>。</li>
+<li>API 文档与 smoke test 脚本。</li>
+</ul>
+<p>暂不完成：</p>
+<ul>
+<li>真正密码登录与 Spring Security 用户认证。</li>
+<li>预约申请、审批流转、冲突检测落库。</li>
+<li>Redis 防重与资源缓存。</li>
+<li>前端页面。</li>
+</ul>
+<p>这些会进入 Phase 03 和 Phase 04。</p>
+<h2>2. 数据库初始化</h2>
+<p>如果你使用本机 MySQL <code>root / 123123</code>，在项目根目录执行：</p>
+<pre><code class="language-bat">mysql -uroot -p123123 &lt; docker\mysql\local-root-init.sql
+</code></pre>
+<p>该脚本会创建或补全：</p>
+<ul>
+<li><code>low_altitude_user_org</code></li>
+<li><code>low_altitude_resource</code></li>
+<li><code>low_altitude_booking</code></li>
+<li><code>low_altitude_conflict_notify</code></li>
+</ul>
+<p>并创建 Phase 02 所需表和默认数据。</p>
+<h2>3. 默认数据</h2>
+<p>用户组织库默认包含：</p>
+<ul>
+<li>组织：<code>ORG_DEFAULT</code></li>
+<li>角色：<code>APPLICANT</code>、<code>APPROVER</code>、<code>ADMIN</code></li>
+<li>用户：<code>admin</code></li>
+<li>默认审批链路：默认组织的一审审批员为 <code>admin</code></li>
+</ul>
+<p>资源库默认包含：</p>
+<ul>
+<li>示例 Grid：<code>G-01-01</code>、<code>G-01-02</code>、<code>G-02-01</code>、<code>G-02-02</code></li>
+<li>示例高度层：<code>L1</code>、<code>L2</code>、<code>L3</code></li>
+<li>示例时间片：<code>AM-01</code>、<code>AM-02</code>、<code>PM-01</code>、<code>PM-02</code></li>
+<li>示例航线模板：<code>RT-DEMO-01</code></li>
+</ul>
+<h2>4. 启动顺序</h2>
+<p>继续沿用 Phase 01 的顺序：</p>
+<ol>
+<li>Nacos / RabbitMQ / Redis / MySQL</li>
+<li>user-org-service</li>
+<li>resource-service</li>
+<li>booking-service</li>
+<li>conflict-notify-service</li>
+<li>low-altitude-gateway</li>
+</ol>
+<p>如果你本机 6379 被 Docker Desktop/WSL 占用，而服务暂时不报 Redis 连接错误，可以先不处理。Phase 02 主要验证 MySQL CRUD。</p>
+<h2>5. 关键验证点</h2>
+<p>服务启动后，Nacos 中应能看到：</p>
+<ul>
+<li><code>user-org-service</code></li>
+<li><code>resource-service</code></li>
+<li><code>booking-service</code></li>
+<li><code>conflict-notify-service</code></li>
+<li><code>low-altitude-gateway</code></li>
+</ul>
+<p>然后通过 Gateway 访问：</p>
+<ul>
+<li><code>GET /api/user-org/organizations</code></li>
+<li><code>GET /api/user-org/users</code></li>
+<li><code>GET /api/resources/grids</code></li>
+<li><code>GET /api/resources/levels</code></li>
+<li><code>GET /api/resources/time-slots</code></li>
+<li><code>GET /api/resources/route-templates/1</code></li>
+</ul>
+<h2>6. 架构意义</h2>
+<p>本阶段建立了后续预约审批和冲突检测的基础数据底座：</p>
+<ul>
+<li><code>Grid</code> 决定空域区域维度。</li>
+<li><code>AltitudeLevel</code> 决定高度层维度。</li>
+<li><code>TimeSlot</code> 决定离散时间维度。</li>
+<li><code>RouteTemplate</code> 把无人机巡检任务从“单点预约”升级为“多网格路径占用”。</li>
+<li><code>ApproverConfig</code> 为后续审批流转提供组织域依据。</li>
+</ul>
+<p>Phase 03 将在这些基础上实现预约申请与审批主流程。</p>
+
+</section><hr>
+<section id='docs__phase-02-hotfix-loadbalancer.md'><div class='meta'><span class='badge'>阶段文档</span>docs/phase-02-hotfix-loadbalancer.md</div>
+<h1>Phase 02 Hotfix: Gateway lb:// 路由 503 修复</h1>
+<h2>问题</h2>
+<p>Gateway <code>/actuator/health</code> 正常，Nacos 能看到服务列表，但访问 <code>/api/auth/dev-token</code> 时返回 503，导致 smoke-test 将错误文本误当作 token。</p>
+<h2>原因</h2>
+<p><code>low-altitude-gateway</code> 使用 <code>lb://user-org-service</code> 等路由，但 POM 中缺少 <code>spring-cloud-starter-loadbalancer</code>，导致 Gateway 无法真正执行基于服务名的负载均衡转发。</p>
+<h2>修复</h2>
+<p>在 <code>low-altitude-gateway/pom.xml</code> 中新增：</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-starter-loadbalancer&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>同时修复 <code>scripts/phase02-smoke-test.bat</code>，避免 PowerShell 错误文本被写入 Authorization Header。</p>
+<h2>操作</h2>
+<ol>
+<li>IDEA Maven Reload。</li>
+<li>只重启 <code>low-altitude-gateway</code>。</li>
+<li>执行：</li>
+</ol>
+<pre><code class="language-bat">scripts\phase02-smoke-test.bat
+</code></pre>
+
+</section><hr>
+<section id='docs__phase-02-next-plan.md'><div class='meta'><span class='badge'>阶段文档</span>docs/phase-02-next-plan.md</div>
+<h1>Phase 02 下一步开发计划草案</h1>
+<p>下一次开发建议主题：用户组织与低空资源基础数据。</p>
+<h2>1. 用户组织服务</h2>
+<p>目标表：</p>
+<ul>
+<li><code>user_account</code></li>
+<li><code>role</code></li>
+<li><code>user_role</code></li>
+<li><code>organization</code></li>
+<li><code>approver_config</code></li>
+</ul>
+<p>目标接口：</p>
+<ul>
+<li>用户注册 / 登录。</li>
+<li>用户分页查询。</li>
+<li>角色分配。</li>
+<li>组织管理。</li>
+<li>审批员配置。</li>
+</ul>
+<h2>2. 资源服务</h2>
+<p>目标表：</p>
+<ul>
+<li><code>grid</code></li>
+<li><code>level</code></li>
+<li><code>time_slot</code></li>
+<li><code>route_template</code></li>
+<li><code>route_template_grid</code></li>
+</ul>
+<p>目标接口：</p>
+<ul>
+<li>Grid CRUD。</li>
+<li>Level CRUD。</li>
+<li>TimeSlot CRUD。</li>
+<li>RouteTemplate CRUD。</li>
+<li>查询某个 Grid + Level 的时段资源状态。</li>
+</ul>
+<h2>3. 前端最低目标</h2>
+<ul>
+<li>登录页。</li>
+<li>首页布局。</li>
+<li>用户/角色管理页面。</li>
+<li>Grid/Level/TimeSlot 管理页面。</li>
+</ul>
+<h2>4. 保持暂不做</h2>
+<ul>
+<li>完整审批流。</li>
+<li>复杂冲突规则。</li>
+<li>RabbitMQ 最终一致性。</li>
+<li>Prometheus/Grafana。</li>
+</ul>
+
+</section><hr>
+<section id='docs__phase-03-api.md'><div class='meta'><span class='badge'>阶段文档</span>docs/phase-03-api.md</div>
+<h1>Phase 03 API 说明</h1>
+<h2>1. 提交预约申请</h2>
+<p><code>POST /api/bookings</code></p>
+<pre><code class="language-json">{
+  &quot;taskName&quot;: &quot;园区光伏板巡检&quot;,
+  &quot;orgId&quot;: 1,
+  &quot;applicantUserId&quot;: 1,
+  &quot;applicantName&quot;: &quot;demo&quot;,
+  &quot;routeTemplateId&quot;: 1,
+  &quot;levelId&quot;: 1,
+  &quot;bookingDate&quot;: &quot;2026-06-01&quot;,
+  &quot;timeSlotIds&quot;: [1, 2],
+  &quot;applyReason&quot;: &quot;例行低空巡检&quot;,
+  &quot;description&quot;: &quot;Phase 03 demo&quot;
+}
+</code></pre>
+<p>返回的 <code>data.id</code> 是后续审批、查询和取消使用的预约 ID。</p>
+<h2>2. 查询预约列表</h2>
+<p><code>GET /api/bookings</code></p>
+<p>可选查询参数：</p>
+<pre><code class="language-text">status=PENDING / APPROVED / REJECTED / CANCELLED
+applicantUserId=1
+bookingDate=2026-06-01
+keyword=BK2026
+</code></pre>
+<h2>3. 查询预约详情</h2>
+<p><code>GET /api/bookings/{id}</code></p>
+<p>详情包含：</p>
+<pre><code class="language-text">booking_record 主信息
+timeSlotIds
+flows
+occupancies
+</code></pre>
+<h2>4. 审批通过</h2>
+<p><code>POST /api/bookings/{id}/approve</code></p>
+<pre><code class="language-json">{
+  &quot;operatorUserId&quot;: 1,
+  &quot;operatorName&quot;: &quot;admin&quot;,
+  &quot;comment&quot;: &quot;符合当前巡检安排，审批通过&quot;
+}
+</code></pre>
+<p>审批通过后会生成 <code>resource_occupancy</code>。</p>
+<h2>5. 驳回申请</h2>
+<p><code>POST /api/bookings/{id}/reject</code></p>
+<pre><code class="language-json">{
+  &quot;operatorUserId&quot;: 1,
+  &quot;operatorName&quot;: &quot;admin&quot;,
+  &quot;rejectReason&quot;: &quot;该时段不适合执行巡检&quot;
+}
+</code></pre>
+<h2>6. 取消申请</h2>
+<p><code>POST /api/bookings/{id}/cancel</code></p>
+<pre><code class="language-json">{
+  &quot;operatorUserId&quot;: 1,
+  &quot;operatorName&quot;: &quot;admin&quot;,
+  &quot;cancelReason&quot;: &quot;任务计划调整&quot;
+}
+</code></pre>
+<p>若申请已经审批通过，取消时会将占用状态从 <code>OCCUPIED</code> 更新为 <code>RELEASED</code>。</p>
+<h2>7. 查询流转记录</h2>
+<p><code>GET /api/bookings/{id}/flows</code></p>
+<h2>8. 查询资源占用</h2>
+<p><code>GET /api/bookings/{id}/occupancies</code></p>
+
+</section><hr>
+<section id='docs__phase-03-development-summary.md'><div class='meta'><span class='badge'>阶段文档</span>docs/phase-03-development-summary.md</div>
+<h1>Phase 03 开发总结：预约申请与审批业务闭环</h1>
+<h2>1. 阶段目标</h2>
+<p>Phase 03 的目标是把系统从“基础数据管理平台”推进到“低空资源预约审批平台”。本阶段不做复杂冲突检测，先完成可运行、可验证的主流程：</p>
+<ol>
+<li>用户提交低空巡检预约申请；</li>
+<li>审批员审批通过或驳回；</li>
+<li>审批通过后根据航线模板生成资源占用记录；</li>
+<li>已通过的申请取消后释放占用；</li>
+<li>全流程保留状态流转记录。</li>
+</ol>
+<h2>2. 新增数据库表</h2>
+<p>数据库：<code>low_altitude_booking</code></p>
+<table>
+<thead>
+<tr>
+  <th>表名</th>
+  <th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>booking_record</code></td>
+  <td>预约申请主表，记录任务、申请人、航线、高度层、日期和状态</td>
+</tr>
+<tr>
+  <td><code>booking_time_slot</code></td>
+  <td>预约申请与时间片的多对多关系</td>
+</tr>
+<tr>
+  <td><code>booking_flow_record</code></td>
+  <td>申请提交、审批、驳回、取消等状态流转记录</td>
+</tr>
+<tr>
+  <td><code>resource_occupancy</code></td>
+  <td>审批通过后生成的 Grid + Level + TimeSlot 资源占用记录</td>
+</tr>
+</tbody>
+</table>
+<h2>3. 新增核心接口</h2>
+<table>
+<thead>
+<tr>
+  <th>方法</th>
+  <th>路径</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>POST</code></td>
+  <td><code>/api/bookings</code></td>
+  <td>提交预约申请</td>
+</tr>
+<tr>
+  <td><code>GET</code></td>
+  <td><code>/api/bookings</code></td>
+  <td>查询预约列表</td>
+</tr>
+<tr>
+  <td><code>GET</code></td>
+  <td><code>/api/bookings/{id}</code></td>
+  <td>查询预约详情</td>
+</tr>
+<tr>
+  <td><code>POST</code></td>
+  <td><code>/api/bookings/{id}/approve</code></td>
+  <td>审批通过</td>
+</tr>
+<tr>
+  <td><code>POST</code></td>
+  <td><code>/api/bookings/{id}/reject</code></td>
+  <td>驳回申请</td>
+</tr>
+<tr>
+  <td><code>POST</code></td>
+  <td><code>/api/bookings/{id}/cancel</code></td>
+  <td>取消申请并释放占用</td>
+</tr>
+<tr>
+  <td><code>GET</code></td>
+  <td><code>/api/bookings/{id}/flows</code></td>
+  <td>查询审批流转记录</td>
+</tr>
+<tr>
+  <td><code>GET</code></td>
+  <td><code>/api/bookings/{id}/occupancies</code></td>
+  <td>查询资源占用记录</td>
+</tr>
+</tbody>
+</table>
+<h2>4. 当前状态机</h2>
+<p>Phase 03 暂时只实现最小稳定状态机：</p>
+<pre><code class="language-text">PENDING  → APPROVED
+PENDING  → REJECTED
+PENDING  → CANCELLED
+APPROVED → CANCELLED
+</code></pre>
+<p>其中：</p>
+<ul>
+<li><code>PENDING</code>：申请已提交，等待审批；</li>
+<li><code>APPROVED</code>：审批通过，并已生成资源占用；</li>
+<li><code>REJECTED</code>：审批驳回，不生成资源占用；</li>
+<li><code>CANCELLED</code>：申请取消；若原状态为 <code>APPROVED</code>，则释放对应资源占用。</li>
+</ul>
+<h2>5. 审批通过时的资源占用生成规则</h2>
+<p>审批通过时，系统会调用 <code>resource-service</code> 查询航线模板详情。</p>
+<p>若航线模板包含 3 个 Grid，用户选择 2 个 TimeSlot，则系统生成：</p>
+<pre><code class="language-text">3 × 2 = 6 条 resource_occupancy
+</code></pre>
+<p>每条占用记录包含：</p>
+<pre><code class="language-text">booking_id
+booking_no
+route_template_id
+grid_id
+grid_code
+grid_name
+level_id
+time_slot_id
+booking_date
+status = OCCUPIED
+</code></pre>
+<h2>6. 本阶段边界</h2>
+<p>Phase 03 暂不拦截资源冲突。也就是说，即使同一 Grid + Level + TimeSlot 已被占用，当前版本仍允许审批通过。</p>
+<p>这个限制是有意保留的，因为 Phase 04 将专门实现：</p>
+<ul>
+<li>硬冲突检测；</li>
+<li>风险冲突检测；</li>
+<li>禁飞区 / 禁飞时段规则；</li>
+<li>相邻 Grid 风险；</li>
+<li>高度层安全间隔规则。</li>
+</ul>
+<h2>7. 验证方式</h2>
+<p>执行：</p>
+<pre><code class="language-bat">mysql -uroot -p123123 --default-character-set=utf8mb4 &lt; docker\mysql\local-root-init.sql
+</code></pre>
+<p>然后启动 5 个服务：</p>
+<pre><code class="language-text">user-org-service
+resource-service
+booking-service
+conflict-notify-service
+low-altitude-gateway
+</code></pre>
+<p>最后运行：</p>
+<pre><code class="language-bat">scripts\phase03-smoke-test.bat
+</code></pre>
+<p>脚本会自动完成：</p>
+<pre><code class="language-text">获取 token
+提交预约申请
+查询预约详情
+审批通过
+查询资源占用
+取消申请
+释放占用
+</code></pre>
+
+</section><hr>
+<section id='docs__phase-03-next-plan.md'><div class='meta'><span class='badge'>阶段文档</span>docs/phase-03-next-plan.md</div>
+<h1>Phase 03 下一阶段计划：预约申请与审批主流程</h1>
+<p>Phase 03 的目标是让系统从“基础数据可维护”进入“业务闭环可运行”。</p>
+<h2>必做内容</h2>
+<ol>
+<li>预约申请表：<code>booking_record</code></li>
+<li>审批流转表：<code>booking_flow_record</code></li>
+<li>资源占用表：<code>resource_occupancy</code></li>
+<li>申请状态机：<code>DRAFT / PENDING / APPROVED / REJECTED / CANCELLED</code></li>
+<li>提交申请接口：选择 Grid / Level / TimeSlot / RouteTemplate</li>
+<li>审批通过接口：写入占用记录</li>
+<li>取消申请接口：释放占用记录</li>
+<li>与 resource-service 的 Feign 调用：校验 Grid、Level、TimeSlot、RouteTemplate 是否存在</li>
+</ol>
+<h2>暂缓内容</h2>
+<ul>
+<li>完整冲突检测规则：Phase 04 做</li>
+<li>RabbitMQ Outbox：Phase 06 做</li>
+<li>前端可视化：Phase 05 做</li>
+</ul>
+<h2>Phase 03 验收标准</h2>
+<ul>
+<li>用户能提交预约申请。</li>
+<li>审批员能通过或驳回。</li>
+<li>审批通过后能生成 <code>resource_occupancy</code>。</li>
+<li>取消后能释放占用。</li>
+<li>每次状态变化都能写入 <code>booking_flow_record</code>。</li>
+</ul>
+
+</section><hr>
+<section id='docs__phase-04-development-summary.md'><div class='meta'><span class='badge'>阶段文档</span>docs/phase-04-development-summary.md</div>
+<h1>Phase 04 开发总结：冲突检测与低空规则</h1>
+<h2>1. 阶段目标</h2>
+<p>Phase 04 在 Phase 03 的“预约申请—审批—资源占用—取消释放”闭环基础上，引入低空资源冲突检测规则，使系统从普通预约审批流程升级为具备低空时空资源冲突消解能力的平台。</p>
+<p>本阶段不做连续三维仿真，而继续沿用 Grid + Level + TimeSlot 的离散时空切片模型。</p>
+<h2>2. 已实现能力</h2>
+<h3>2.1 预检查接口</h3>
+<p>新增接口：</p>
+<pre><code class="language-http">POST /api/bookings/pre-check
+</code></pre>
+<p>输入与预约申请一致，系统会在不落库申请的情况下检查：</p>
+<ul>
+<li>是否经过禁飞网格；</li>
+<li>是否经过风险网格；</li>
+<li>是否与已有 OCCUPIED 资源形成同 Grid + 同 Level + 同 TimeSlot 的硬冲突；</li>
+<li>是否与已有占用形成相邻 Grid 风险；</li>
+<li>是否在同 Grid + 同 TimeSlot 下与相邻高度层形成安全间隔风险。</li>
+</ul>
+<h3>2.2 硬冲突检测</h3>
+<p>规则代码：<code>SAME_GRID_LEVEL_TIME</code></p>
+<p>当两个申请同时满足：</p>
+<ul>
+<li>booking_date 相同；</li>
+<li>grid_id 相同；</li>
+<li>level_id 相同；</li>
+<li>time_slot_id 相同；</li>
+<li>已有占用状态为 OCCUPIED；</li>
+</ul>
+<p>则判定为硬冲突，禁止提交或审批。</p>
+<h3>2.3 禁飞区拦截</h3>
+<p>规则代码：<code>NO_FLY_GRID</code></p>
+<p>当航线模板经过的 Grid 状态为 <code>NO_FLY</code> 时，系统直接产生阻断冲突，不允许提交或审批。</p>
+<h3>2.4 风险网格提示</h3>
+<p>规则代码：<code>RISK_GRID</code></p>
+<p>当航线模板经过的 Grid 状态为 <code>RISK</code> 时，系统不直接阻断申请，而是生成风险提示。审批员可以在人工复核后继续审批。</p>
+<h3>2.5 相邻网格风险</h3>
+<p>规则代码：<code>ADJACENT_GRID_OCCUPIED</code></p>
+<p>如果申请网格与已有占用网格在二维网格上相邻，并且日期、高度层、时间片相同，则生成风险提示。</p>
+<h3>2.6 高度层安全间隔风险</h3>
+<p>规则代码：<code>ALTITUDE_SAFETY_INTERVAL</code></p>
+<p>如果同一 Grid、同一日期、同一时间片下已有其他高度层占用，且高度区间距离小于 20m，则生成风险提示。</p>
+<h3>2.7 冲突记录表</h3>
+<p>新增表：</p>
+<pre><code class="language-sql">conflict_record
+</code></pre>
+<p>用于记录绑定到预约申请的冲突与风险结果。字段包括：</p>
+<ul>
+<li>booking_id / booking_no；</li>
+<li>conflict_type；</li>
+<li>conflict_level；</li>
+<li>rule_code；</li>
+<li>grid_id / grid_code / grid_name；</li>
+<li>level_id；</li>
+<li>time_slot_id；</li>
+<li>booking_date；</li>
+<li>related_booking_id / related_booking_no；</li>
+<li>message；</li>
+<li>status。</li>
+</ul>
+<h3>2.8 审批前二次校验</h3>
+<p>审批通过前会重新执行冲突检测，防止申请提交后到审批前资源状态发生变化。</p>
+<p>如果发现硬冲突或禁飞区，审批失败。</p>
+<p>如果只有风险冲突，则允许审批通过，但会记录风险提示。</p>
+<h2>3. 新增接口</h2>
+<pre><code class="language-http">POST /api/bookings/pre-check
+GET  /api/bookings/conflicts
+GET  /api/bookings/{id}/conflicts
+</code></pre>
+<h2>4. 验证脚本</h2>
+<p>新增：</p>
+<pre><code class="language-bat">scripts\phase04-smoke-test.bat
+</code></pre>
+<p>该脚本会验证：</p>
+<ol>
+<li>Gateway 健康状态；</li>
+<li>获取 ADMIN token；</li>
+<li>默认路线预检查产生风险提示但允许提交；</li>
+<li>提交并审批第一条申请；</li>
+<li>审批后生成 6 条资源占用；</li>
+<li>第二条相同申请预检查产生硬冲突；</li>
+<li>第二条相同申请提交失败；</li>
+<li>禁飞区路线预检查失败；</li>
+<li>取消第一条申请并释放资源；</li>
+<li>查询冲突记录。</li>
+</ol>
+<h2>5. 答辩展示价值</h2>
+<p>Phase 04 完成后，系统可以演示：</p>
+<ul>
+<li>正常预约如何生成资源占用；</li>
+<li>重复预约如何被硬冲突拦截；</li>
+<li>禁飞区如何直接拦截；</li>
+<li>风险区域如何进入人工复核；</li>
+<li>冲突结果如何绑定真实申请与真实资源。</li>
+</ul>
+<p>这使项目不再只是普通审批系统，而开始具有低空资源调度平台的领域特征。</p>
+
+</section><hr>
+<section id='docs__phase-04-next-plan.md'><div class='meta'><span class='badge'>阶段文档</span>docs/phase-04-next-plan.md</div>
+<h1>Phase 04 下一阶段计划：冲突检测与低空规则</h1>
+<p>Phase 04 的目标是把 Phase 03 的“预约审批闭环”升级为真正具有领域规则的“低空时空资源冲突检测系统”。</p>
+<h2>1. 核心目标</h2>
+<p>在审批通过前，对申请将要占用的 Grid + Level + TimeSlot 进行规则检测，输出：</p>
+<pre><code class="language-text">无冲突
+风险冲突
+硬冲突
+禁飞拦截
+</code></pre>
+<h2>2. 必做规则</h2>
+<table>
+<thead>
+<tr>
+  <th>规则</th>
+  <th>说明</th>
+  <th>处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>硬冲突</td>
+  <td>同一日期、同一 Grid、同一 Level、同一 TimeSlot 已被占用</td>
+  <td>拦截审批通过</td>
+</tr>
+<tr>
+  <td>禁飞区</td>
+  <td>Grid 状态为 NO_FLY</td>
+  <td>拦截提交或审批</td>
+</tr>
+<tr>
+  <td>风险 Grid</td>
+  <td>Grid 状态为 RISK</td>
+  <td>进入风险复核或提示</td>
+</tr>
+<tr>
+  <td>相邻 Grid 风险</td>
+  <td>与已占用 Grid 相邻</td>
+  <td>风险提示</td>
+</tr>
+<tr>
+  <td>高度层安全间隔</td>
+  <td>高度层相邻或间隔不足</td>
+  <td>风险提示</td>
+</tr>
+</tbody>
+</table>
+<h2>3. 建议新增接口</h2>
+<pre><code class="language-text">POST /api/bookings/pre-check
+GET  /api/bookings/{id}/conflicts
+POST /api/bookings/{id}/risk-approve
+</code></pre>
+<h2>4. 建议新增表</h2>
+<pre><code class="language-text">conflict_record
+no_fly_rule
+risk_rule_config
+</code></pre>
+<h2>5. 答辩价值</h2>
+<p>Phase 04 完成后，系统才能真正区别于普通预约系统。它会形成清晰主线：</p>
+<pre><code class="language-text">低空资源离散化 → 预约申请 → 规则冲突检测 → 审批决策 → 资源占用
+</code></pre>
+
+</section><hr>
+<section id='docs__phase-05-development-summary.md'><div class='meta'><span class='badge'>阶段文档</span>docs/phase-05-development-summary.md</div>
+<h1>Phase 05：低空资源可视化前端开发总结</h1>
+<h2>一、目标</h2>
+<p>Phase 05 的目标是把 Phase 01–04 已经完成的后端能力从脚本演示升级为网页演示，使系统具备更直观的答辩展示形态。</p>
+<p>核心展示对象包括：</p>
+<ul>
+<li>Gateway / Nacos 服务发现状态。</li>
+<li>Grid 二维网格图。</li>
+<li>Level 高度层与 TimeSlot 时间片选择。</li>
+<li>RouteTemplate 航线模板及经过网格序列。</li>
+<li>预约申请表单。</li>
+<li>Pre-check 冲突检测结果。</li>
+<li>审批工作台。</li>
+<li>ResourceOccupancy 占用记录。</li>
+<li>ConflictRecord 冲突记录。</li>
+</ul>
+<h2>二、新增模块</h2>
+<p>新增前端模块：</p>
+<pre><code class="language-text">low-altitude-web
+</code></pre>
+<p>技术栈：</p>
+<pre><code class="language-text">Vue 3
+Vite
+Element Plus
+Axios
+ECharts 预留依赖
+</code></pre>
+<h2>三、页面结构</h2>
+<p>前端使用单页控制台结构，暂不引入复杂路由，降低调试成本。</p>
+<p>包含以下 Tab：</p>
+<ol>
+<li>运行状态</li>
+<li>资源网格</li>
+<li>预约申请 / Pre-check</li>
+<li>审批工作台</li>
+<li>冲突记录</li>
+</ol>
+<h2>四、关键演示路径</h2>
+<h3>1. 正常链路</h3>
+<pre><code class="language-text">获取 ADMIN Token
+→ 刷新基础数据
+→ 选择默认航线 RT-DEMO-01
+→ 执行 Pre-check
+→ 提交预约
+→ 审批通过
+→ 生成资源占用记录
+</code></pre>
+<h3>2. 风险链路</h3>
+<p>默认航线经过 <code>G-02-01</code>，该网格状态为 <code>RISK</code>。</p>
+<p>因此 Pre-check 会产生风险提示，但不阻断提交。</p>
+<h3>3. 硬冲突链路</h3>
+<p>在已有 <code>OCCUPIED</code> 记录的情况下，对同一天、同 Grid、同 Level、同 TimeSlot 再次申请，会触发：</p>
+<pre><code class="language-text">SAME_GRID_LEVEL_TIME
+</code></pre>
+<p>系统会阻断提交或审批。</p>
+<h3>4. 禁飞区链路</h3>
+<p>选择经过 <code>NO_FLY</code> 网格的航线，例如 <code>RT-NOFLY-01</code>，Pre-check 会触发：</p>
+<pre><code class="language-text">NO_FLY_GRID
+</code></pre>
+<p>系统直接阻断提交。</p>
+<h2>五、后端配套调整</h2>
+<p>为支持前端独立运行，本阶段对 Gateway 做了两处兼容增强：</p>
+<ol>
+<li>增加 Gateway 全局 CORS 配置。</li>
+<li>JWT 过滤器放行 OPTIONS 预检请求。</li>
+</ol>
+<p>如果使用 Vite proxy，本地开发通常不依赖 CORS；但这两处增强可以避免后续静态部署时出现跨域问题。</p>
+<h2>六、运行方式</h2>
+<p>先启动后端 5 个服务，再启动前端：</p>
+<pre><code class="language-bat">cd low-altitude-web
+npm install
+npm run dev
+</code></pre>
+<p>打开：</p>
+<pre><code class="language-text">http://127.0.0.1:5173
+</code></pre>
+<h2>七、验收标准</h2>
+<p>Phase 05 通过标准：</p>
+<ul>
+<li>页面能获取 ADMIN Token。</li>
+<li>页面能显示 Gateway health 和服务发现列表。</li>
+<li>页面能加载 Grid / Level / TimeSlot / RouteTemplate。</li>
+<li>页面能显示 Grid 二维网格图。</li>
+<li>页面能执行 Pre-check 并显示 risk / blocking 数量。</li>
+<li>页面能提交预约申请。</li>
+<li>页面能审批通过、生成占用记录。</li>
+<li>页面能取消申请并释放占用。</li>
+<li>页面能查询冲突记录。</li>
+</ul>
+
+</section><hr>
+<section id='docs__phase-06-development-summary.md'><div class='meta'><span class='badge'>阶段文档</span>docs/phase-06-development-summary.md</div>
+<h1>Phase 06 开发总结：RabbitMQ、本地消息表与最终一致性</h1>
+<p>本阶段把预约审批链路扩展为可靠消息链路。审批通过后，<code>booking-service</code> 不直接调用通知服务，而是在同一个本地事务中写入 <code>outbox_message</code>。随后由定时任务或手动派发接口把消息投递到 RabbitMQ，<code>conflict-notify-service</code> 消费消息并写入通知记录、审计日志和幂等记录。</p>
+<h2>新增数据表</h2>
+<ul>
+<li><code>low_altitude_booking.outbox_message</code>：本地消息表，记录待投递、已投递、失败重试状态。</li>
+<li><code>low_altitude_conflict_notify.notify_record</code>：通知记录表。</li>
+<li><code>low_altitude_conflict_notify.audit_log</code>：审计日志表。</li>
+<li><code>low_altitude_conflict_notify.idempotent_record</code>：幂等消费表。</li>
+</ul>
+<h2>新增接口</h2>
+<h3>booking-service</h3>
+<ul>
+<li><code>GET /api/bookings/outbox</code></li>
+<li><code>GET /api/bookings/outbox/{id}</code></li>
+<li><code>POST /api/bookings/outbox/dispatch</code></li>
+<li><code>POST /api/bookings/outbox/{id}/requeue</code></li>
+<li><code>POST /api/bookings/outbox/{id}/republish</code></li>
+</ul>
+<h3>conflict-notify-service</h3>
+<ul>
+<li><code>GET /api/notifications/records</code></li>
+<li><code>GET /api/notifications/audits</code></li>
+<li><code>GET /api/notifications/idempotent</code></li>
+</ul>
+<h2>核心演示点</h2>
+<ol>
+<li>预约审批通过后，业务状态和 outbox 消息在同一个事务中落库。</li>
+<li><code>outbox_message</code> 被派发到 RabbitMQ 后状态变为 <code>SENT</code>。</li>
+<li><code>conflict-notify-service</code> 消费消息后写入 <code>notify_record</code> 和 <code>audit_log</code>。</li>
+<li>重复投递同一条 outbox 消息时，<code>idempotent_record</code> 阻止重复通知，只记录 <code>DUPLICATE_SKIPPED</code> 审计。</li>
+<li>已审批申请取消后，会生成 <code>BOOKING_CANCELLED</code> 事件并完成同样的通知链路。</li>
+</ol>
+<h2>验证脚本</h2>
+<pre><code class="language-bat">scripts\phase06-smoke-test.bat
+</code></pre>
+<p>成功标志：</p>
+<pre><code class="language-text">[Phase06] OK
+[Phase06] Completed successfully.
+</code></pre>
+
+</section><hr>
+<section id='docs__phase-07-development-summary.md'><div class='meta'><span class='badge'>阶段文档</span>docs/phase-07-development-summary.md</div>
+<h1>Phase 07 · 限流、降级、监控与压测</h1>
+<h2>1. 本阶段目标</h2>
+<p>Phase 07 的目标不是新增业务主流程，而是补齐微服务治理与可观测性能力，使系统可以在答辩中展示：</p>
+<ul>
+<li>服务健康检查与 Prometheus 指标暴露；</li>
+<li>Grafana 可视化监控面板；</li>
+<li>Resilience4j RateLimiter 限流；</li>
+<li>Resilience4j CircuitBreaker 熔断降级；</li>
+<li>Resilience4j Retry 瞬时失败重试；</li>
+<li>Outbox、资源占用、通知、审计和幂等记录的业务指标；</li>
+<li>JMeter 压测脚本。</li>
+</ul>
+<h2>2. 后端新增能力</h2>
+<h3>2.1 Prometheus 指标暴露</h3>
+<p>所有后端服务均增加 <code>micrometer-registry-prometheus</code>，并在 Actuator 中开放：</p>
+<pre><code class="language-text">/actuator/prometheus
+</code></pre>
+<p>暴露服务：</p>
+<pre><code class="language-text">low-altitude-gateway:        8080
+user-org-service:            8101
+resource-service:            8102
+booking-service:             8103
+conflict-notify-service:     8104
+</code></pre>
+<h3>2.2 booking-service 治理演示接口</h3>
+<p>新增：</p>
+<pre><code class="language-text">GET /api/bookings/governance/summary
+GET /api/bookings/governance/rate-limited
+GET /api/bookings/governance/circuit?fail=true|false
+GET /api/bookings/governance/retry?key=xxx&amp;failTimes=2
+</code></pre>
+<p>说明：</p>
+<ul>
+<li><code>/rate-limited</code> 用 <code>RateLimiter</code> 演示热点接口限流；</li>
+<li><code>/circuit</code> 用 <code>CircuitBreaker</code> 演示下游异常时返回降级结果；</li>
+<li><code>/retry</code> 用 <code>Retry</code> 演示瞬时失败后自动重试成功；</li>
+<li><code>/summary</code> 聚合预约、占用、冲突和 outbox 状态。</li>
+</ul>
+<h3>2.3 业务指标</h3>
+<p>booking-service 新增 Prometheus 指标：</p>
+<pre><code class="language-text">low_altitude_outbox_pending
+low_altitude_outbox_failed
+low_altitude_resource_occupancy_occupied
+low_altitude_conflict_active
+low_altitude_governance_rate_limited_total
+low_altitude_governance_circuit_fallback_total
+low_altitude_governance_retry_success_total
+</code></pre>
+<p>conflict-notify-service 新增 Prometheus 指标：</p>
+<pre><code class="language-text">low_altitude_notify_sent
+low_altitude_audit_total
+low_altitude_idempotent_processed
+</code></pre>
+<h2>3. 监控部署</h2>
+<p>新增：</p>
+<pre><code class="language-text">docker-compose.monitor.yml
+docker/prometheus/prometheus.yml
+docker/grafana/provisioning
+docker/grafana/dashboards/low-altitude-overview.json
+</code></pre>
+<p>启动监控：</p>
+<pre><code class="language-bat">scripts\start-monitor.bat
+</code></pre>
+<p>或：</p>
+<pre><code class="language-bash">bash scripts/start-monitor.sh
+</code></pre>
+<p>访问：</p>
+<pre><code class="language-text">Prometheus: http://127.0.0.1:9090
+Grafana:    http://127.0.0.1:3000
+账号密码:   admin / lowaltitude123
+</code></pre>
+<p>Prometheus 通过 <code>host.docker.internal</code> 抓取宿主机上由 IDEA 启动的 5 个 Spring 服务。</p>
+<h2>4. 压测脚本</h2>
+<p>新增 JMeter 脚本：</p>
+<pre><code class="language-text">performance/jmeter/phase07-rate-limiter.jmx
+</code></pre>
+<p>它直接访问：</p>
+<pre><code class="language-text">http://127.0.0.1:8103/api/bookings/governance/rate-limited
+</code></pre>
+<p>用于制造短时突发请求，观察 RateLimiter 触发与 Prometheus / Grafana 指标变化。</p>
+<h2>5. 验证脚本</h2>
+<p>新增：</p>
+<pre><code class="language-text">scripts/phase07-smoke-test.bat
+scripts/phase07-smoke-test.ps1
+</code></pre>
+<p>验证内容：</p>
+<ol>
+<li>Gateway 健康检查；</li>
+<li>获取 ADMIN token；</li>
+<li>booking-service <code>/actuator/prometheus</code> 可访问；</li>
+<li>governance summary 可访问；</li>
+<li>outbox summary 可访问；</li>
+<li>notification summary 可访问；</li>
+<li>RateLimiter 至少拒绝一次突发请求；</li>
+<li>CircuitBreaker fallback 正常；</li>
+<li>Retry 在瞬时失败后成功；</li>
+<li>自定义业务指标出现在 Prometheus actuator 输出中。</li>
+</ol>
+<p>运行：</p>
+<pre><code class="language-bat">scripts\phase07-smoke-test.bat
+</code></pre>
+<p>成功标志：</p>
+<pre><code class="language-text">[Phase07] OK
+</code></pre>
+<h2>6. 答辩演示建议</h2>
+<p>推荐演示顺序：</p>
+<ol>
+<li>打开 Nacos，展示服务注册；</li>
+<li>打开 Gateway <code>/actuator/health</code>，展示服务发现；</li>
+<li>打开 Prometheus targets，展示 5 个服务指标抓取；</li>
+<li>打开 Grafana dashboard，展示 HTTP 请求、延迟、outbox、占用、通知、幂等指标；</li>
+<li>运行 <code>phase07-smoke-test.bat</code>，展示限流、熔断、重试；</li>
+<li>运行 JMeter，对 <code>/governance/rate-limited</code> 制造并发，观察 Grafana 指标变化。</li>
+</ol>
+
+</section><hr>
+<section id='docs__phase-08-delivery-summary.md'><div class='meta'><span class='badge'>阶段文档</span>docs/phase-08-delivery-summary.md</div>
+<h1>Phase 08 交付总结</h1>
+<h2>1. 本阶段目标</h2>
+<p>Phase 08 不新增核心业务功能，主要完成代码交付前的运行说明、接口说明、演示说明、测试说明和排错材料。根据当前要求，本阶段不包含图形制图文件、答辩 PPT 素材、论文/毕设正文材料。</p>
+<h2>2. 本阶段新增/整理内容</h2>
+<table>
+<thead>
+<tr>
+  <th>类型</th>
+  <th>文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>总入口 README</td>
+  <td><code>README.md</code></td>
+</tr>
+<tr>
+  <td>Windows 快速启动</td>
+  <td><code>docs/quick-start-windows.md</code></td>
+</tr>
+<tr>
+  <td>部署说明</td>
+  <td><code>docs/deployment-guide.md</code></td>
+</tr>
+<tr>
+  <td>数据库初始化说明</td>
+  <td><code>docs/database-initialization.md</code></td>
+</tr>
+<tr>
+  <td>前端说明</td>
+  <td><code>docs/frontend-running-guide.md</code></td>
+</tr>
+<tr>
+  <td>监控说明</td>
+  <td><code>docs/monitoring-guide.md</code></td>
+</tr>
+<tr>
+  <td>接口文档</td>
+  <td><code>docs/api-reference.md</code></td>
+</tr>
+<tr>
+  <td>演示脚本</td>
+  <td><code>docs/demo-script.md</code></td>
+</tr>
+<tr>
+  <td>截图清单</td>
+  <td><code>docs/screenshot-checklist.md</code></td>
+</tr>
+<tr>
+  <td>测试报告</td>
+  <td><code>docs/testing-report.md</code></td>
+</tr>
+<tr>
+  <td>排错文档</td>
+  <td><code>docs/troubleshooting.md</code></td>
+</tr>
+<tr>
+  <td>交付检查清单</td>
+  <td><code>docs/release-checklist.md</code></td>
+</tr>
+<tr>
+  <td>环境端口速查</td>
+  <td><code>docs/environment-ports.md</code></td>
+</tr>
+<tr>
+  <td>最终交付检查脚本</td>
+  <td><code>scripts/phase08-acceptance-check.bat</code>、<code>scripts/phase08-acceptance-check.ps1</code></td>
+</tr>
+<tr>
+  <td>打开面板脚本</td>
+  <td><code>scripts/open-dashboards.bat</code></td>
+</tr>
+<tr>
+  <td>本地环境检查脚本</td>
+  <td><code>scripts/check-local-environment.bat</code></td>
+</tr>
+<tr>
+  <td>Postman 集合</td>
+  <td><code>docs/postman-phase08-core-collection.json</code></td>
+</tr>
+</tbody>
+</table>
+<h2>3. 当前交付状态</h2>
+<table>
+<thead>
+<tr>
+  <th>阶段</th>
+  <th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Phase 01 微服务基础骨架</td>
+  <td>已完成</td>
+</tr>
+<tr>
+  <td>Phase 02 用户组织与资源基础数据</td>
+  <td>已完成</td>
+</tr>
+<tr>
+  <td>Phase 03 预约审批闭环</td>
+  <td>已完成</td>
+</tr>
+<tr>
+  <td>Phase 04 冲突检测与低空规则</td>
+  <td>已完成</td>
+</tr>
+<tr>
+  <td>Phase 05 前端控制台</td>
+  <td>已完成</td>
+</tr>
+<tr>
+  <td>Phase 06 RabbitMQ / Outbox / 幂等通知 / 审计</td>
+  <td>已完成</td>
+</tr>
+<tr>
+  <td>Phase 07 限流 / 降级 / 监控 / 压测</td>
+  <td>已完成</td>
+</tr>
+<tr>
+  <td>Phase 08 交付文档与辅助脚本</td>
+  <td>已完成</td>
+</tr>
+</tbody>
+</table>
+<h2>4. 最终验证建议</h2>
+<p>最终交付前建议执行：</p>
+<pre><code class="language-bat">mysql -uroot -p123123 --default-character-set=utf8mb4 &lt; docker\mysql\local-root-init.sql
+scripts\phase08-acceptance-check.bat
+</code></pre>
+<p>如需完整演示核心业务链路，继续执行：</p>
+<pre><code class="language-bat">scripts\phase03-smoke-test.bat
+scripts\phase04-smoke-test.bat
+scripts\phase06-smoke-test.bat
+scripts\phase07-smoke-test.bat
+</code></pre>
+<h2>5. 暂不包含内容</h2>
+<p>本阶段未制作：</p>
+<ul>
+<li>架构图、ER 图、流程图等图形文件；</li>
+<li>答辩 PPT 素材；</li>
+<li>论文/毕设正文写作材料。</li>
+</ul>
+
+</section><hr>
+<section id='docs__quick-start-windows.md'><div class='meta'><span class='badge'>交付文档</span>docs/quick-start-windows.md</div>
+<h1>Windows 本地快速启动说明</h1>
+<p>本说明适用于 Windows 10/11 + IDEA + 本机 MySQL <code>root / 123123</code> 的开发运行方式。</p>
+<h2>1. 准备软件</h2>
+<p>确认本机已安装：</p>
+<pre><code class="language-text">JDK 17 或 21
+Maven 3.9+
+Node.js 18+
+Docker Desktop
+MySQL
+IntelliJ IDEA
+</code></pre>
+<p>检查命令：</p>
+<pre><code class="language-bat">java -version
+mvn -version
+node -v
+npm -v
+docker version
+mysql --version
+</code></pre>
+<h2>2. 启动中间件</h2>
+<p>如果使用本机 MySQL，不要启动 Docker MySQL，执行：</p>
+<pre><code class="language-bat">scripts\start-middleware-no-mysql.bat
+</code></pre>
+<p>该脚本启动：</p>
+<pre><code class="language-text">Nacos
+Redis
+RabbitMQ
+</code></pre>
+<p>如果 Redis 6379 被占用，但服务不报 Redis 连接错误，可以暂时不处理；如需独立 Docker Redis，可把 docker-compose 中 Redis 外部端口改为 6380。</p>
+<h2>3. 初始化数据库</h2>
+<p>必须带 <code>--default-character-set=utf8mb4</code>，否则 Windows 下中文默认数据可能导入失败。</p>
+<pre><code class="language-bat">mysql -uroot -p123123 --default-character-set=utf8mb4 &lt; docker\mysql\local-root-init.sql
+</code></pre>
+<p>检查数据库：</p>
+<pre><code class="language-bat">mysql -uroot -p123123 -e &quot;SHOW DATABASES LIKE 'low_altitude_%';&quot;
+mysql -uroot -p123123 -e &quot;USE low_altitude_resource; SHOW TABLES;&quot;
+mysql -uroot -p123123 -e &quot;USE low_altitude_booking; SHOW TABLES;&quot;
+mysql -uroot -p123123 -e &quot;USE low_altitude_conflict_notify; SHOW TABLES;&quot;
+</code></pre>
+<h2>4. IDEA 启动后端</h2>
+<p>打开项目根目录，刷新 Maven。建议每个服务 Run Configuration 都设置环境变量：</p>
+<pre><code class="language-text">NACOS_ADDR=127.0.0.1:8848;NACOS_REGISTER_IP=127.0.0.1;MYSQL_USER=root;MYSQL_PASSWORD=123123;REDIS_HOST=127.0.0.1;REDIS_PORT=6379;RABBITMQ_HOST=127.0.0.1;RABBITMQ_USER=lowaltitude;RABBITMQ_PASSWORD=lowaltitude123
+</code></pre>
+<p>按顺序启动：</p>
+<pre><code class="language-text">user-org-service
+resource-service
+booking-service
+conflict-notify-service
+low-altitude-gateway
+</code></pre>
+<p>检查 Gateway：</p>
+<pre><code class="language-bat">curl http://127.0.0.1:8080/actuator/health
+</code></pre>
+<h2>5. 启动前端</h2>
+<pre><code class="language-bat">scripts\start-web.bat
+</code></pre>
+<p>或手动：</p>
+<pre><code class="language-bat">cd low-altitude-web
+npm install
+npm run dev
+</code></pre>
+<p>打开：</p>
+<pre><code class="language-text">http://127.0.0.1:5173
+</code></pre>
+<h2>6. 启动监控</h2>
+<pre><code class="language-bat">scripts\start-monitor.bat
+</code></pre>
+<p>打开：</p>
+<pre><code class="language-text">Prometheus: http://127.0.0.1:9090
+Grafana:    http://127.0.0.1:3000
+</code></pre>
+<p>Grafana：<code>admin / lowaltitude123</code>。</p>
+<h2>7. 最终检查</h2>
+<pre><code class="language-bat">scripts\phase08-acceptance-check.bat
+</code></pre>
+<p>如果输出 <code>[Phase08] OK</code>，说明基础交付状态正常。</p>
+
+</section><hr>
+<section id='docs__release-checklist.md'><div class='meta'><span class='badge'>交付文档</span>docs/release-checklist.md</div>
+<h1>最终交付检查清单</h1>
+<h2>1. 代码检查</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>项目根目录结构完整。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Maven 能正常 reload。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>mvn clean package -DskipTests</code> 能通过。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>前端 <code>npm install</code>、<code>npm run dev</code> 能启动。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>.env.example</code> 存在。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>未提交 <code>target</code>、<code>node_modules</code>、日志文件等临时文件。</li>
+</ul>
+<h2>2. 数据库检查</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>local-root-init.sql</code> 可执行。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>四个数据库均存在。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>默认用户、角色、组织存在。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>默认 Grid、Level、TimeSlot、RouteTemplate 存在。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Outbox、通知、审计、幂等表存在。</li>
+</ul>
+<h2>3. 后端检查</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Nacos 可访问。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>RabbitMQ 可访问。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>5 个服务均启动。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Gateway health 为 UP。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Nacos 服务列表中能看到 5 个服务。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>获取 ADMIN token 正常。</li>
+</ul>
+<h2>4. 前端检查</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>http://127.0.0.1:5173</code> 可打开。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>能获取 token。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>资源网格页面能加载 Grid。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Pre-check 能返回风险/冲突结果。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>审批工作台能查看预约。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>冲突记录页面能加载数据。</li>
+</ul>
+<h2>5. 消息链路检查</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>审批通过生成 outbox_message。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>dispatch 后 outbox 状态变为 SENT。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>notify_record 生成通知。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>audit_log 生成审计。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>重复投递不会重复生成通知。</li>
+</ul>
+<h2>6. 治理监控检查</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>/actuator/prometheus</code> 可访问。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>RateLimiter 能触发限流。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>CircuitBreaker 能返回降级响应。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Retry 能在失败后成功。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Prometheus 可访问。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Grafana 可访问。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>JMeter 脚本存在。</li>
+</ul>
+<h2>7. 文档检查</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>README 完整。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>快速启动说明完整。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>数据库初始化说明完整。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>前端说明完整。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>监控说明完整。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>API 文档完整。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>演示脚本完整。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>截图清单完整。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>测试报告完整。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>排错文档完整。</li>
+</ul>
+<h2>8. 最终命令</h2>
+<pre><code class="language-bat">scripts\phase08-acceptance-check.bat
+</code></pre>
+<p>成功输出：</p>
+<pre><code class="language-text">[Phase08] OK
+</code></pre>
+
+</section><hr>
+<section id='docs__RUNNING_ON_WINDOWS_WITH_LOCAL_MYSQL.md'><div class='meta'><span class='badge'>交付文档</span>docs/RUNNING_ON_WINDOWS_WITH_LOCAL_MYSQL.md</div>
+<h1>Windows + local MySQL(root / 123123) runbook</h1>
+<p>This project can be started in two modes.</p>
+<h2>Mode A: Docker also starts MySQL</h2>
+<p>Use this when port 3306 is free.</p>
+<pre><code class="language-bat">scripts\start-infra.bat
+</code></pre>
+<p>The Docker MySQL root password is set to <code>123123</code> in this patched version.</p>
+<p>If you previously started the old MySQL container with another root password, Docker will keep the old data volume and ignore the new password. For a clean Phase-01 database only, run:</p>
+<pre><code class="language-bat">docker compose -f docker-compose.infra.yml down -v
+scripts\start-infra.bat
+</code></pre>
+<h2>Mode B: use your existing local MySQL root / 123123</h2>
+<p>Use this when your local MySQL already occupies 3306.</p>
+<p>Start only Nacos, Redis and RabbitMQ:</p>
+<pre><code class="language-bat">scripts\start-middleware-no-mysql.bat
+</code></pre>
+<p>Create the four databases once:</p>
+<pre><code class="language-bat">mysql -uroot -p123123 &lt; docker\mysql\local-root-init.sql
+</code></pre>
+<p>Then start services in this order:</p>
+<ol>
+<li>user-org-service</li>
+<li>resource-service</li>
+<li>booking-service</li>
+<li>conflict-notify-service</li>
+<li>low-altitude-gateway</li>
+</ol>
+<h2>Required IDEA environment variables</h2>
+<p>In each Run Configuration, set:</p>
+<pre><code class="language-text">NACOS_ADDR=127.0.0.1:8848;NACOS_REGISTER_IP=127.0.0.1;MYSQL_USER=root;MYSQL_PASSWORD=123123;RABBITMQ_USER=lowaltitude;RABBITMQ_PASSWORD=lowaltitude123
+</code></pre>
+<h2>Nacos check</h2>
+<p>Before starting Spring services, open:</p>
+<pre><code class="language-text">http://127.0.0.1:8848/nacos/
+</code></pre>
+<p>Nacos 2.x also needs gRPC port 9848. On Windows:</p>
+<pre><code class="language-bat">netstat -ano | findstr &quot;8848 9848&quot;
+</code></pre>
+<p>If 9848 is not listening, the service may print <code>Client not connected, current status: STARTING</code> during registration.</p>
+
+</section><hr>
+<section id='docs__screenshot-checklist.md'><div class='meta'><span class='badge'>交付文档</span>docs/screenshot-checklist.md</div>
+<h1>截图清单</h1>
+<p>本文档用于整理最终提交材料所需截图。这里不提供制图文件，仅列出建议截图内容。</p>
+<h2>1. 运行环境截图</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Docker Desktop 容器列表：Nacos、RabbitMQ、Redis、Prometheus、Grafana。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Nacos 服务列表：5 个服务均在线。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>RabbitMQ 管理台：exchange / queue / connection / consumer。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Gateway <code>/actuator/health</code> 返回 UP。</li>
+</ul>
+<h2>2. 后端接口截图</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>获取 ADMIN token 成功。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>/api/resources/grids</code> 返回 Grid 数据。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>/api/resources/route-templates/1</code> 返回航线模板详情。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>/api/bookings/pre-check</code> 返回风险或冲突结果。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>/api/bookings/governance/summary</code> 返回治理汇总。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>/api/notifications/summary</code> 返回通知审计统计。</li>
+</ul>
+<h2>3. 数据库截图</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>low_altitude_user_org</code> 表列表。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>low_altitude_resource.grid</code> 默认数据。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>low_altitude_booking.booking_record</code> 预约记录。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>low_altitude_booking.resource_occupancy</code> 占用记录。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>low_altitude_booking.conflict_record</code> 冲突记录。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>low_altitude_booking.outbox_message</code> 消息记录。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>low_altitude_conflict_notify.notify_record</code> 通知记录。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>low_altitude_conflict_notify.audit_log</code> 审计日志。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>low_altitude_conflict_notify.idempotent_record</code> 幂等记录。</li>
+</ul>
+<h2>4. 前端截图</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>运行状态页面。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>资源网格页面。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>预约申请 / Pre-check 页面。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Pre-check 风险提示结果。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>HARD 冲突阻断结果。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>NO_FLY 禁飞区阻断结果。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>审批工作台。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>占用记录展示。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>冲突记录页面。</li>
+</ul>
+<h2>5. 消息一致性截图</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Phase 06 脚本通过截图。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>outbox_message 从 PENDING 到 SENT。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>notify_record 生成通知。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>audit_log 生成 NOTIFY_SENT。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>重复投递后出现 DUPLICATE_SKIPPED。</li>
+</ul>
+<h2>6. 治理监控截图</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Phase 07 脚本通过截图。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>RateLimiter 返回 RATE_LIMITED。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>CircuitBreaker 返回 DEGRADED。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Retry 返回 RETRY_SUCCESS。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Prometheus Targets 页面。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Grafana Overview 面板。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>JMeter 压测结果。</li>
+</ul>
+<h2>7. 推荐命名</h2>
+<p>建议截图按顺序命名：</p>
+<pre><code class="language-text">01-nacos-services.png
+02-gateway-health.png
+03-grid-page.png
+04-precheck-risk.png
+05-hard-conflict.png
+06-no-fly-block.png
+07-booking-approve.png
+08-resource-occupancy.png
+09-outbox-message.png
+10-notify-audit-idempotent.png
+11-rate-limiter.png
+12-grafana-overview.png
+</code></pre>
+
+</section><hr>
+<section id='docs__testing-report.md'><div class='meta'><span class='badge'>交付文档</span>docs/testing-report.md</div>
+<h1>测试与验收记录</h1>
+<h2>1. 测试范围</h2>
+<p>本测试记录覆盖：</p>
+<pre><code class="language-text">微服务启动与注册
+用户组织基础接口
+低空资源基础接口
+预约申请与审批闭环
+冲突检测与低空规则
+RabbitMQ / Outbox / 幂等通知 / 审计
+限流 / 降级 / 重试 / Prometheus 指标
+前端页面可用性
+</code></pre>
+<h2>2. 测试环境</h2>
+<table>
+<thead>
+<tr>
+  <th>项</th>
+  <th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>OS</td>
+  <td>Windows 10/11</td>
+</tr>
+<tr>
+  <td>JDK</td>
+  <td>17 或 21</td>
+</tr>
+<tr>
+  <td>MySQL</td>
+  <td>本机 MySQL，账号 root / 123123</td>
+</tr>
+<tr>
+  <td>中间件</td>
+  <td>Docker Desktop 启动 Nacos、RabbitMQ、Redis</td>
+</tr>
+<tr>
+  <td>后端</td>
+  <td>IDEA 启动 5 个 Spring Boot 服务</td>
+</tr>
+<tr>
+  <td>前端</td>
+  <td>Vite dev server</td>
+</tr>
+<tr>
+  <td>监控</td>
+  <td>Prometheus + Grafana</td>
+</tr>
+</tbody>
+</table>
+<h2>3. 阶段测试结果</h2>
+<table>
+<thead>
+<tr>
+  <th>阶段</th>
+  <th>脚本</th>
+  <th>预期结果</th>
+  <th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Phase 02</td>
+  <td><code>scripts\phase02-smoke-test.bat</code></td>
+  <td>用户组织和资源接口返回成功</td>
+  <td>通过</td>
+</tr>
+<tr>
+  <td>Phase 03</td>
+  <td><code>scripts\phase03-smoke-test.bat</code></td>
+  <td>申请、审批、占用、取消释放完成</td>
+  <td>通过</td>
+</tr>
+<tr>
+  <td>Phase 04</td>
+  <td><code>scripts\phase04-smoke-test.bat</code></td>
+  <td>RISK 提示、HARD 阻断、NO_FLY 阻断完成</td>
+  <td>通过</td>
+</tr>
+<tr>
+  <td>Phase 06</td>
+  <td><code>scripts\phase06-smoke-test.bat</code></td>
+  <td>Outbox、MQ、通知、审计、幂等完成</td>
+  <td>通过</td>
+</tr>
+<tr>
+  <td>Phase 07</td>
+  <td><code>scripts\phase07-smoke-test.bat</code></td>
+  <td>限流、降级、重试、指标暴露完成</td>
+  <td>通过</td>
+</tr>
+<tr>
+  <td>Phase 08</td>
+  <td><code>scripts\phase08-acceptance-check.bat</code></td>
+  <td>非破坏性交付检查完成</td>
+  <td>待本机执行</td>
+</tr>
+</tbody>
+</table>
+<h2>4. 关键验收点</h2>
+<h3>4.1 微服务注册发现</h3>
+<p>验收命令：</p>
+<pre><code class="language-bat">curl http://127.0.0.1:8080/actuator/health
+</code></pre>
+<p>预期：</p>
+<pre><code class="language-text">status = UP
+discoveryClient services 包含 5 个服务
+</code></pre>
+<h3>4.2 预约审批闭环</h3>
+<p>验证内容：</p>
+<pre><code class="language-text">提交申请 -&gt; PENDING
+审批通过 -&gt; APPROVED
+生成 resource_occupancy -&gt; OCCUPIED
+取消申请 -&gt; CANCELLED
+占用释放 -&gt; RELEASED
+</code></pre>
+<h3>4.3 冲突检测</h3>
+<p>验证内容：</p>
+<pre><code class="language-text">默认航线经过 RISK 网格：允许提交，记录风险
+重复申请相同资源：返回 409 冲突
+禁飞航线：NO_FLY_GRID 阻断
+</code></pre>
+<h3>4.4 消息最终一致性</h3>
+<p>验证内容：</p>
+<pre><code class="language-text">审批通过后生成 outbox_message
+手动 dispatch 后投递 RabbitMQ
+通知服务消费后生成 notify_record
+audit_log 记录 NOTIFY_SENT
+重复投递后记录 DUPLICATE_SKIPPED
+</code></pre>
+<h3>4.5 服务治理</h3>
+<p>验证内容：</p>
+<pre><code class="language-text">RateLimiter：突发请求被限流
+CircuitBreaker：失败请求返回降级响应
+Retry：模拟前两次失败，第三次成功
+Prometheus：业务指标暴露
+</code></pre>
+<h2>5. 已知非功能问题</h2>
+<table>
+<thead>
+<tr>
+  <th>问题</th>
+  <th>影响</th>
+  <th>处理建议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>PowerShell/CMD 中文乱码</td>
+  <td>影响终端观感，不影响数据库和接口逻辑</td>
+  <td>前端演示中文；脚本输出尽量英文</td>
+</tr>
+<tr>
+  <td>Redis 6379 可能被 Docker/WSL 占用</td>
+  <td>当前主流程不受影响</td>
+  <td>后续可改 Docker Redis 外部端口为 6380</td>
+</tr>
+<tr>
+  <td>相邻 Grid 风险可能出现多条提示</td>
+  <td>展示较多，不影响硬冲突判断</td>
+  <td>后续做去重优化</td>
+</tr>
+</tbody>
+</table>
+<h2>6. 最终测试建议</h2>
+<p>交付前执行：</p>
+<pre><code class="language-bat">scripts\phase08-acceptance-check.bat
+</code></pre>
+<p>需要完整复现主链路时执行：</p>
+<pre><code class="language-bat">scripts\phase03-smoke-test.bat
+scripts\phase04-smoke-test.bat
+scripts\phase06-smoke-test.bat
+scripts\phase07-smoke-test.bat
+</code></pre>
+
+</section><hr>
+<section id='docs__troubleshooting.md'><div class='meta'><span class='badge'>交付文档</span>docs/troubleshooting.md</div>
+<h1>常见问题排查</h1>
+<h2>1. MySQL 中文导入失败</h2>
+<p>现象：</p>
+<pre><code class="language-text">ERROR 1366 Incorrect string value
+</code></pre>
+<p>原因：Windows 下 mysql 客户端未按 utf8mb4 读取 SQL 文件。</p>
+<p>解决：</p>
+<pre><code class="language-bat">mysql -uroot -p123123 --default-character-set=utf8mb4 &lt; docker\mysql\local-root-init.sql
+</code></pre>
+<h2>2. Gateway 返回 503</h2>
+<p>可能原因：</p>
+<pre><code class="language-text">业务服务未启动
+服务未注册到 Nacos
+Gateway 缺少 loadbalancer 依赖
+Nacos 未完全启动
+</code></pre>
+<p>检查：</p>
+<pre><code class="language-bat">curl http://127.0.0.1:8080/actuator/health
+</code></pre>
+<p>进入 Nacos 控制台检查服务实例。</p>
+<h2>3. 报 parameter name information not available</h2>
+<p>现象：</p>
+<pre><code class="language-text">Name for argument of type ... not specified
+</code></pre>
+<p>原因：Controller 中 <code>@RequestParam</code> 或 <code>@PathVariable</code> 未显式指定 name，或代码未重新 clean 编译。</p>
+<p>解决：</p>
+<pre><code class="language-java">@RequestParam(name = &quot;keyword&quot;, required = false)
+@PathVariable(&quot;id&quot;)
+</code></pre>
+<p>重新编译：</p>
+<pre><code class="language-bat">mvn clean package -DskipTests
+</code></pre>
+<h2>4. Redis 6379 端口被占用</h2>
+<p>检查：</p>
+<pre><code class="language-bat">netstat -ano | findstr :6379
+</code></pre>
+<p>如果是 Docker/WSL 占用，可暂时忽略；如需 Docker Redis 独立端口，把 compose 改为：</p>
+<pre><code class="language-yaml">ports:
+  - &quot;6380:6379&quot;
+</code></pre>
+<p>并设置：</p>
+<pre><code class="language-text">REDIS_PORT=6380
+</code></pre>
+<h2>5. RabbitMQ 无法连接</h2>
+<p>检查 RabbitMQ 管理台：</p>
+<pre><code class="language-text">http://127.0.0.1:15672/
+lowaltitude / lowaltitude123
+</code></pre>
+<p>检查端口：</p>
+<pre><code class="language-bat">netstat -ano | findstr :5672
+</code></pre>
+<h2>6. Nacos 可访问但服务注册失败</h2>
+<p>检查：</p>
+<pre><code class="language-text">NACOS_ADDR=127.0.0.1:8848
+NACOS_REGISTER_IP=127.0.0.1
+</code></pre>
+<p>确认 Nacos 8848 和 9848 端口可用。</p>
+<h2>7. 前端无法调用接口</h2>
+<p>检查 Gateway：</p>
+<pre><code class="language-bat">curl http://127.0.0.1:8080/actuator/health
+</code></pre>
+<p>检查 <code>low-altitude-web/vite.config.js</code> 中代理是否指向：</p>
+<pre><code class="language-text">http://127.0.0.1:8080
+</code></pre>
+<h2>8. Phase07 脚本提示 Prometheus 指标不存在</h2>
+<p>先确认 booking-service 已启动 Phase 07 版本，并访问：</p>
+<pre><code class="language-bat">curl http://127.0.0.1:8103/actuator/prometheus
+</code></pre>
+<p>如果 actuator 有内容但没有 HTTP 指标，可先调用业务接口，再刷新指标。</p>
+<h2>9. Grafana 没有 Dashboard</h2>
+<p>检查容器：</p>
+<pre><code class="language-bat">docker ps
+</code></pre>
+<p>重启监控：</p>
+<pre><code class="language-bat">scripts\stop-monitor.bat
+scripts\start-monitor.bat
+</code></pre>
+<h2>10. PowerShell 输出中文乱码</h2>
+<p>这是终端编码问题。可尝试：</p>
+<pre><code class="language-bat">chcp 65001
+</code></pre>
+<p>或使用 Windows Terminal。演示时优先展示前端页面。</p>
+
+</section><hr>
+<section id='docs__verification-commands.md'><div class='meta'><span class='badge'>交付文档</span>docs/verification-commands.md</div>
+<h1>常用验证命令</h1>
+<h2>1. 获取 token</h2>
+<pre><code class="language-bat">curl -X POST &quot;http://127.0.0.1:8080/api/auth/dev-token?username=demo&amp;role=ADMIN&quot;
+</code></pre>
+<h2>2. 基础资源</h2>
+<pre><code class="language-bat">curl -H &quot;Authorization: Bearer &lt;token&gt;&quot; http://127.0.0.1:8080/api/resources/grids
+curl -H &quot;Authorization: Bearer &lt;token&gt;&quot; http://127.0.0.1:8080/api/resources/levels
+curl -H &quot;Authorization: Bearer &lt;token&gt;&quot; http://127.0.0.1:8080/api/resources/time-slots
+curl -H &quot;Authorization: Bearer &lt;token&gt;&quot; http://127.0.0.1:8080/api/resources/route-templates/1
+</code></pre>
+<h2>3. 预约与冲突</h2>
+<pre><code class="language-bat">curl -H &quot;Authorization: Bearer &lt;token&gt;&quot; http://127.0.0.1:8080/api/bookings
+curl -H &quot;Authorization: Bearer &lt;token&gt;&quot; http://127.0.0.1:8080/api/bookings/conflicts
+</code></pre>
+<h2>4. Outbox 与通知</h2>
+<pre><code class="language-bat">curl -H &quot;Authorization: Bearer &lt;token&gt;&quot; http://127.0.0.1:8080/api/bookings/outbox/summary
+curl -H &quot;Authorization: Bearer &lt;token&gt;&quot; http://127.0.0.1:8080/api/notifications/summary
+</code></pre>
+<h2>5. 治理</h2>
+<pre><code class="language-bat">curl -H &quot;Authorization: Bearer &lt;token&gt;&quot; http://127.0.0.1:8080/api/bookings/governance/summary
+curl -H &quot;Authorization: Bearer &lt;token&gt;&quot; http://127.0.0.1:8080/api/bookings/governance/circuit?fail=true
+curl -H &quot;Authorization: Bearer &lt;token&gt;&quot; &quot;http://127.0.0.1:8080/api/bookings/governance/retry?key=demo&amp;failTimes=2&quot;
+</code></pre>
+<h2>6. 监控</h2>
+<pre><code class="language-bat">curl http://127.0.0.1:8103/actuator/prometheus
+</code></pre>
+<p>Prometheus 查询建议：</p>
+<pre><code class="language-text">low_altitude_outbox_pending
+low_altitude_resource_occupancy_occupied
+low_altitude_conflict_active
+low_altitude_notify_sent
+low_altitude_governance_rate_limited_total
+</code></pre>
+
+</section><hr>
+<section id='low-altitude-web__README.md'><div class='meta'><span class='badge'>前端文档</span>low-altitude-web/README.md</div>
+<h1>low-altitude-web</h1>
+<p>Phase 05 前端控制台，基于 Vue 3 + Vite + Element Plus。它默认通过 Vite dev server 代理访问后端 Gateway：</p>
+<ul>
+<li>前端：<a href="http://127.0.0.1:5173">http://127.0.0.1:5173</a></li>
+<li>后端 Gateway：<a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a></li>
+</ul>
+<h2>启动方式</h2>
+<pre><code class="language-bat">cd low-altitude-web
+npm install
+npm run dev
+</code></pre>
+<p>浏览器打开：</p>
+<pre><code class="language-text">http://127.0.0.1:5173
+</code></pre>
+<h2>使用顺序</h2>
+<ol>
+<li>确认 5 个后端服务已启动并注册到 Nacos。</li>
+<li>页面左侧点击“获取 ADMIN Token”。</li>
+<li>点击“刷新全部数据”。</li>
+<li>在“资源网格”查看 Grid / RouteTemplate。</li>
+<li>在“预约申请 / Pre-check”执行冲突预检查、提交申请。</li>
+<li>在“审批工作台”审批通过、取消、查看占用记录。</li>
+<li>在“冲突记录”查看 RISK / HARD 冲突记录。</li>
+</ol>
+<h2>说明</h2>
+<ul>
+<li>这是本地演示版前端，不包含正式用户密码登录。</li>
+<li>Token 来自 <code>/api/auth/dev-token</code>，用于本科毕设阶段快速演示。</li>
+<li>Vite proxy 会把 <code>/api</code> 和 <code>/actuator</code> 代理到 Gateway，因此一般不会遇到浏览器 CORS 问题。</li>
+</ul>
+<h2>Phase 08 演示入口</h2>
+<p>后端 Gateway 启动后，执行：</p>
+<pre><code class="language-bat">scripts\start-web.bat
+</code></pre>
+<p>打开 <code>http://127.0.0.1:5173</code>。推荐演示顺序见根目录 <code>docs/demo-script.md</code>。</p>
+
+</section><hr>
+<section id='README.md'><div class='meta'><span class='badge'>README</span>README.md</div>
+<h1>低空时空资源协同调度与冲突消解平台</h1>
+<p>本项目是一个面向无人机巡检任务的低空时空资源管理系统。系统将低空资源抽象为 <strong>Grid 区域网格 + Level 高度层 + TimeSlot 时间片 + Date 日期</strong> 的时空切片模型，并围绕该模型实现低空资源预约、审批、占用、冲突检测、消息最终一致性、可视化展示、限流降级和监控观测。</p>
+<p>当前交付版本为 <strong>Phase 08 Delivery Edition</strong>，包含 Phase 01–07 已完成代码，以及 Phase 08 交付文档与辅助脚本。本版本不包含答辩 PPT、论文/毕设正文材料和图形制图文件。</p>
+<hr />
+<h2>1. 已完成功能</h2>
+<table>
+<thead>
+<tr>
+  <th>阶段</th>
+  <th>内容</th>
+  <th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Phase 01</td>
+  <td>Spring Cloud 微服务骨架、Gateway、Nacos、MySQL、RabbitMQ、统一响应、JWT 开发 token</td>
+  <td>完成</td>
+</tr>
+<tr>
+  <td>Phase 02</td>
+  <td>用户、组织、角色、审批员配置、Grid、Level、TimeSlot、RouteTemplate 基础数据</td>
+  <td>完成</td>
+</tr>
+<tr>
+  <td>Phase 03</td>
+  <td>预约申请、审批通过/驳回、取消释放、审批流转、资源占用生成</td>
+  <td>完成</td>
+</tr>
+<tr>
+  <td>Phase 04</td>
+  <td>硬冲突、禁飞区、风险网格、相邻网格风险、冲突记录、审批前二次校验</td>
+  <td>完成</td>
+</tr>
+<tr>
+  <td>Phase 05</td>
+  <td>Vue 3 前端控制台、Grid 可视化、预约申请、审批工作台、冲突记录页面</td>
+  <td>完成</td>
+</tr>
+<tr>
+  <td>Phase 06</td>
+  <td>Outbox 本地消息表、RabbitMQ、幂等消费、通知记录、审计日志</td>
+  <td>完成</td>
+</tr>
+<tr>
+  <td>Phase 07</td>
+  <td>Resilience4j 限流/降级/重试、Prometheus、Grafana、JMeter 压测脚本、业务指标</td>
+  <td>完成</td>
+</tr>
+<tr>
+  <td>Phase 08</td>
+  <td>README、部署说明、数据库说明、接口文档、演示脚本、截图清单、测试报告、排错说明</td>
+  <td>完成</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. 模块结构</h2>
+<pre><code class="language-text">low-altitude-platform
+├── low-altitude-common              公共模块：统一响应、异常、JWT、用户上下文
+├── low-altitude-gateway             网关服务：路由、JWT 鉴权、CORS、Nacos 服务发现
+├── user-org-service                 用户组织服务：用户、角色、组织、审批配置、开发 token
+├── resource-service                 低空资源服务：Grid、Level、TimeSlot、RouteTemplate
+├── booking-service                  预约审批服务：申请、审批、占用、冲突检测、Outbox、治理指标
+├── conflict-notify-service          通知审计服务：RabbitMQ 消费、通知、审计、幂等记录
+├── low-altitude-web                 Vue 3 前端控制台
+├── docker                           MySQL / Prometheus / Grafana 等配置
+├── docs                             交付文档
+├── performance                      JMeter 压测脚本
+└── scripts                          启停、验证、演示辅助脚本
+</code></pre>
+<hr />
+<h2>3. 技术栈</h2>
+<table>
+<thead>
+<tr>
+  <th>层级</th>
+  <th>技术</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>后端基础</td>
+  <td>Java 17+、Spring Boot 3.2.x、Spring Cloud 2023.x</td>
+</tr>
+<tr>
+  <td>微服务</td>
+  <td>Spring Cloud Gateway、Nacos、OpenFeign</td>
+</tr>
+<tr>
+  <td>数据层</td>
+  <td>MySQL、MyBatis、HikariCP</td>
+</tr>
+<tr>
+  <td>缓存/辅助</td>
+  <td>Redis</td>
+</tr>
+<tr>
+  <td>消息</td>
+  <td>RabbitMQ、Outbox 本地消息表</td>
+</tr>
+<tr>
+  <td>可靠性</td>
+  <td>幂等消费、重试、补偿、审计日志</td>
+</tr>
+<tr>
+  <td>服务治理</td>
+  <td>Resilience4j RateLimiter / CircuitBreaker / Retry</td>
+</tr>
+<tr>
+  <td>观测</td>
+  <td>Actuator、Micrometer、Prometheus、Grafana</td>
+</tr>
+<tr>
+  <td>前端</td>
+  <td>Vue 3、Vite、Element Plus、Axios、ECharts 预留</td>
+</tr>
+<tr>
+  <td>部署</td>
+  <td>Docker Compose、Maven、npm</td>
+</tr>
+<tr>
+  <td>压测</td>
+  <td>JMeter</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 本地推荐环境</h2>
+<table>
+<thead>
+<tr>
+  <th>软件</th>
+  <th>推荐版本/说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Windows</td>
+  <td>Windows 10/11</td>
+</tr>
+<tr>
+  <td>JDK</td>
+  <td>17 或 21</td>
+</tr>
+<tr>
+  <td>Maven</td>
+  <td>3.9+</td>
+</tr>
+<tr>
+  <td>Node.js</td>
+  <td>18+ 或 20+</td>
+</tr>
+<tr>
+  <td>npm</td>
+  <td>9+</td>
+</tr>
+<tr>
+  <td>Docker Desktop</td>
+  <td>用于 Nacos、RabbitMQ、Redis、Prometheus、Grafana</td>
+</tr>
+<tr>
+  <td>MySQL</td>
+  <td>可使用本机 MySQL，默认账号 <code>root / 123123</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. 快速启动</h2>
+<p>如果使用你当前本机 MySQL：</p>
+<pre><code class="language-bat">scripts\start-middleware-no-mysql.bat
+mysql -uroot -p123123 --default-character-set=utf8mb4 &lt; docker\mysql\local-root-init.sql
+</code></pre>
+<p>然后在 IDEA 中按顺序启动：</p>
+<pre><code class="language-text">user-org-service           8101
+resource-service           8102
+booking-service            8103
+conflict-notify-service    8104
+low-altitude-gateway       8080
+</code></pre>
+<p>启动前端：</p>
+<pre><code class="language-bat">scripts\start-web.bat
+</code></pre>
+<p>浏览器打开：</p>
+<pre><code class="language-text">http://127.0.0.1:5173
+</code></pre>
+<hr />
+<h2>6. 验证脚本</h2>
+<table>
+<thead>
+<tr>
+  <th>脚本</th>
+  <th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>scripts\phase02-smoke-test.bat</code></td>
+  <td>用户组织与低空资源基础接口验证</td>
+</tr>
+<tr>
+  <td><code>scripts\phase03-smoke-test.bat</code></td>
+  <td>预约申请、审批、占用、取消释放验证</td>
+</tr>
+<tr>
+  <td><code>scripts\phase04-smoke-test.bat</code></td>
+  <td>冲突检测、禁飞区、风险规则验证</td>
+</tr>
+<tr>
+  <td><code>scripts\phase06-smoke-test.bat</code></td>
+  <td>Outbox、RabbitMQ、幂等通知、审计验证</td>
+</tr>
+<tr>
+  <td><code>scripts\phase07-smoke-test.bat</code></td>
+  <td>限流、降级、重试、Prometheus 指标验证</td>
+</tr>
+<tr>
+  <td><code>scripts\phase08-acceptance-check.bat</code></td>
+  <td>非破坏性最终交付检查</td>
+</tr>
+</tbody>
+</table>
+<p>建议最终交付前至少运行：</p>
+<pre><code class="language-bat">scripts\phase08-acceptance-check.bat
+</code></pre>
+<p>如果要重新完整验证主链路，可依次运行 Phase 03、Phase 04、Phase 06、Phase 07 脚本。</p>
+<hr />
+<h2>7. 监控启动</h2>
+<p>启动 Prometheus + Grafana：</p>
+<pre><code class="language-bat">scripts\start-monitor.bat
+</code></pre>
+<p>访问：</p>
+<pre><code class="language-text">Prometheus: http://127.0.0.1:9090
+Grafana:    http://127.0.0.1:3000
+账号密码:   admin / lowaltitude123
+</code></pre>
+<p>停止监控：</p>
+<pre><code class="language-bat">scripts\stop-monitor.bat
+</code></pre>
+<hr />
+<h2>8. 主要入口</h2>
+<table>
+<thead>
+<tr>
+  <th>入口</th>
+  <th>地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>前端控制台</td>
+  <td><a href="http://127.0.0.1:5173">http://127.0.0.1:5173</a></td>
+</tr>
+<tr>
+  <td>Gateway</td>
+  <td><a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a></td>
+</tr>
+<tr>
+  <td>Gateway health</td>
+  <td><a href="http://127.0.0.1:8080/actuator/health">http://127.0.0.1:8080/actuator/health</a></td>
+</tr>
+<tr>
+  <td>Nacos</td>
+  <td><a href="http://127.0.0.1:8848/nacos/">http://127.0.0.1:8848/nacos/</a></td>
+</tr>
+<tr>
+  <td>RabbitMQ</td>
+  <td><a href="http://127.0.0.1:15672/">http://127.0.0.1:15672/</a></td>
+</tr>
+<tr>
+  <td>Prometheus</td>
+  <td><a href="http://127.0.0.1:9090">http://127.0.0.1:9090</a></td>
+</tr>
+<tr>
+  <td>Grafana</td>
+  <td><a href="http://127.0.0.1:3000">http://127.0.0.1:3000</a></td>
+</tr>
+</tbody>
+</table>
+<p>RabbitMQ 账号密码：</p>
+<pre><code class="language-text">lowaltitude / lowaltitude123
+</code></pre>
+<p>Grafana 账号密码：</p>
+<pre><code class="language-text">admin / lowaltitude123
+</code></pre>
+<hr />
+<h2>9. 交付文档索引</h2>
+<table>
+<thead>
+<tr>
+  <th>文档</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>docs/quick-start-windows.md</code></td>
+  <td>Windows 本地快速启动</td>
+</tr>
+<tr>
+  <td><code>docs/deployment-guide.md</code></td>
+  <td>部署与运行说明</td>
+</tr>
+<tr>
+  <td><code>docs/database-initialization.md</code></td>
+  <td>数据库初始化与默认数据</td>
+</tr>
+<tr>
+  <td><code>docs/frontend-running-guide.md</code></td>
+  <td>前端运行与页面演示说明</td>
+</tr>
+<tr>
+  <td><code>docs/monitoring-guide.md</code></td>
+  <td>Prometheus / Grafana / JMeter 说明</td>
+</tr>
+<tr>
+  <td><code>docs/api-reference.md</code></td>
+  <td>核心接口文档</td>
+</tr>
+<tr>
+  <td><code>docs/demo-script.md</code></td>
+  <td>演示流程脚本</td>
+</tr>
+<tr>
+  <td><code>docs/screenshot-checklist.md</code></td>
+  <td>截图清单</td>
+</tr>
+<tr>
+  <td><code>docs/testing-report.md</code></td>
+  <td>阶段测试记录与验收说明</td>
+</tr>
+<tr>
+  <td><code>docs/troubleshooting.md</code></td>
+  <td>常见问题排查</td>
+</tr>
+<tr>
+  <td><code>docs/release-checklist.md</code></td>
+  <td>最终交付检查清单</td>
+</tr>
+<tr>
+  <td><code>docs/environment-ports.md</code></td>
+  <td>端口、账号、环境变量速查</td>
+</tr>
+<tr>
+  <td><code>docs/phase-08-delivery-summary.md</code></td>
+  <td>Phase 08 交付总结</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>10. 当前版本说明</h2>
+<p>本版本已经完成项目主要工程功能与交付说明，但不包含以下内容：</p>
+<pre><code class="language-text">架构图 / ER 图 / 流程图等制图文件
+答辩 PPT 素材
+论文 / 毕设正文写作材料
+</code></pre>
+<p>这些内容可在代码稳定后单独制作。</p>
+
+</section><hr>
+  </article>
+  <div class='footer'>Generated from Markdown files in low-altitude-platform-phase08.</div>
+</main>
+</div>
+<script src='assets/app.js'></script>
+</body>
+</html>

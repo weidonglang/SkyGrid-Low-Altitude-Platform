@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang='zh-CN'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Phase 02 API 速查 - 低空平台文档</title>
+<link rel='stylesheet' href='../assets/style.css'>
+</head>
+<body>
+<div class='layout'>
+<aside class='sidebar'>
+  <h1>低空时空资源协同调度平台文档</h1>
+  <div class='sub'>Phase 08 Markdown HTML 阅读版<br>打开左侧任意文档即可查看。</div>
+  <input id='searchBox' class='search' placeholder='搜索文档标题/路径...'>
+  <a style='color:#bfdbfe;display:block;margin-bottom:8px' href='../index.html'>文档首页</a>
+  <a style='color:#bfdbfe;display:block;margin-bottom:12px' href='../all-in-one.html'>单页合集</a>
+  <div class='nav'>
+<div class='nav-group'>交付文档</div>
+<a class='' data-doc-link data-path='docs/api-reference.md' href='../pages/docs__api-reference.html'>核心接口文档</a>
+<a class='' data-doc-link data-path='docs/database-initialization.md' href='../pages/docs__database-initialization.html'>数据库初始化说明</a>
+<a class='' data-doc-link data-path='docs/demo-script.md' href='../pages/docs__demo-script.html'>演示流程脚本</a>
+<a class='' data-doc-link data-path='docs/deployment-guide.md' href='../pages/docs__deployment-guide.html'>部署与运行说明</a>
+<a class='' data-doc-link data-path='docs/environment-ports.md' href='../pages/docs__environment-ports.html'>环境变量、端口与账号速查</a>
+<a class='' data-doc-link data-path='docs/frontend-running-guide.md' href='../pages/docs__frontend-running-guide.html'>前端运行与页面说明</a>
+<a class='' data-doc-link data-path='docs/monitoring-guide.md' href='../pages/docs__monitoring-guide.html'>监控、治理与压测说明</a>
+<a class='' data-doc-link data-path='docs/quick-start-windows.md' href='../pages/docs__quick-start-windows.html'>Windows 本地快速启动说明</a>
+<a class='' data-doc-link data-path='docs/release-checklist.md' href='../pages/docs__release-checklist.html'>最终交付检查清单</a>
+<a class='' data-doc-link data-path='docs/RUNNING_ON_WINDOWS_WITH_LOCAL_MYSQL.md' href='../pages/docs__RUNNING_ON_WINDOWS_WITH_LOCAL_MYSQL.html'>Windows + local MySQL(root / 123123) runbook</a>
+<a class='' data-doc-link data-path='docs/screenshot-checklist.md' href='../pages/docs__screenshot-checklist.html'>截图清单</a>
+<a class='' data-doc-link data-path='docs/testing-report.md' href='../pages/docs__testing-report.html'>测试与验收记录</a>
+<a class='' data-doc-link data-path='docs/troubleshooting.md' href='../pages/docs__troubleshooting.html'>常见问题排查</a>
+<a class='' data-doc-link data-path='docs/verification-commands.md' href='../pages/docs__verification-commands.html'>常用验证命令</a>
+<div class='nav-group'>阶段文档</div>
+<a class='' data-doc-link data-path='docs/phase-01-api.md' href='../pages/docs__phase-01-api.html'>Phase 01 接口说明</a>
+<a class='' data-doc-link data-path='docs/phase-01-architecture.md' href='../pages/docs__phase-01-architecture.html'>Phase 01 架构说明</a>
+<a class=' active' data-doc-link data-path='docs/phase-02-api.md' href='../pages/docs__phase-02-api.html'>Phase 02 API 速查</a>
+<a class='' data-doc-link data-path='docs/phase-02-development-summary.md' href='../pages/docs__phase-02-development-summary.html'>Phase 02 开发说明：用户组织与低空资源基础数据</a>
+<a class='' data-doc-link data-path='docs/phase-02-hotfix-loadbalancer.md' href='../pages/docs__phase-02-hotfix-loadbalancer.html'>Phase 02 Hotfix: Gateway lb:// 路由 503 修复</a>
+<a class='' data-doc-link data-path='docs/phase-02-next-plan.md' href='../pages/docs__phase-02-next-plan.html'>Phase 02 下一步开发计划草案</a>
+<a class='' data-doc-link data-path='docs/phase-03-api.md' href='../pages/docs__phase-03-api.html'>Phase 03 API 说明</a>
+<a class='' data-doc-link data-path='docs/phase-03-development-summary.md' href='../pages/docs__phase-03-development-summary.html'>Phase 03 开发总结：预约申请与审批业务闭环</a>
+<a class='' data-doc-link data-path='docs/phase-03-next-plan.md' href='../pages/docs__phase-03-next-plan.html'>Phase 03 下一阶段计划：预约申请与审批主流程</a>
+<a class='' data-doc-link data-path='docs/phase-04-development-summary.md' href='../pages/docs__phase-04-development-summary.html'>Phase 04 开发总结：冲突检测与低空规则</a>
+<a class='' data-doc-link data-path='docs/phase-04-next-plan.md' href='../pages/docs__phase-04-next-plan.html'>Phase 04 下一阶段计划：冲突检测与低空规则</a>
+<a class='' data-doc-link data-path='docs/phase-05-development-summary.md' href='../pages/docs__phase-05-development-summary.html'>Phase 05：低空资源可视化前端开发总结</a>
+<a class='' data-doc-link data-path='docs/phase-06-development-summary.md' href='../pages/docs__phase-06-development-summary.html'>Phase 06 开发总结：RabbitMQ、本地消息表与最终一致性</a>
+<a class='' data-doc-link data-path='docs/phase-07-development-summary.md' href='../pages/docs__phase-07-development-summary.html'>Phase 07 · 限流、降级、监控与压测</a>
+<a class='' data-doc-link data-path='docs/phase-08-delivery-summary.md' href='../pages/docs__phase-08-delivery-summary.html'>Phase 08 交付总结</a>
+<div class='nav-group'>前端文档</div>
+<a class='' data-doc-link data-path='low-altitude-web/README.md' href='../pages/low-altitude-web__README.html'>low-altitude-web</a>
+<div class='nav-group'>README</div>
+<a class='' data-doc-link data-path='README.md' href='../pages/README.html'>低空时空资源协同调度与冲突消解平台</a>
+</div>
+</aside>
+<main class='main'>
+  <div class='topbar'>
+    <span>docs/phase-02-api.md</span>
+    <span>本地静态 HTML，可直接双击打开</span>
+  </div>
+  <article class='doc'>
+  <div class='meta'><span class='badge'>阶段文档</span>源文件：docs/phase-02-api.md</div>
+<h1>Phase 02 API 速查</h1>
+<p>所有接口都建议通过 Gateway <code>http://127.0.0.1:8080</code> 访问。除 <code>/api/auth/**</code> 外，接口需要请求头：</p>
+<pre><code class="language-http">Authorization: Bearer &lt;token&gt;
+</code></pre>
+<p>先获取开发 token：</p>
+<pre><code class="language-bat">curl -X POST &quot;http://127.0.0.1:8080/api/auth/dev-token?username=demo&amp;role=ADMIN&quot;
+</code></pre>
+<h2>1. 用户组织服务</h2>
+<h3>组织</h3>
+<pre><code class="language-http">GET    /api/user-org/organizations?keyword=默认
+GET    /api/user-org/organizations/{id}
+POST   /api/user-org/organizations
+PUT    /api/user-org/organizations/{id}
+DELETE /api/user-org/organizations/{id}
+</code></pre>
+<p>创建组织示例：</p>
+<pre><code class="language-json">{
+  &quot;orgCode&quot;: &quot;ORG_TEST&quot;,
+  &quot;orgName&quot;: &quot;测试巡检组织&quot;,
+  &quot;parentId&quot;: null,
+  &quot;contactName&quot;: &quot;张三&quot;,
+  &quot;contactPhone&quot;: &quot;13800000000&quot;,
+  &quot;enabled&quot;: true,
+  &quot;description&quot;: &quot;用于 Phase 02 联调&quot;
+}
+</code></pre>
+<h3>角色</h3>
+<pre><code class="language-http">GET    /api/user-org/roles
+GET    /api/user-org/roles/{id}
+POST   /api/user-org/roles
+PUT    /api/user-org/roles/{id}
+DELETE /api/user-org/roles/{id}
+</code></pre>
+<h3>用户</h3>
+<pre><code class="language-http">GET    /api/user-org/users?keyword=admin
+GET    /api/user-org/users/{id}
+GET    /api/user-org/users/{id}/detail
+POST   /api/user-org/users
+PUT    /api/user-org/users/{id}
+DELETE /api/user-org/users/{id}
+POST   /api/user-org/users/{userId}/roles/{roleId}
+DELETE /api/user-org/users/{userId}/roles/{roleId}
+</code></pre>
+<p>创建用户示例：</p>
+<pre><code class="language-json">{
+  &quot;username&quot;: &quot;pilot01&quot;,
+  &quot;passwordHash&quot;: &quot;DEV_NOT_ENCRYPTED&quot;,
+  &quot;realName&quot;: &quot;巡检员01&quot;,
+  &quot;phone&quot;: &quot;13900000001&quot;,
+  &quot;email&quot;: &quot;pilot01@example.com&quot;,
+  &quot;orgId&quot;: 1,
+  &quot;enabled&quot;: true
+}
+</code></pre>
+<h3>审批员配置</h3>
+<pre><code class="language-http">GET    /api/user-org/approver-configs?orgId=1
+GET    /api/user-org/approver-configs/{id}
+POST   /api/user-org/approver-configs
+PUT    /api/user-org/approver-configs/{id}
+DELETE /api/user-org/approver-configs/{id}
+</code></pre>
+<p>创建审批配置示例：</p>
+<pre><code class="language-json">{
+  &quot;orgId&quot;: 1,
+  &quot;approverUserId&quot;: 1,
+  &quot;levelOrder&quot;: 1,
+  &quot;enabled&quot;: true,
+  &quot;description&quot;: &quot;默认一审审批员&quot;
+}
+</code></pre>
+<h2>2. 低空资源服务</h2>
+<h3>Grid 网格</h3>
+<pre><code class="language-http">GET    /api/resources/grids?keyword=G-01&amp;status=ACTIVE
+GET    /api/resources/grids/{id}
+POST   /api/resources/grids
+PUT    /api/resources/grids/{id}
+DELETE /api/resources/grids/{id}
+</code></pre>
+<p>创建 Grid 示例：</p>
+<pre><code class="language-json">{
+  &quot;gridCode&quot;: &quot;G-03-01&quot;,
+  &quot;gridName&quot;: &quot;A区-3行1列&quot;,
+  &quot;rowIndex&quot;: 3,
+  &quot;colIndex&quot;: 1,
+  &quot;centerLon&quot;: 113.9360000,
+  &quot;centerLat&quot;: 22.5350000,
+  &quot;status&quot;: &quot;ACTIVE&quot;,
+  &quot;description&quot;: &quot;测试新增网格&quot;
+}
+</code></pre>
+<p>允许的 Grid 状态：</p>
+<ul>
+<li><code>ACTIVE</code></li>
+<li><code>RISK</code></li>
+<li><code>NO_FLY</code></li>
+<li><code>DISABLED</code></li>
+</ul>
+<h3>高度层</h3>
+<pre><code class="language-http">GET    /api/resources/levels?enabled=true
+GET    /api/resources/levels/{id}
+POST   /api/resources/levels
+PUT    /api/resources/levels/{id}
+DELETE /api/resources/levels/{id}
+</code></pre>
+<p>创建高度层示例：</p>
+<pre><code class="language-json">{
+  &quot;levelCode&quot;: &quot;L4&quot;,
+  &quot;levelName&quot;: &quot;低空四层 200-300m&quot;,
+  &quot;minAltitudeM&quot;: 200,
+  &quot;maxAltitudeM&quot;: 300,
+  &quot;sortOrder&quot;: 4,
+  &quot;enabled&quot;: true,
+  &quot;description&quot;: &quot;测试高度层&quot;
+}
+</code></pre>
+<h3>时间片</h3>
+<pre><code class="language-http">GET    /api/resources/time-slots?enabled=true
+GET    /api/resources/time-slots/{id}
+POST   /api/resources/time-slots
+PUT    /api/resources/time-slots/{id}
+DELETE /api/resources/time-slots/{id}
+</code></pre>
+<p>创建时间片示例：</p>
+<pre><code class="language-json">{
+  &quot;slotCode&quot;: &quot;EV-01&quot;,
+  &quot;slotName&quot;: &quot;傍晚 18:00-20:00&quot;,
+  &quot;startTime&quot;: &quot;18:00:00&quot;,
+  &quot;endTime&quot;: &quot;20:00:00&quot;,
+  &quot;sortOrder&quot;: 5,
+  &quot;enabled&quot;: true,
+  &quot;description&quot;: &quot;测试时间片&quot;
+}
+</code></pre>
+<h3>航线模板</h3>
+<pre><code class="language-http">GET    /api/resources/route-templates?enabled=true
+GET    /api/resources/route-templates/{id}
+POST   /api/resources/route-templates
+PUT    /api/resources/route-templates/{id}
+DELETE /api/resources/route-templates/{id}
+POST   /api/resources/route-templates/{routeTemplateId}/grids
+PUT    /api/resources/route-templates/{routeTemplateId}/grids/{routeGridId}
+DELETE /api/resources/route-templates/{routeTemplateId}/grids/{routeGridId}
+</code></pre>
+<p>创建航线模板示例：</p>
+<pre><code class="language-json">{
+  &quot;routeCode&quot;: &quot;RT-TEST-01&quot;,
+  &quot;routeName&quot;: &quot;测试巡检航线&quot;,
+  &quot;description&quot;: &quot;用于验证多网格航线模板&quot;,
+  &quot;enabled&quot;: true,
+  &quot;createdBy&quot;: &quot;demo&quot;
+}
+</code></pre>
+<p>向航线模板追加网格示例：</p>
+<pre><code class="language-json">{
+  &quot;gridId&quot;: 1,
+  &quot;sequenceNo&quot;: 1,
+  &quot;plannedDurationMinutes&quot;: 5
+}
+</code></pre>
+
+  </article>
+  <div class='footer'>Generated from Markdown files in low-altitude-platform-phase08.</div>
+</main>
+</div>
+<script src='../assets/app.js'></script>
+</body>
+</html>

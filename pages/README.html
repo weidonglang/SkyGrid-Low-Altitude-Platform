@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang='zh-CN'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>低空时空资源协同调度与冲突消解平台 - 低空平台文档</title>
+<link rel='stylesheet' href='../assets/style.css'>
+</head>
+<body>
+<div class='layout'>
+<aside class='sidebar'>
+  <h1>低空时空资源协同调度平台文档</h1>
+  <div class='sub'>Phase 08 Markdown HTML 阅读版<br>打开左侧任意文档即可查看。</div>
+  <input id='searchBox' class='search' placeholder='搜索文档标题/路径...'>
+  <a style='color:#bfdbfe;display:block;margin-bottom:8px' href='../index.html'>文档首页</a>
+  <a style='color:#bfdbfe;display:block;margin-bottom:12px' href='../all-in-one.html'>单页合集</a>
+  <div class='nav'>
+<div class='nav-group'>交付文档</div>
+<a class='' data-doc-link data-path='docs/api-reference.md' href='../pages/docs__api-reference.html'>核心接口文档</a>
+<a class='' data-doc-link data-path='docs/database-initialization.md' href='../pages/docs__database-initialization.html'>数据库初始化说明</a>
+<a class='' data-doc-link data-path='docs/demo-script.md' href='../pages/docs__demo-script.html'>演示流程脚本</a>
+<a class='' data-doc-link data-path='docs/deployment-guide.md' href='../pages/docs__deployment-guide.html'>部署与运行说明</a>
+<a class='' data-doc-link data-path='docs/environment-ports.md' href='../pages/docs__environment-ports.html'>环境变量、端口与账号速查</a>
+<a class='' data-doc-link data-path='docs/frontend-running-guide.md' href='../pages/docs__frontend-running-guide.html'>前端运行与页面说明</a>
+<a class='' data-doc-link data-path='docs/monitoring-guide.md' href='../pages/docs__monitoring-guide.html'>监控、治理与压测说明</a>
+<a class='' data-doc-link data-path='docs/quick-start-windows.md' href='../pages/docs__quick-start-windows.html'>Windows 本地快速启动说明</a>
+<a class='' data-doc-link data-path='docs/release-checklist.md' href='../pages/docs__release-checklist.html'>最终交付检查清单</a>
+<a class='' data-doc-link data-path='docs/RUNNING_ON_WINDOWS_WITH_LOCAL_MYSQL.md' href='../pages/docs__RUNNING_ON_WINDOWS_WITH_LOCAL_MYSQL.html'>Windows + local MySQL(root / 123123) runbook</a>
+<a class='' data-doc-link data-path='docs/screenshot-checklist.md' href='../pages/docs__screenshot-checklist.html'>截图清单</a>
+<a class='' data-doc-link data-path='docs/testing-report.md' href='../pages/docs__testing-report.html'>测试与验收记录</a>
+<a class='' data-doc-link data-path='docs/troubleshooting.md' href='../pages/docs__troubleshooting.html'>常见问题排查</a>
+<a class='' data-doc-link data-path='docs/verification-commands.md' href='../pages/docs__verification-commands.html'>常用验证命令</a>
+<div class='nav-group'>阶段文档</div>
+<a class='' data-doc-link data-path='docs/phase-01-api.md' href='../pages/docs__phase-01-api.html'>Phase 01 接口说明</a>
+<a class='' data-doc-link data-path='docs/phase-01-architecture.md' href='../pages/docs__phase-01-architecture.html'>Phase 01 架构说明</a>
+<a class='' data-doc-link data-path='docs/phase-02-api.md' href='../pages/docs__phase-02-api.html'>Phase 02 API 速查</a>
+<a class='' data-doc-link data-path='docs/phase-02-development-summary.md' href='../pages/docs__phase-02-development-summary.html'>Phase 02 开发说明：用户组织与低空资源基础数据</a>
+<a class='' data-doc-link data-path='docs/phase-02-hotfix-loadbalancer.md' href='../pages/docs__phase-02-hotfix-loadbalancer.html'>Phase 02 Hotfix: Gateway lb:// 路由 503 修复</a>
+<a class='' data-doc-link data-path='docs/phase-02-next-plan.md' href='../pages/docs__phase-02-next-plan.html'>Phase 02 下一步开发计划草案</a>
+<a class='' data-doc-link data-path='docs/phase-03-api.md' href='../pages/docs__phase-03-api.html'>Phase 03 API 说明</a>
+<a class='' data-doc-link data-path='docs/phase-03-development-summary.md' href='../pages/docs__phase-03-development-summary.html'>Phase 03 开发总结：预约申请与审批业务闭环</a>
+<a class='' data-doc-link data-path='docs/phase-03-next-plan.md' href='../pages/docs__phase-03-next-plan.html'>Phase 03 下一阶段计划：预约申请与审批主流程</a>
+<a class='' data-doc-link data-path='docs/phase-04-development-summary.md' href='../pages/docs__phase-04-development-summary.html'>Phase 04 开发总结：冲突检测与低空规则</a>
+<a class='' data-doc-link data-path='docs/phase-04-next-plan.md' href='../pages/docs__phase-04-next-plan.html'>Phase 04 下一阶段计划：冲突检测与低空规则</a>
+<a class='' data-doc-link data-path='docs/phase-05-development-summary.md' href='../pages/docs__phase-05-development-summary.html'>Phase 05：低空资源可视化前端开发总结</a>
+<a class='' data-doc-link data-path='docs/phase-06-development-summary.md' href='../pages/docs__phase-06-development-summary.html'>Phase 06 开发总结：RabbitMQ、本地消息表与最终一致性</a>
+<a class='' data-doc-link data-path='docs/phase-07-development-summary.md' href='../pages/docs__phase-07-development-summary.html'>Phase 07 · 限流、降级、监控与压测</a>
+<a class='' data-doc-link data-path='docs/phase-08-delivery-summary.md' href='../pages/docs__phase-08-delivery-summary.html'>Phase 08 交付总结</a>
+<div class='nav-group'>前端文档</div>
+<a class='' data-doc-link data-path='low-altitude-web/README.md' href='../pages/low-altitude-web__README.html'>low-altitude-web</a>
+<div class='nav-group'>README</div>
+<a class=' active' data-doc-link data-path='README.md' href='../pages/README.html'>低空时空资源协同调度与冲突消解平台</a>
+</div>
+</aside>
+<main class='main'>
+  <div class='topbar'>
+    <span>README.md</span>
+    <span>本地静态 HTML，可直接双击打开</span>
+  </div>
+  <article class='doc'>
+  <div class='meta'><span class='badge'>README</span>源文件：README.md</div>
+<h1>低空时空资源协同调度与冲突消解平台</h1>
+<p>本项目是一个面向无人机巡检任务的低空时空资源管理系统。系统将低空资源抽象为 <strong>Grid 区域网格 + Level 高度层 + TimeSlot 时间片 + Date 日期</strong> 的时空切片模型，并围绕该模型实现低空资源预约、审批、占用、冲突检测、消息最终一致性、可视化展示、限流降级和监控观测。</p>
+<p>当前交付版本为 <strong>Phase 08 Delivery Edition</strong>，包含 Phase 01–07 已完成代码，以及 Phase 08 交付文档与辅助脚本。本版本不包含答辩 PPT、论文/毕设正文材料和图形制图文件。</p>
+<hr />
+<h2>1. 已完成功能</h2>
+<table>
+<thead>
+<tr>
+  <th>阶段</th>
+  <th>内容</th>
+  <th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Phase 01</td>
+  <td>Spring Cloud 微服务骨架、Gateway、Nacos、MySQL、RabbitMQ、统一响应、JWT 开发 token</td>
+  <td>完成</td>
+</tr>
+<tr>
+  <td>Phase 02</td>
+  <td>用户、组织、角色、审批员配置、Grid、Level、TimeSlot、RouteTemplate 基础数据</td>
+  <td>完成</td>
+</tr>
+<tr>
+  <td>Phase 03</td>
+  <td>预约申请、审批通过/驳回、取消释放、审批流转、资源占用生成</td>
+  <td>完成</td>
+</tr>
+<tr>
+  <td>Phase 04</td>
+  <td>硬冲突、禁飞区、风险网格、相邻网格风险、冲突记录、审批前二次校验</td>
+  <td>完成</td>
+</tr>
+<tr>
+  <td>Phase 05</td>
+  <td>Vue 3 前端控制台、Grid 可视化、预约申请、审批工作台、冲突记录页面</td>
+  <td>完成</td>
+</tr>
+<tr>
+  <td>Phase 06</td>
+  <td>Outbox 本地消息表、RabbitMQ、幂等消费、通知记录、审计日志</td>
+  <td>完成</td>
+</tr>
+<tr>
+  <td>Phase 07</td>
+  <td>Resilience4j 限流/降级/重试、Prometheus、Grafana、JMeter 压测脚本、业务指标</td>
+  <td>完成</td>
+</tr>
+<tr>
+  <td>Phase 08</td>
+  <td>README、部署说明、数据库说明、接口文档、演示脚本、截图清单、测试报告、排错说明</td>
+  <td>完成</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. 模块结构</h2>
+<pre><code class="language-text">low-altitude-platform
+├── low-altitude-common              公共模块：统一响应、异常、JWT、用户上下文
+├── low-altitude-gateway             网关服务：路由、JWT 鉴权、CORS、Nacos 服务发现
+├── user-org-service                 用户组织服务：用户、角色、组织、审批配置、开发 token
+├── resource-service                 低空资源服务：Grid、Level、TimeSlot、RouteTemplate
+├── booking-service                  预约审批服务：申请、审批、占用、冲突检测、Outbox、治理指标
+├── conflict-notify-service          通知审计服务：RabbitMQ 消费、通知、审计、幂等记录
+├── low-altitude-web                 Vue 3 前端控制台
+├── docker                           MySQL / Prometheus / Grafana 等配置
+├── docs                             交付文档
+├── performance                      JMeter 压测脚本
+└── scripts                          启停、验证、演示辅助脚本
+</code></pre>
+<hr />
+<h2>3. 技术栈</h2>
+<table>
+<thead>
+<tr>
+  <th>层级</th>
+  <th>技术</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>后端基础</td>
+  <td>Java 17+、Spring Boot 3.2.x、Spring Cloud 2023.x</td>
+</tr>
+<tr>
+  <td>微服务</td>
+  <td>Spring Cloud Gateway、Nacos、OpenFeign</td>
+</tr>
+<tr>
+  <td>数据层</td>
+  <td>MySQL、MyBatis、HikariCP</td>
+</tr>
+<tr>
+  <td>缓存/辅助</td>
+  <td>Redis</td>
+</tr>
+<tr>
+  <td>消息</td>
+  <td>RabbitMQ、Outbox 本地消息表</td>
+</tr>
+<tr>
+  <td>可靠性</td>
+  <td>幂等消费、重试、补偿、审计日志</td>
+</tr>
+<tr>
+  <td>服务治理</td>
+  <td>Resilience4j RateLimiter / CircuitBreaker / Retry</td>
+</tr>
+<tr>
+  <td>观测</td>
+  <td>Actuator、Micrometer、Prometheus、Grafana</td>
+</tr>
+<tr>
+  <td>前端</td>
+  <td>Vue 3、Vite、Element Plus、Axios、ECharts 预留</td>
+</tr>
+<tr>
+  <td>部署</td>
+  <td>Docker Compose、Maven、npm</td>
+</tr>
+<tr>
+  <td>压测</td>
+  <td>JMeter</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 本地推荐环境</h2>
+<table>
+<thead>
+<tr>
+  <th>软件</th>
+  <th>推荐版本/说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Windows</td>
+  <td>Windows 10/11</td>
+</tr>
+<tr>
+  <td>JDK</td>
+  <td>17 或 21</td>
+</tr>
+<tr>
+  <td>Maven</td>
+  <td>3.9+</td>
+</tr>
+<tr>
+  <td>Node.js</td>
+  <td>18+ 或 20+</td>
+</tr>
+<tr>
+  <td>npm</td>
+  <td>9+</td>
+</tr>
+<tr>
+  <td>Docker Desktop</td>
+  <td>用于 Nacos、RabbitMQ、Redis、Prometheus、Grafana</td>
+</tr>
+<tr>
+  <td>MySQL</td>
+  <td>可使用本机 MySQL，默认账号 <code>root / 123123</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. 快速启动</h2>
+<p>如果使用你当前本机 MySQL：</p>
+<pre><code class="language-bat">scripts\start-middleware-no-mysql.bat
+mysql -uroot -p123123 --default-character-set=utf8mb4 &lt; docker\mysql\local-root-init.sql
+</code></pre>
+<p>然后在 IDEA 中按顺序启动：</p>
+<pre><code class="language-text">user-org-service           8101
+resource-service           8102
+booking-service            8103
+conflict-notify-service    8104
+low-altitude-gateway       8080
+</code></pre>
+<p>启动前端：</p>
+<pre><code class="language-bat">scripts\start-web.bat
+</code></pre>
+<p>浏览器打开：</p>
+<pre><code class="language-text">http://127.0.0.1:5173
+</code></pre>
+<hr />
+<h2>6. 验证脚本</h2>
+<table>
+<thead>
+<tr>
+  <th>脚本</th>
+  <th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>scripts\phase02-smoke-test.bat</code></td>
+  <td>用户组织与低空资源基础接口验证</td>
+</tr>
+<tr>
+  <td><code>scripts\phase03-smoke-test.bat</code></td>
+  <td>预约申请、审批、占用、取消释放验证</td>
+</tr>
+<tr>
+  <td><code>scripts\phase04-smoke-test.bat</code></td>
+  <td>冲突检测、禁飞区、风险规则验证</td>
+</tr>
+<tr>
+  <td><code>scripts\phase06-smoke-test.bat</code></td>
+  <td>Outbox、RabbitMQ、幂等通知、审计验证</td>
+</tr>
+<tr>
+  <td><code>scripts\phase07-smoke-test.bat</code></td>
+  <td>限流、降级、重试、Prometheus 指标验证</td>
+</tr>
+<tr>
+  <td><code>scripts\phase08-acceptance-check.bat</code></td>
+  <td>非破坏性最终交付检查</td>
+</tr>
+</tbody>
+</table>
+<p>建议最终交付前至少运行：</p>
+<pre><code class="language-bat">scripts\phase08-acceptance-check.bat
+</code></pre>
+<p>如果要重新完整验证主链路，可依次运行 Phase 03、Phase 04、Phase 06、Phase 07 脚本。</p>
+<hr />
+<h2>7. 监控启动</h2>
+<p>启动 Prometheus + Grafana：</p>
+<pre><code class="language-bat">scripts\start-monitor.bat
+</code></pre>
+<p>访问：</p>
+<pre><code class="language-text">Prometheus: http://127.0.0.1:9090
+Grafana:    http://127.0.0.1:3000
+账号密码:   admin / lowaltitude123
+</code></pre>
+<p>停止监控：</p>
+<pre><code class="language-bat">scripts\stop-monitor.bat
+</code></pre>
+<hr />
+<h2>8. 主要入口</h2>
+<table>
+<thead>
+<tr>
+  <th>入口</th>
+  <th>地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>前端控制台</td>
+  <td><a href="http://127.0.0.1:5173">http://127.0.0.1:5173</a></td>
+</tr>
+<tr>
+  <td>Gateway</td>
+  <td><a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a></td>
+</tr>
+<tr>
+  <td>Gateway health</td>
+  <td><a href="http://127.0.0.1:8080/actuator/health">http://127.0.0.1:8080/actuator/health</a></td>
+</tr>
+<tr>
+  <td>Nacos</td>
+  <td><a href="http://127.0.0.1:8848/nacos/">http://127.0.0.1:8848/nacos/</a></td>
+</tr>
+<tr>
+  <td>RabbitMQ</td>
+  <td><a href="http://127.0.0.1:15672/">http://127.0.0.1:15672/</a></td>
+</tr>
+<tr>
+  <td>Prometheus</td>
+  <td><a href="http://127.0.0.1:9090">http://127.0.0.1:9090</a></td>
+</tr>
+<tr>
+  <td>Grafana</td>
+  <td><a href="http://127.0.0.1:3000">http://127.0.0.1:3000</a></td>
+</tr>
+</tbody>
+</table>
+<p>RabbitMQ 账号密码：</p>
+<pre><code class="language-text">lowaltitude / lowaltitude123
+</code></pre>
+<p>Grafana 账号密码：</p>
+<pre><code class="language-text">admin / lowaltitude123
+</code></pre>
+<hr />
+<h2>9. 交付文档索引</h2>
+<table>
+<thead>
+<tr>
+  <th>文档</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>docs/quick-start-windows.md</code></td>
+  <td>Windows 本地快速启动</td>
+</tr>
+<tr>
+  <td><code>docs/deployment-guide.md</code></td>
+  <td>部署与运行说明</td>
+</tr>
+<tr>
+  <td><code>docs/database-initialization.md</code></td>
+  <td>数据库初始化与默认数据</td>
+</tr>
+<tr>
+  <td><code>docs/frontend-running-guide.md</code></td>
+  <td>前端运行与页面演示说明</td>
+</tr>
+<tr>
+  <td><code>docs/monitoring-guide.md</code></td>
+  <td>Prometheus / Grafana / JMeter 说明</td>
+</tr>
+<tr>
+  <td><code>docs/api-reference.md</code></td>
+  <td>核心接口文档</td>
+</tr>
+<tr>
+  <td><code>docs/demo-script.md</code></td>
+  <td>演示流程脚本</td>
+</tr>
+<tr>
+  <td><code>docs/screenshot-checklist.md</code></td>
+  <td>截图清单</td>
+</tr>
+<tr>
+  <td><code>docs/testing-report.md</code></td>
+  <td>阶段测试记录与验收说明</td>
+</tr>
+<tr>
+  <td><code>docs/troubleshooting.md</code></td>
+  <td>常见问题排查</td>
+</tr>
+<tr>
+  <td><code>docs/release-checklist.md</code></td>
+  <td>最终交付检查清单</td>
+</tr>
+<tr>
+  <td><code>docs/environment-ports.md</code></td>
+  <td>端口、账号、环境变量速查</td>
+</tr>
+<tr>
+  <td><code>docs/phase-08-delivery-summary.md</code></td>
+  <td>Phase 08 交付总结</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>10. 当前版本说明</h2>
+<p>本版本已经完成项目主要工程功能与交付说明，但不包含以下内容：</p>
+<pre><code class="language-text">架构图 / ER 图 / 流程图等制图文件
+答辩 PPT 素材
+论文 / 毕设正文写作材料
+</code></pre>
+<p>这些内容可在代码稳定后单独制作。</p>
+
+  </article>
+  <div class='footer'>Generated from Markdown files in low-altitude-platform-phase08.</div>
+</main>
+</div>
+<script src='../assets/app.js'></script>
+</body>
+</html>

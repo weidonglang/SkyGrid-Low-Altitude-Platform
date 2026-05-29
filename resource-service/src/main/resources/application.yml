@@ -1,0 +1,52 @@
+server:
+  port: 8102
+
+spring:
+  application:
+    name: resource-service
+  cloud:
+    nacos:
+      # Both the global and discovery-level address are set deliberately.
+      # Some local IDE runs can fail to bind the discovery address early enough
+      # and then Nacos prints serverAddr='null'. Keeping both keys avoids that.
+      server-addr: ${NACOS_ADDR:127.0.0.1:8848}
+      discovery:
+        server-addr: ${NACOS_ADDR:127.0.0.1:8848}
+        service: ${spring.application.name}
+        ip: ${NACOS_REGISTER_IP:127.0.0.1}
+        register-enabled: ${NACOS_REGISTER_ENABLED:true}
+        fail-fast: ${NACOS_FAIL_FAST:true}
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST:127.0.0.1}:${MYSQL_PORT:3306}/low_altitude_resource?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    # Local default has been changed according to your machine: root / 123123.
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD:123123}
+  data:
+    redis:
+      host: ${REDIS_HOST:127.0.0.1}
+      port: ${REDIS_PORT:6379}
+  rabbitmq:
+    host: ${RABBITMQ_HOST:127.0.0.1}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USER:lowaltitude}
+    password: ${RABBITMQ_PASSWORD:lowaltitude123}
+
+mybatis:
+  mapper-locations: classpath*:mapper/**/*.xml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+logging:
+  level:
+    com.lowaltitude: INFO

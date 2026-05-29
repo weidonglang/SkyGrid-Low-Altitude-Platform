@@ -1,0 +1,68 @@
+name: low-altitude-platform
+
+services:
+  nacos:
+    image: nacos/nacos-server:v2.4.3
+    container_name: low-altitude-nacos
+    environment:
+      MODE: standalone
+      NACOS_AUTH_ENABLE: "false"
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+      - "9849:9849"
+    networks:
+      - low-altitude-net
+
+  mysql:
+    image: mysql:8.4
+    container_name: low-altitude-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123123
+      MYSQL_USER: lowaltitude
+      MYSQL_PASSWORD: lowaltitude123
+      TZ: Asia/Shanghai
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "3306:3306"
+    volumes:
+      - low-altitude-mysql-data:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    networks:
+      - low-altitude-net
+
+  redis:
+    image: redis:7.4
+    container_name: low-altitude-redis
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "6379:6379"
+    volumes:
+      - low-altitude-redis-data:/data
+    networks:
+      - low-altitude-net
+
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: low-altitude-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: lowaltitude
+      RABBITMQ_DEFAULT_PASS: lowaltitude123
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - low-altitude-rabbitmq-data:/var/lib/rabbitmq
+    networks:
+      - low-altitude-net
+
+networks:
+  low-altitude-net:
+    driver: bridge
+
+volumes:
+  low-altitude-mysql-data:
+  low-altitude-redis-data:
+  low-altitude-rabbitmq-data:

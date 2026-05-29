@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang='zh-CN'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>前端运行与页面说明 - 低空平台文档</title>
+<link rel='stylesheet' href='../assets/style.css'>
+</head>
+<body>
+<div class='layout'>
+<aside class='sidebar'>
+  <h1>低空时空资源协同调度平台文档</h1>
+  <div class='sub'>Phase 08 Markdown HTML 阅读版<br>打开左侧任意文档即可查看。</div>
+  <input id='searchBox' class='search' placeholder='搜索文档标题/路径...'>
+  <a style='color:#bfdbfe;display:block;margin-bottom:8px' href='../index.html'>文档首页</a>
+  <a style='color:#bfdbfe;display:block;margin-bottom:12px' href='../all-in-one.html'>单页合集</a>
+  <div class='nav'>
+<div class='nav-group'>交付文档</div>
+<a class='' data-doc-link data-path='docs/api-reference.md' href='../pages/docs__api-reference.html'>核心接口文档</a>
+<a class='' data-doc-link data-path='docs/database-initialization.md' href='../pages/docs__database-initialization.html'>数据库初始化说明</a>
+<a class='' data-doc-link data-path='docs/demo-script.md' href='../pages/docs__demo-script.html'>演示流程脚本</a>
+<a class='' data-doc-link data-path='docs/deployment-guide.md' href='../pages/docs__deployment-guide.html'>部署与运行说明</a>
+<a class='' data-doc-link data-path='docs/environment-ports.md' href='../pages/docs__environment-ports.html'>环境变量、端口与账号速查</a>
+<a class=' active' data-doc-link data-path='docs/frontend-running-guide.md' href='../pages/docs__frontend-running-guide.html'>前端运行与页面说明</a>
+<a class='' data-doc-link data-path='docs/monitoring-guide.md' href='../pages/docs__monitoring-guide.html'>监控、治理与压测说明</a>
+<a class='' data-doc-link data-path='docs/quick-start-windows.md' href='../pages/docs__quick-start-windows.html'>Windows 本地快速启动说明</a>
+<a class='' data-doc-link data-path='docs/release-checklist.md' href='../pages/docs__release-checklist.html'>最终交付检查清单</a>
+<a class='' data-doc-link data-path='docs/RUNNING_ON_WINDOWS_WITH_LOCAL_MYSQL.md' href='../pages/docs__RUNNING_ON_WINDOWS_WITH_LOCAL_MYSQL.html'>Windows + local MySQL(root / 123123) runbook</a>
+<a class='' data-doc-link data-path='docs/screenshot-checklist.md' href='../pages/docs__screenshot-checklist.html'>截图清单</a>
+<a class='' data-doc-link data-path='docs/testing-report.md' href='../pages/docs__testing-report.html'>测试与验收记录</a>
+<a class='' data-doc-link data-path='docs/troubleshooting.md' href='../pages/docs__troubleshooting.html'>常见问题排查</a>
+<a class='' data-doc-link data-path='docs/verification-commands.md' href='../pages/docs__verification-commands.html'>常用验证命令</a>
+<div class='nav-group'>阶段文档</div>
+<a class='' data-doc-link data-path='docs/phase-01-api.md' href='../pages/docs__phase-01-api.html'>Phase 01 接口说明</a>
+<a class='' data-doc-link data-path='docs/phase-01-architecture.md' href='../pages/docs__phase-01-architecture.html'>Phase 01 架构说明</a>
+<a class='' data-doc-link data-path='docs/phase-02-api.md' href='../pages/docs__phase-02-api.html'>Phase 02 API 速查</a>
+<a class='' data-doc-link data-path='docs/phase-02-development-summary.md' href='../pages/docs__phase-02-development-summary.html'>Phase 02 开发说明：用户组织与低空资源基础数据</a>
+<a class='' data-doc-link data-path='docs/phase-02-hotfix-loadbalancer.md' href='../pages/docs__phase-02-hotfix-loadbalancer.html'>Phase 02 Hotfix: Gateway lb:// 路由 503 修复</a>
+<a class='' data-doc-link data-path='docs/phase-02-next-plan.md' href='../pages/docs__phase-02-next-plan.html'>Phase 02 下一步开发计划草案</a>
+<a class='' data-doc-link data-path='docs/phase-03-api.md' href='../pages/docs__phase-03-api.html'>Phase 03 API 说明</a>
+<a class='' data-doc-link data-path='docs/phase-03-development-summary.md' href='../pages/docs__phase-03-development-summary.html'>Phase 03 开发总结：预约申请与审批业务闭环</a>
+<a class='' data-doc-link data-path='docs/phase-03-next-plan.md' href='../pages/docs__phase-03-next-plan.html'>Phase 03 下一阶段计划：预约申请与审批主流程</a>
+<a class='' data-doc-link data-path='docs/phase-04-development-summary.md' href='../pages/docs__phase-04-development-summary.html'>Phase 04 开发总结：冲突检测与低空规则</a>
+<a class='' data-doc-link data-path='docs/phase-04-next-plan.md' href='../pages/docs__phase-04-next-plan.html'>Phase 04 下一阶段计划：冲突检测与低空规则</a>
+<a class='' data-doc-link data-path='docs/phase-05-development-summary.md' href='../pages/docs__phase-05-development-summary.html'>Phase 05：低空资源可视化前端开发总结</a>
+<a class='' data-doc-link data-path='docs/phase-06-development-summary.md' href='../pages/docs__phase-06-development-summary.html'>Phase 06 开发总结：RabbitMQ、本地消息表与最终一致性</a>
+<a class='' data-doc-link data-path='docs/phase-07-development-summary.md' href='../pages/docs__phase-07-development-summary.html'>Phase 07 · 限流、降级、监控与压测</a>
+<a class='' data-doc-link data-path='docs/phase-08-delivery-summary.md' href='../pages/docs__phase-08-delivery-summary.html'>Phase 08 交付总结</a>
+<div class='nav-group'>前端文档</div>
+<a class='' data-doc-link data-path='low-altitude-web/README.md' href='../pages/low-altitude-web__README.html'>low-altitude-web</a>
+<div class='nav-group'>README</div>
+<a class='' data-doc-link data-path='README.md' href='../pages/README.html'>低空时空资源协同调度与冲突消解平台</a>
+</div>
+</aside>
+<main class='main'>
+  <div class='topbar'>
+    <span>docs/frontend-running-guide.md</span>
+    <span>本地静态 HTML，可直接双击打开</span>
+  </div>
+  <article class='doc'>
+  <div class='meta'><span class='badge'>交付文档</span>源文件：docs/frontend-running-guide.md</div>
+<h1>前端运行与页面说明</h1>
+<h2>1. 前端目录</h2>
+<pre><code class="language-text">low-altitude-web
+</code></pre>
+<p>技术栈：</p>
+<pre><code class="language-text">Vue 3
+Vite
+Element Plus
+Axios
+ECharts 预留
+</code></pre>
+<h2>2. 启动方式</h2>
+<p>确保后端 Gateway 已运行在：</p>
+<pre><code class="language-text">http://127.0.0.1:8080
+</code></pre>
+<p>然后执行：</p>
+<pre><code class="language-bat">scripts\start-web.bat
+</code></pre>
+<p>或手动：</p>
+<pre><code class="language-bat">cd low-altitude-web
+npm install
+npm run dev
+</code></pre>
+<p>浏览器打开：</p>
+<pre><code class="language-text">http://127.0.0.1:5173
+</code></pre>
+<h2>3. 页面功能</h2>
+<table>
+<thead>
+<tr>
+  <th>页面</th>
+  <th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>运行状态</td>
+  <td>查看 Gateway health、服务发现状态、获取开发 token</td>
+</tr>
+<tr>
+  <td>资源网格</td>
+  <td>展示 Grid 二维网格、Grid 状态、航线模板经过网格</td>
+</tr>
+<tr>
+  <td>预约申请 / Pre-check</td>
+  <td>填写申请、执行预检查、展示硬冲突和风险提示</td>
+</tr>
+<tr>
+  <td>审批工作台</td>
+  <td>查询预约、审批、驳回、取消、查看流程和占用</td>
+</tr>
+<tr>
+  <td>冲突记录</td>
+  <td>查看 HARD / RISK 冲突记录</td>
+</tr>
+</tbody>
+</table>
+<h2>4. 推荐演示流程</h2>
+<ol>
+<li>打开运行状态页面。</li>
+<li>点击获取 ADMIN Token。</li>
+<li>刷新基础数据。</li>
+<li>进入资源网格页面，展示 ACTIVE / RISK / NO_FLY 网格。</li>
+<li>进入预约申请页面，选择默认航线、L1、高度层、时间片，执行 Pre-check。</li>
+<li>提交预约申请。</li>
+<li>进入审批工作台，审批通过。</li>
+<li>查看生成的资源占用记录。</li>
+<li>再提交相同资源申请，展示 HARD 冲突阻断。</li>
+<li>选择禁飞航线 <code>RT-NOFLY-01</code>，展示 NO_FLY 阻断。</li>
+<li>进入冲突记录页面查看记录。</li>
+</ol>
+<h2>5. 常见问题</h2>
+<h3>页面无法访问后端</h3>
+<p>检查 Gateway：</p>
+<pre><code class="language-bat">curl http://127.0.0.1:8080/actuator/health
+</code></pre>
+<h3>token 失效</h3>
+<p>重新在运行状态页面获取 ADMIN Token。</p>
+<h3>前端依赖安装失败</h3>
+<p>删除 <code>node_modules</code> 和 <code>package-lock.json</code> 后重新安装：</p>
+<pre><code class="language-bat">cd low-altitude-web
+rmdir /s /q node_modules
+del package-lock.json
+npm install
+</code></pre>
+<h3>中文显示问题</h3>
+<p>前端页面通常能正常显示中文；CMD/PowerShell 中看到乱码多半是终端编码问题，不代表后端数据错误。</p>
+
+  </article>
+  <div class='footer'>Generated from Markdown files in low-altitude-platform-phase08.</div>
+</main>
+</div>
+<script src='../assets/app.js'></script>
+</body>
+</html>

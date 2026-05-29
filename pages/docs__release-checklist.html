@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang='zh-CN'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>最终交付检查清单 - 低空平台文档</title>
+<link rel='stylesheet' href='../assets/style.css'>
+</head>
+<body>
+<div class='layout'>
+<aside class='sidebar'>
+  <h1>低空时空资源协同调度平台文档</h1>
+  <div class='sub'>Phase 08 Markdown HTML 阅读版<br>打开左侧任意文档即可查看。</div>
+  <input id='searchBox' class='search' placeholder='搜索文档标题/路径...'>
+  <a style='color:#bfdbfe;display:block;margin-bottom:8px' href='../index.html'>文档首页</a>
+  <a style='color:#bfdbfe;display:block;margin-bottom:12px' href='../all-in-one.html'>单页合集</a>
+  <div class='nav'>
+<div class='nav-group'>交付文档</div>
+<a class='' data-doc-link data-path='docs/api-reference.md' href='../pages/docs__api-reference.html'>核心接口文档</a>
+<a class='' data-doc-link data-path='docs/database-initialization.md' href='../pages/docs__database-initialization.html'>数据库初始化说明</a>
+<a class='' data-doc-link data-path='docs/demo-script.md' href='../pages/docs__demo-script.html'>演示流程脚本</a>
+<a class='' data-doc-link data-path='docs/deployment-guide.md' href='../pages/docs__deployment-guide.html'>部署与运行说明</a>
+<a class='' data-doc-link data-path='docs/environment-ports.md' href='../pages/docs__environment-ports.html'>环境变量、端口与账号速查</a>
+<a class='' data-doc-link data-path='docs/frontend-running-guide.md' href='../pages/docs__frontend-running-guide.html'>前端运行与页面说明</a>
+<a class='' data-doc-link data-path='docs/monitoring-guide.md' href='../pages/docs__monitoring-guide.html'>监控、治理与压测说明</a>
+<a class='' data-doc-link data-path='docs/quick-start-windows.md' href='../pages/docs__quick-start-windows.html'>Windows 本地快速启动说明</a>
+<a class=' active' data-doc-link data-path='docs/release-checklist.md' href='../pages/docs__release-checklist.html'>最终交付检查清单</a>
+<a class='' data-doc-link data-path='docs/RUNNING_ON_WINDOWS_WITH_LOCAL_MYSQL.md' href='../pages/docs__RUNNING_ON_WINDOWS_WITH_LOCAL_MYSQL.html'>Windows + local MySQL(root / 123123) runbook</a>
+<a class='' data-doc-link data-path='docs/screenshot-checklist.md' href='../pages/docs__screenshot-checklist.html'>截图清单</a>
+<a class='' data-doc-link data-path='docs/testing-report.md' href='../pages/docs__testing-report.html'>测试与验收记录</a>
+<a class='' data-doc-link data-path='docs/troubleshooting.md' href='../pages/docs__troubleshooting.html'>常见问题排查</a>
+<a class='' data-doc-link data-path='docs/verification-commands.md' href='../pages/docs__verification-commands.html'>常用验证命令</a>
+<div class='nav-group'>阶段文档</div>
+<a class='' data-doc-link data-path='docs/phase-01-api.md' href='../pages/docs__phase-01-api.html'>Phase 01 接口说明</a>
+<a class='' data-doc-link data-path='docs/phase-01-architecture.md' href='../pages/docs__phase-01-architecture.html'>Phase 01 架构说明</a>
+<a class='' data-doc-link data-path='docs/phase-02-api.md' href='../pages/docs__phase-02-api.html'>Phase 02 API 速查</a>
+<a class='' data-doc-link data-path='docs/phase-02-development-summary.md' href='../pages/docs__phase-02-development-summary.html'>Phase 02 开发说明：用户组织与低空资源基础数据</a>
+<a class='' data-doc-link data-path='docs/phase-02-hotfix-loadbalancer.md' href='../pages/docs__phase-02-hotfix-loadbalancer.html'>Phase 02 Hotfix: Gateway lb:// 路由 503 修复</a>
+<a class='' data-doc-link data-path='docs/phase-02-next-plan.md' href='../pages/docs__phase-02-next-plan.html'>Phase 02 下一步开发计划草案</a>
+<a class='' data-doc-link data-path='docs/phase-03-api.md' href='../pages/docs__phase-03-api.html'>Phase 03 API 说明</a>
+<a class='' data-doc-link data-path='docs/phase-03-development-summary.md' href='../pages/docs__phase-03-development-summary.html'>Phase 03 开发总结：预约申请与审批业务闭环</a>
+<a class='' data-doc-link data-path='docs/phase-03-next-plan.md' href='../pages/docs__phase-03-next-plan.html'>Phase 03 下一阶段计划：预约申请与审批主流程</a>
+<a class='' data-doc-link data-path='docs/phase-04-development-summary.md' href='../pages/docs__phase-04-development-summary.html'>Phase 04 开发总结：冲突检测与低空规则</a>
+<a class='' data-doc-link data-path='docs/phase-04-next-plan.md' href='../pages/docs__phase-04-next-plan.html'>Phase 04 下一阶段计划：冲突检测与低空规则</a>
+<a class='' data-doc-link data-path='docs/phase-05-development-summary.md' href='../pages/docs__phase-05-development-summary.html'>Phase 05：低空资源可视化前端开发总结</a>
+<a class='' data-doc-link data-path='docs/phase-06-development-summary.md' href='../pages/docs__phase-06-development-summary.html'>Phase 06 开发总结：RabbitMQ、本地消息表与最终一致性</a>
+<a class='' data-doc-link data-path='docs/phase-07-development-summary.md' href='../pages/docs__phase-07-development-summary.html'>Phase 07 · 限流、降级、监控与压测</a>
+<a class='' data-doc-link data-path='docs/phase-08-delivery-summary.md' href='../pages/docs__phase-08-delivery-summary.html'>Phase 08 交付总结</a>
+<div class='nav-group'>前端文档</div>
+<a class='' data-doc-link data-path='low-altitude-web/README.md' href='../pages/low-altitude-web__README.html'>low-altitude-web</a>
+<div class='nav-group'>README</div>
+<a class='' data-doc-link data-path='README.md' href='../pages/README.html'>低空时空资源协同调度与冲突消解平台</a>
+</div>
+</aside>
+<main class='main'>
+  <div class='topbar'>
+    <span>docs/release-checklist.md</span>
+    <span>本地静态 HTML，可直接双击打开</span>
+  </div>
+  <article class='doc'>
+  <div class='meta'><span class='badge'>交付文档</span>源文件：docs/release-checklist.md</div>
+<h1>最终交付检查清单</h1>
+<h2>1. 代码检查</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>项目根目录结构完整。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Maven 能正常 reload。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>mvn clean package -DskipTests</code> 能通过。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>前端 <code>npm install</code>、<code>npm run dev</code> 能启动。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>.env.example</code> 存在。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>未提交 <code>target</code>、<code>node_modules</code>、日志文件等临时文件。</li>
+</ul>
+<h2>2. 数据库检查</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>local-root-init.sql</code> 可执行。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>四个数据库均存在。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>默认用户、角色、组织存在。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>默认 Grid、Level、TimeSlot、RouteTemplate 存在。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Outbox、通知、审计、幂等表存在。</li>
+</ul>
+<h2>3. 后端检查</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Nacos 可访问。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>RabbitMQ 可访问。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>5 个服务均启动。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Gateway health 为 UP。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Nacos 服务列表中能看到 5 个服务。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>获取 ADMIN token 正常。</li>
+</ul>
+<h2>4. 前端检查</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>http://127.0.0.1:5173</code> 可打开。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>能获取 token。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>资源网格页面能加载 Grid。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Pre-check 能返回风险/冲突结果。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>审批工作台能查看预约。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>冲突记录页面能加载数据。</li>
+</ul>
+<h2>5. 消息链路检查</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>审批通过生成 outbox_message。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>dispatch 后 outbox 状态变为 SENT。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>notify_record 生成通知。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>audit_log 生成审计。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>重复投递不会重复生成通知。</li>
+</ul>
+<h2>6. 治理监控检查</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>/actuator/prometheus</code> 可访问。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>RateLimiter 能触发限流。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>CircuitBreaker 能返回降级响应。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Retry 能在失败后成功。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Prometheus 可访问。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Grafana 可访问。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>JMeter 脚本存在。</li>
+</ul>
+<h2>7. 文档检查</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>README 完整。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>快速启动说明完整。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>数据库初始化说明完整。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>前端说明完整。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>监控说明完整。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>API 文档完整。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>演示脚本完整。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>截图清单完整。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>测试报告完整。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>排错文档完整。</li>
+</ul>
+<h2>8. 最终命令</h2>
+<pre><code class="language-bat">scripts\phase08-acceptance-check.bat
+</code></pre>
+<p>成功输出：</p>
+<pre><code class="language-text">[Phase08] OK
+</code></pre>
+
+  </article>
+  <div class='footer'>Generated from Markdown files in low-altitude-platform-phase08.</div>
+</main>
+</div>
+<script src='../assets/app.js'></script>
+</body>
+</html>

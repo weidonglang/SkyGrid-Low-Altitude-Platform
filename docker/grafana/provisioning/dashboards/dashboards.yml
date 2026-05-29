@@ -1,0 +1,11 @@
+apiVersion: 1
+
+providers:
+  - name: Low Altitude Dashboards
+    orgId: 1
+    folder: Low Altitude
+    type: file
+    disableDeletion: false
+    editable: true
+    options:
+      path: /var/lib/grafana/dashboards

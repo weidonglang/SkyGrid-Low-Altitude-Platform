@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang='zh-CN'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Phase 04 开发总结：冲突检测与低空规则 - 低空平台文档</title>
+<link rel='stylesheet' href='../assets/style.css'>
+</head>
+<body>
+<div class='layout'>
+<aside class='sidebar'>
+  <h1>低空时空资源协同调度平台文档</h1>
+  <div class='sub'>Phase 08 Markdown HTML 阅读版<br>打开左侧任意文档即可查看。</div>
+  <input id='searchBox' class='search' placeholder='搜索文档标题/路径...'>
+  <a style='color:#bfdbfe;display:block;margin-bottom:8px' href='../index.html'>文档首页</a>
+  <a style='color:#bfdbfe;display:block;margin-bottom:12px' href='../all-in-one.html'>单页合集</a>
+  <div class='nav'>
+<div class='nav-group'>交付文档</div>
+<a class='' data-doc-link data-path='docs/api-reference.md' href='../pages/docs__api-reference.html'>核心接口文档</a>
+<a class='' data-doc-link data-path='docs/database-initialization.md' href='../pages/docs__database-initialization.html'>数据库初始化说明</a>
+<a class='' data-doc-link data-path='docs/demo-script.md' href='../pages/docs__demo-script.html'>演示流程脚本</a>
+<a class='' data-doc-link data-path='docs/deployment-guide.md' href='../pages/docs__deployment-guide.html'>部署与运行说明</a>
+<a class='' data-doc-link data-path='docs/environment-ports.md' href='../pages/docs__environment-ports.html'>环境变量、端口与账号速查</a>
+<a class='' data-doc-link data-path='docs/frontend-running-guide.md' href='../pages/docs__frontend-running-guide.html'>前端运行与页面说明</a>
+<a class='' data-doc-link data-path='docs/monitoring-guide.md' href='../pages/docs__monitoring-guide.html'>监控、治理与压测说明</a>
+<a class='' data-doc-link data-path='docs/quick-start-windows.md' href='../pages/docs__quick-start-windows.html'>Windows 本地快速启动说明</a>
+<a class='' data-doc-link data-path='docs/release-checklist.md' href='../pages/docs__release-checklist.html'>最终交付检查清单</a>
+<a class='' data-doc-link data-path='docs/RUNNING_ON_WINDOWS_WITH_LOCAL_MYSQL.md' href='../pages/docs__RUNNING_ON_WINDOWS_WITH_LOCAL_MYSQL.html'>Windows + local MySQL(root / 123123) runbook</a>
+<a class='' data-doc-link data-path='docs/screenshot-checklist.md' href='../pages/docs__screenshot-checklist.html'>截图清单</a>
+<a class='' data-doc-link data-path='docs/testing-report.md' href='../pages/docs__testing-report.html'>测试与验收记录</a>
+<a class='' data-doc-link data-path='docs/troubleshooting.md' href='../pages/docs__troubleshooting.html'>常见问题排查</a>
+<a class='' data-doc-link data-path='docs/verification-commands.md' href='../pages/docs__verification-commands.html'>常用验证命令</a>
+<div class='nav-group'>阶段文档</div>
+<a class='' data-doc-link data-path='docs/phase-01-api.md' href='../pages/docs__phase-01-api.html'>Phase 01 接口说明</a>
+<a class='' data-doc-link data-path='docs/phase-01-architecture.md' href='../pages/docs__phase-01-architecture.html'>Phase 01 架构说明</a>
+<a class='' data-doc-link data-path='docs/phase-02-api.md' href='../pages/docs__phase-02-api.html'>Phase 02 API 速查</a>
+<a class='' data-doc-link data-path='docs/phase-02-development-summary.md' href='../pages/docs__phase-02-development-summary.html'>Phase 02 开发说明：用户组织与低空资源基础数据</a>
+<a class='' data-doc-link data-path='docs/phase-02-hotfix-loadbalancer.md' href='../pages/docs__phase-02-hotfix-loadbalancer.html'>Phase 02 Hotfix: Gateway lb:// 路由 503 修复</a>
+<a class='' data-doc-link data-path='docs/phase-02-next-plan.md' href='../pages/docs__phase-02-next-plan.html'>Phase 02 下一步开发计划草案</a>
+<a class='' data-doc-link data-path='docs/phase-03-api.md' href='../pages/docs__phase-03-api.html'>Phase 03 API 说明</a>
+<a class='' data-doc-link data-path='docs/phase-03-development-summary.md' href='../pages/docs__phase-03-development-summary.html'>Phase 03 开发总结：预约申请与审批业务闭环</a>
+<a class='' data-doc-link data-path='docs/phase-03-next-plan.md' href='../pages/docs__phase-03-next-plan.html'>Phase 03 下一阶段计划：预约申请与审批主流程</a>
+<a class=' active' data-doc-link data-path='docs/phase-04-development-summary.md' href='../pages/docs__phase-04-development-summary.html'>Phase 04 开发总结：冲突检测与低空规则</a>
+<a class='' data-doc-link data-path='docs/phase-04-next-plan.md' href='../pages/docs__phase-04-next-plan.html'>Phase 04 下一阶段计划：冲突检测与低空规则</a>
+<a class='' data-doc-link data-path='docs/phase-05-development-summary.md' href='../pages/docs__phase-05-development-summary.html'>Phase 05：低空资源可视化前端开发总结</a>
+<a class='' data-doc-link data-path='docs/phase-06-development-summary.md' href='../pages/docs__phase-06-development-summary.html'>Phase 06 开发总结：RabbitMQ、本地消息表与最终一致性</a>
+<a class='' data-doc-link data-path='docs/phase-07-development-summary.md' href='../pages/docs__phase-07-development-summary.html'>Phase 07 · 限流、降级、监控与压测</a>
+<a class='' data-doc-link data-path='docs/phase-08-delivery-summary.md' href='../pages/docs__phase-08-delivery-summary.html'>Phase 08 交付总结</a>
+<div class='nav-group'>前端文档</div>
+<a class='' data-doc-link data-path='low-altitude-web/README.md' href='../pages/low-altitude-web__README.html'>low-altitude-web</a>
+<div class='nav-group'>README</div>
+<a class='' data-doc-link data-path='README.md' href='../pages/README.html'>低空时空资源协同调度与冲突消解平台</a>
+</div>
+</aside>
+<main class='main'>
+  <div class='topbar'>
+    <span>docs/phase-04-development-summary.md</span>
+    <span>本地静态 HTML，可直接双击打开</span>
+  </div>
+  <article class='doc'>
+  <div class='meta'><span class='badge'>阶段文档</span>源文件：docs/phase-04-development-summary.md</div>
+<h1>Phase 04 开发总结：冲突检测与低空规则</h1>
+<h2>1. 阶段目标</h2>
+<p>Phase 04 在 Phase 03 的“预约申请—审批—资源占用—取消释放”闭环基础上，引入低空资源冲突检测规则，使系统从普通预约审批流程升级为具备低空时空资源冲突消解能力的平台。</p>
+<p>本阶段不做连续三维仿真，而继续沿用 Grid + Level + TimeSlot 的离散时空切片模型。</p>
+<h2>2. 已实现能力</h2>
+<h3>2.1 预检查接口</h3>
+<p>新增接口：</p>
+<pre><code class="language-http">POST /api/bookings/pre-check
+</code></pre>
+<p>输入与预约申请一致，系统会在不落库申请的情况下检查：</p>
+<ul>
+<li>是否经过禁飞网格；</li>
+<li>是否经过风险网格；</li>
+<li>是否与已有 OCCUPIED 资源形成同 Grid + 同 Level + 同 TimeSlot 的硬冲突；</li>
+<li>是否与已有占用形成相邻 Grid 风险；</li>
+<li>是否在同 Grid + 同 TimeSlot 下与相邻高度层形成安全间隔风险。</li>
+</ul>
+<h3>2.2 硬冲突检测</h3>
+<p>规则代码：<code>SAME_GRID_LEVEL_TIME</code></p>
+<p>当两个申请同时满足：</p>
+<ul>
+<li>booking_date 相同；</li>
+<li>grid_id 相同；</li>
+<li>level_id 相同；</li>
+<li>time_slot_id 相同；</li>
+<li>已有占用状态为 OCCUPIED；</li>
+</ul>
+<p>则判定为硬冲突，禁止提交或审批。</p>
+<h3>2.3 禁飞区拦截</h3>
+<p>规则代码：<code>NO_FLY_GRID</code></p>
+<p>当航线模板经过的 Grid 状态为 <code>NO_FLY</code> 时，系统直接产生阻断冲突，不允许提交或审批。</p>
+<h3>2.4 风险网格提示</h3>
+<p>规则代码：<code>RISK_GRID</code></p>
+<p>当航线模板经过的 Grid 状态为 <code>RISK</code> 时，系统不直接阻断申请，而是生成风险提示。审批员可以在人工复核后继续审批。</p>
+<h3>2.5 相邻网格风险</h3>
+<p>规则代码：<code>ADJACENT_GRID_OCCUPIED</code></p>
+<p>如果申请网格与已有占用网格在二维网格上相邻，并且日期、高度层、时间片相同，则生成风险提示。</p>
+<h3>2.6 高度层安全间隔风险</h3>
+<p>规则代码：<code>ALTITUDE_SAFETY_INTERVAL</code></p>
+<p>如果同一 Grid、同一日期、同一时间片下已有其他高度层占用，且高度区间距离小于 20m，则生成风险提示。</p>
+<h3>2.7 冲突记录表</h3>
+<p>新增表：</p>
+<pre><code class="language-sql">conflict_record
+</code></pre>
+<p>用于记录绑定到预约申请的冲突与风险结果。字段包括：</p>
+<ul>
+<li>booking_id / booking_no；</li>
+<li>conflict_type；</li>
+<li>conflict_level；</li>
+<li>rule_code；</li>
+<li>grid_id / grid_code / grid_name；</li>
+<li>level_id；</li>
+<li>time_slot_id；</li>
+<li>booking_date；</li>
+<li>related_booking_id / related_booking_no；</li>
+<li>message；</li>
+<li>status。</li>
+</ul>
+<h3>2.8 审批前二次校验</h3>
+<p>审批通过前会重新执行冲突检测，防止申请提交后到审批前资源状态发生变化。</p>
+<p>如果发现硬冲突或禁飞区，审批失败。</p>
+<p>如果只有风险冲突，则允许审批通过，但会记录风险提示。</p>
+<h2>3. 新增接口</h2>
+<pre><code class="language-http">POST /api/bookings/pre-check
+GET  /api/bookings/conflicts
+GET  /api/bookings/{id}/conflicts
+</code></pre>
+<h2>4. 验证脚本</h2>
+<p>新增：</p>
+<pre><code class="language-bat">scripts\phase04-smoke-test.bat
+</code></pre>
+<p>该脚本会验证：</p>
+<ol>
+<li>Gateway 健康状态；</li>
+<li>获取 ADMIN token；</li>
+<li>默认路线预检查产生风险提示但允许提交；</li>
+<li>提交并审批第一条申请；</li>
+<li>审批后生成 6 条资源占用；</li>
+<li>第二条相同申请预检查产生硬冲突；</li>
+<li>第二条相同申请提交失败；</li>
+<li>禁飞区路线预检查失败；</li>
+<li>取消第一条申请并释放资源；</li>
+<li>查询冲突记录。</li>
+</ol>
+<h2>5. 答辩展示价值</h2>
+<p>Phase 04 完成后，系统可以演示：</p>
+<ul>
+<li>正常预约如何生成资源占用；</li>
+<li>重复预约如何被硬冲突拦截；</li>
+<li>禁飞区如何直接拦截；</li>
+<li>风险区域如何进入人工复核；</li>
+<li>冲突结果如何绑定真实申请与真实资源。</li>
+</ul>
+<p>这使项目不再只是普通审批系统，而开始具有低空资源调度平台的领域特征。</p>
+
+  </article>
+  <div class='footer'>Generated from Markdown files in low-altitude-platform-phase08.</div>
+</main>
+</div>
+<script src='../assets/app.js'></script>
+</body>
+</html>

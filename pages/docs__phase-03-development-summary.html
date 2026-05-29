@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang='zh-CN'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Phase 03 开发总结：预约申请与审批业务闭环 - 低空平台文档</title>
+<link rel='stylesheet' href='../assets/style.css'>
+</head>
+<body>
+<div class='layout'>
+<aside class='sidebar'>
+  <h1>低空时空资源协同调度平台文档</h1>
+  <div class='sub'>Phase 08 Markdown HTML 阅读版<br>打开左侧任意文档即可查看。</div>
+  <input id='searchBox' class='search' placeholder='搜索文档标题/路径...'>
+  <a style='color:#bfdbfe;display:block;margin-bottom:8px' href='../index.html'>文档首页</a>
+  <a style='color:#bfdbfe;display:block;margin-bottom:12px' href='../all-in-one.html'>单页合集</a>
+  <div class='nav'>
+<div class='nav-group'>交付文档</div>
+<a class='' data-doc-link data-path='docs/api-reference.md' href='../pages/docs__api-reference.html'>核心接口文档</a>
+<a class='' data-doc-link data-path='docs/database-initialization.md' href='../pages/docs__database-initialization.html'>数据库初始化说明</a>
+<a class='' data-doc-link data-path='docs/demo-script.md' href='../pages/docs__demo-script.html'>演示流程脚本</a>
+<a class='' data-doc-link data-path='docs/deployment-guide.md' href='../pages/docs__deployment-guide.html'>部署与运行说明</a>
+<a class='' data-doc-link data-path='docs/environment-ports.md' href='../pages/docs__environment-ports.html'>环境变量、端口与账号速查</a>
+<a class='' data-doc-link data-path='docs/frontend-running-guide.md' href='../pages/docs__frontend-running-guide.html'>前端运行与页面说明</a>
+<a class='' data-doc-link data-path='docs/monitoring-guide.md' href='../pages/docs__monitoring-guide.html'>监控、治理与压测说明</a>
+<a class='' data-doc-link data-path='docs/quick-start-windows.md' href='../pages/docs__quick-start-windows.html'>Windows 本地快速启动说明</a>
+<a class='' data-doc-link data-path='docs/release-checklist.md' href='../pages/docs__release-checklist.html'>最终交付检查清单</a>
+<a class='' data-doc-link data-path='docs/RUNNING_ON_WINDOWS_WITH_LOCAL_MYSQL.md' href='../pages/docs__RUNNING_ON_WINDOWS_WITH_LOCAL_MYSQL.html'>Windows + local MySQL(root / 123123) runbook</a>
+<a class='' data-doc-link data-path='docs/screenshot-checklist.md' href='../pages/docs__screenshot-checklist.html'>截图清单</a>
+<a class='' data-doc-link data-path='docs/testing-report.md' href='../pages/docs__testing-report.html'>测试与验收记录</a>
+<a class='' data-doc-link data-path='docs/troubleshooting.md' href='../pages/docs__troubleshooting.html'>常见问题排查</a>
+<a class='' data-doc-link data-path='docs/verification-commands.md' href='../pages/docs__verification-commands.html'>常用验证命令</a>
+<div class='nav-group'>阶段文档</div>
+<a class='' data-doc-link data-path='docs/phase-01-api.md' href='../pages/docs__phase-01-api.html'>Phase 01 接口说明</a>
+<a class='' data-doc-link data-path='docs/phase-01-architecture.md' href='../pages/docs__phase-01-architecture.html'>Phase 01 架构说明</a>
+<a class='' data-doc-link data-path='docs/phase-02-api.md' href='../pages/docs__phase-02-api.html'>Phase 02 API 速查</a>
+<a class='' data-doc-link data-path='docs/phase-02-development-summary.md' href='../pages/docs__phase-02-development-summary.html'>Phase 02 开发说明：用户组织与低空资源基础数据</a>
+<a class='' data-doc-link data-path='docs/phase-02-hotfix-loadbalancer.md' href='../pages/docs__phase-02-hotfix-loadbalancer.html'>Phase 02 Hotfix: Gateway lb:// 路由 503 修复</a>
+<a class='' data-doc-link data-path='docs/phase-02-next-plan.md' href='../pages/docs__phase-02-next-plan.html'>Phase 02 下一步开发计划草案</a>
+<a class='' data-doc-link data-path='docs/phase-03-api.md' href='../pages/docs__phase-03-api.html'>Phase 03 API 说明</a>
+<a class=' active' data-doc-link data-path='docs/phase-03-development-summary.md' href='../pages/docs__phase-03-development-summary.html'>Phase 03 开发总结：预约申请与审批业务闭环</a>
+<a class='' data-doc-link data-path='docs/phase-03-next-plan.md' href='../pages/docs__phase-03-next-plan.html'>Phase 03 下一阶段计划：预约申请与审批主流程</a>
+<a class='' data-doc-link data-path='docs/phase-04-development-summary.md' href='../pages/docs__phase-04-development-summary.html'>Phase 04 开发总结：冲突检测与低空规则</a>
+<a class='' data-doc-link data-path='docs/phase-04-next-plan.md' href='../pages/docs__phase-04-next-plan.html'>Phase 04 下一阶段计划：冲突检测与低空规则</a>
+<a class='' data-doc-link data-path='docs/phase-05-development-summary.md' href='../pages/docs__phase-05-development-summary.html'>Phase 05：低空资源可视化前端开发总结</a>
+<a class='' data-doc-link data-path='docs/phase-06-development-summary.md' href='../pages/docs__phase-06-development-summary.html'>Phase 06 开发总结：RabbitMQ、本地消息表与最终一致性</a>
+<a class='' data-doc-link data-path='docs/phase-07-development-summary.md' href='../pages/docs__phase-07-development-summary.html'>Phase 07 · 限流、降级、监控与压测</a>
+<a class='' data-doc-link data-path='docs/phase-08-delivery-summary.md' href='../pages/docs__phase-08-delivery-summary.html'>Phase 08 交付总结</a>
+<div class='nav-group'>前端文档</div>
+<a class='' data-doc-link data-path='low-altitude-web/README.md' href='../pages/low-altitude-web__README.html'>low-altitude-web</a>
+<div class='nav-group'>README</div>
+<a class='' data-doc-link data-path='README.md' href='../pages/README.html'>低空时空资源协同调度与冲突消解平台</a>
+</div>
+</aside>
+<main class='main'>
+  <div class='topbar'>
+    <span>docs/phase-03-development-summary.md</span>
+    <span>本地静态 HTML，可直接双击打开</span>
+  </div>
+  <article class='doc'>
+  <div class='meta'><span class='badge'>阶段文档</span>源文件：docs/phase-03-development-summary.md</div>
+<h1>Phase 03 开发总结：预约申请与审批业务闭环</h1>
+<h2>1. 阶段目标</h2>
+<p>Phase 03 的目标是把系统从“基础数据管理平台”推进到“低空资源预约审批平台”。本阶段不做复杂冲突检测，先完成可运行、可验证的主流程：</p>
+<ol>
+<li>用户提交低空巡检预约申请；</li>
+<li>审批员审批通过或驳回；</li>
+<li>审批通过后根据航线模板生成资源占用记录；</li>
+<li>已通过的申请取消后释放占用；</li>
+<li>全流程保留状态流转记录。</li>
+</ol>
+<h2>2. 新增数据库表</h2>
+<p>数据库：<code>low_altitude_booking</code></p>
+<table>
+<thead>
+<tr>
+  <th>表名</th>
+  <th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>booking_record</code></td>
+  <td>预约申请主表，记录任务、申请人、航线、高度层、日期和状态</td>
+</tr>
+<tr>
+  <td><code>booking_time_slot</code></td>
+  <td>预约申请与时间片的多对多关系</td>
+</tr>
+<tr>
+  <td><code>booking_flow_record</code></td>
+  <td>申请提交、审批、驳回、取消等状态流转记录</td>
+</tr>
+<tr>
+  <td><code>resource_occupancy</code></td>
+  <td>审批通过后生成的 Grid + Level + TimeSlot 资源占用记录</td>
+</tr>
+</tbody>
+</table>
+<h2>3. 新增核心接口</h2>
+<table>
+<thead>
+<tr>
+  <th>方法</th>
+  <th>路径</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>POST</code></td>
+  <td><code>/api/bookings</code></td>
+  <td>提交预约申请</td>
+</tr>
+<tr>
+  <td><code>GET</code></td>
+  <td><code>/api/bookings</code></td>
+  <td>查询预约列表</td>
+</tr>
+<tr>
+  <td><code>GET</code></td>
+  <td><code>/api/bookings/{id}</code></td>
+  <td>查询预约详情</td>
+</tr>
+<tr>
+  <td><code>POST</code></td>
+  <td><code>/api/bookings/{id}/approve</code></td>
+  <td>审批通过</td>
+</tr>
+<tr>
+  <td><code>POST</code></td>
+  <td><code>/api/bookings/{id}/reject</code></td>
+  <td>驳回申请</td>
+</tr>
+<tr>
+  <td><code>POST</code></td>
+  <td><code>/api/bookings/{id}/cancel</code></td>
+  <td>取消申请并释放占用</td>
+</tr>
+<tr>
+  <td><code>GET</code></td>
+  <td><code>/api/bookings/{id}/flows</code></td>
+  <td>查询审批流转记录</td>
+</tr>
+<tr>
+  <td><code>GET</code></td>
+  <td><code>/api/bookings/{id}/occupancies</code></td>
+  <td>查询资源占用记录</td>
+</tr>
+</tbody>
+</table>
+<h2>4. 当前状态机</h2>
+<p>Phase 03 暂时只实现最小稳定状态机：</p>
+<pre><code class="language-text">PENDING  → APPROVED
+PENDING  → REJECTED
+PENDING  → CANCELLED
+APPROVED → CANCELLED
+</code></pre>
+<p>其中：</p>
+<ul>
+<li><code>PENDING</code>：申请已提交，等待审批；</li>
+<li><code>APPROVED</code>：审批通过，并已生成资源占用；</li>
+<li><code>REJECTED</code>：审批驳回，不生成资源占用；</li>
+<li><code>CANCELLED</code>：申请取消；若原状态为 <code>APPROVED</code>，则释放对应资源占用。</li>
+</ul>
+<h2>5. 审批通过时的资源占用生成规则</h2>
+<p>审批通过时，系统会调用 <code>resource-service</code> 查询航线模板详情。</p>
+<p>若航线模板包含 3 个 Grid，用户选择 2 个 TimeSlot，则系统生成：</p>
+<pre><code class="language-text">3 × 2 = 6 条 resource_occupancy
+</code></pre>
+<p>每条占用记录包含：</p>
+<pre><code class="language-text">booking_id
+booking_no
+route_template_id
+grid_id
+grid_code
+grid_name
+level_id
+time_slot_id
+booking_date
+status = OCCUPIED
+</code></pre>
+<h2>6. 本阶段边界</h2>
+<p>Phase 03 暂不拦截资源冲突。也就是说，即使同一 Grid + Level + TimeSlot 已被占用，当前版本仍允许审批通过。</p>
+<p>这个限制是有意保留的，因为 Phase 04 将专门实现：</p>
+<ul>
+<li>硬冲突检测；</li>
+<li>风险冲突检测；</li>
+<li>禁飞区 / 禁飞时段规则；</li>
+<li>相邻 Grid 风险；</li>
+<li>高度层安全间隔规则。</li>
+</ul>
+<h2>7. 验证方式</h2>
+<p>执行：</p>
+<pre><code class="language-bat">mysql -uroot -p123123 --default-character-set=utf8mb4 &lt; docker\mysql\local-root-init.sql
+</code></pre>
+<p>然后启动 5 个服务：</p>
+<pre><code class="language-text">user-org-service
+resource-service
+booking-service
+conflict-notify-service
+low-altitude-gateway
+</code></pre>
+<p>最后运行：</p>
+<pre><code class="language-bat">scripts\phase03-smoke-test.bat
+</code></pre>
+<p>脚本会自动完成：</p>
+<pre><code class="language-text">获取 token
+提交预约申请
+查询预约详情
+审批通过
+查询资源占用
+取消申请
+释放占用
+</code></pre>
+
+  </article>
+  <div class='footer'>Generated from Markdown files in low-altitude-platform-phase08.</div>
+</main>
+</div>
+<script src='../assets/app.js'></script>
+</body>
+</html>

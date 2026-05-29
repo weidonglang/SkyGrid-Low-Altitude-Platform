@@ -1,0 +1,131 @@
+{
+  "info": {
+    "name": "Low Altitude Platform Phase08 Core APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8080"
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth - dev token",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/auth/dev-token?username=demo&role=ADMIN"
+      }
+    },
+    {
+      "name": "Gateway health",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/actuator/health"
+      }
+    },
+    {
+      "name": "User org - organizations",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/user-org/organizations"
+      }
+    },
+    {
+      "name": "Resource - grids",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/resources/grids"
+      }
+    },
+    {
+      "name": "Resource - route template 1",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/resources/route-templates/1"
+      }
+    },
+    {
+      "name": "Booking - precheck demo",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/bookings/pre-check",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"taskName\": \"Postman precheck\", \"orgId\": 1, \"applicantUserId\": 1, \"applicantName\": \"demo\", \"routeTemplateId\": 1, \"levelId\": 1, \"bookingDate\": \"2026-06-30\", \"timeSlotIds\": [1], \"applyReason\": \"postman demo\"}"
+        }
+      }
+    },
+    {
+      "name": "Booking - governance summary",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/bookings/governance/summary"
+      }
+    },
+    {
+      "name": "Outbox summary",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/bookings/outbox/summary"
+      }
+    },
+    {
+      "name": "Notification summary",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/notifications/summary"
+      }
+    }
+  ]
+}

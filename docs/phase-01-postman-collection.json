@@ -1,0 +1,13 @@
+{
+  "info": {
+    "name": "Low Altitude Platform Phase 01",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {"name":"Dev Token","request":{"method":"POST","url":"http://localhost:8080/api/auth/dev-token?username=demo&role=APPLICANT"}},
+    {"name":"User Bootstrap","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"http://localhost:8080/api/users/bootstrap"}},
+    {"name":"Resource Bootstrap","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"http://localhost:8080/api/resources/bootstrap"}},
+    {"name":"Booking Bootstrap","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"http://localhost:8080/api/bookings/bootstrap"}},
+    {"name":"Conflict Bootstrap","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"http://localhost:8080/api/conflicts/bootstrap"}}
+  ]
+}

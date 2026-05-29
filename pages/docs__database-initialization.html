@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang='zh-CN'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>数据库初始化说明 - 低空平台文档</title>
+<link rel='stylesheet' href='../assets/style.css'>
+</head>
+<body>
+<div class='layout'>
+<aside class='sidebar'>
+  <h1>低空时空资源协同调度平台文档</h1>
+  <div class='sub'>Phase 08 Markdown HTML 阅读版<br>打开左侧任意文档即可查看。</div>
+  <input id='searchBox' class='search' placeholder='搜索文档标题/路径...'>
+  <a style='color:#bfdbfe;display:block;margin-bottom:8px' href='../index.html'>文档首页</a>
+  <a style='color:#bfdbfe;display:block;margin-bottom:12px' href='../all-in-one.html'>单页合集</a>
+  <div class='nav'>
+<div class='nav-group'>交付文档</div>
+<a class='' data-doc-link data-path='docs/api-reference.md' href='../pages/docs__api-reference.html'>核心接口文档</a>
+<a class=' active' data-doc-link data-path='docs/database-initialization.md' href='../pages/docs__database-initialization.html'>数据库初始化说明</a>
+<a class='' data-doc-link data-path='docs/demo-script.md' href='../pages/docs__demo-script.html'>演示流程脚本</a>
+<a class='' data-doc-link data-path='docs/deployment-guide.md' href='../pages/docs__deployment-guide.html'>部署与运行说明</a>
+<a class='' data-doc-link data-path='docs/environment-ports.md' href='../pages/docs__environment-ports.html'>环境变量、端口与账号速查</a>
+<a class='' data-doc-link data-path='docs/frontend-running-guide.md' href='../pages/docs__frontend-running-guide.html'>前端运行与页面说明</a>
+<a class='' data-doc-link data-path='docs/monitoring-guide.md' href='../pages/docs__monitoring-guide.html'>监控、治理与压测说明</a>
+<a class='' data-doc-link data-path='docs/quick-start-windows.md' href='../pages/docs__quick-start-windows.html'>Windows 本地快速启动说明</a>
+<a class='' data-doc-link data-path='docs/release-checklist.md' href='../pages/docs__release-checklist.html'>最终交付检查清单</a>
+<a class='' data-doc-link data-path='docs/RUNNING_ON_WINDOWS_WITH_LOCAL_MYSQL.md' href='../pages/docs__RUNNING_ON_WINDOWS_WITH_LOCAL_MYSQL.html'>Windows + local MySQL(root / 123123) runbook</a>
+<a class='' data-doc-link data-path='docs/screenshot-checklist.md' href='../pages/docs__screenshot-checklist.html'>截图清单</a>
+<a class='' data-doc-link data-path='docs/testing-report.md' href='../pages/docs__testing-report.html'>测试与验收记录</a>
+<a class='' data-doc-link data-path='docs/troubleshooting.md' href='../pages/docs__troubleshooting.html'>常见问题排查</a>
+<a class='' data-doc-link data-path='docs/verification-commands.md' href='../pages/docs__verification-commands.html'>常用验证命令</a>
+<div class='nav-group'>阶段文档</div>
+<a class='' data-doc-link data-path='docs/phase-01-api.md' href='../pages/docs__phase-01-api.html'>Phase 01 接口说明</a>
+<a class='' data-doc-link data-path='docs/phase-01-architecture.md' href='../pages/docs__phase-01-architecture.html'>Phase 01 架构说明</a>
+<a class='' data-doc-link data-path='docs/phase-02-api.md' href='../pages/docs__phase-02-api.html'>Phase 02 API 速查</a>
+<a class='' data-doc-link data-path='docs/phase-02-development-summary.md' href='../pages/docs__phase-02-development-summary.html'>Phase 02 开发说明：用户组织与低空资源基础数据</a>
+<a class='' data-doc-link data-path='docs/phase-02-hotfix-loadbalancer.md' href='../pages/docs__phase-02-hotfix-loadbalancer.html'>Phase 02 Hotfix: Gateway lb:// 路由 503 修复</a>
+<a class='' data-doc-link data-path='docs/phase-02-next-plan.md' href='../pages/docs__phase-02-next-plan.html'>Phase 02 下一步开发计划草案</a>
+<a class='' data-doc-link data-path='docs/phase-03-api.md' href='../pages/docs__phase-03-api.html'>Phase 03 API 说明</a>
+<a class='' data-doc-link data-path='docs/phase-03-development-summary.md' href='../pages/docs__phase-03-development-summary.html'>Phase 03 开发总结：预约申请与审批业务闭环</a>
+<a class='' data-doc-link data-path='docs/phase-03-next-plan.md' href='../pages/docs__phase-03-next-plan.html'>Phase 03 下一阶段计划：预约申请与审批主流程</a>
+<a class='' data-doc-link data-path='docs/phase-04-development-summary.md' href='../pages/docs__phase-04-development-summary.html'>Phase 04 开发总结：冲突检测与低空规则</a>
+<a class='' data-doc-link data-path='docs/phase-04-next-plan.md' href='../pages/docs__phase-04-next-plan.html'>Phase 04 下一阶段计划：冲突检测与低空规则</a>
+<a class='' data-doc-link data-path='docs/phase-05-development-summary.md' href='../pages/docs__phase-05-development-summary.html'>Phase 05：低空资源可视化前端开发总结</a>
+<a class='' data-doc-link data-path='docs/phase-06-development-summary.md' href='../pages/docs__phase-06-development-summary.html'>Phase 06 开发总结：RabbitMQ、本地消息表与最终一致性</a>
+<a class='' data-doc-link data-path='docs/phase-07-development-summary.md' href='../pages/docs__phase-07-development-summary.html'>Phase 07 · 限流、降级、监控与压测</a>
+<a class='' data-doc-link data-path='docs/phase-08-delivery-summary.md' href='../pages/docs__phase-08-delivery-summary.html'>Phase 08 交付总结</a>
+<div class='nav-group'>前端文档</div>
+<a class='' data-doc-link data-path='low-altitude-web/README.md' href='../pages/low-altitude-web__README.html'>low-altitude-web</a>
+<div class='nav-group'>README</div>
+<a class='' data-doc-link data-path='README.md' href='../pages/README.html'>低空时空资源协同调度与冲突消解平台</a>
+</div>
+</aside>
+<main class='main'>
+  <div class='topbar'>
+    <span>docs/database-initialization.md</span>
+    <span>本地静态 HTML，可直接双击打开</span>
+  </div>
+  <article class='doc'>
+  <div class='meta'><span class='badge'>交付文档</span>源文件：docs/database-initialization.md</div>
+<h1>数据库初始化说明</h1>
+<h2>1. 数据库列表</h2>
+<p>项目使用四个业务库：</p>
+<table>
+<thead>
+<tr>
+  <th>数据库</th>
+  <th>服务</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>low_altitude_user_org</code></td>
+  <td>user-org-service</td>
+  <td>用户、角色、组织、审批员配置</td>
+</tr>
+<tr>
+  <td><code>low_altitude_resource</code></td>
+  <td>resource-service</td>
+  <td>Grid、Level、TimeSlot、航线模板</td>
+</tr>
+<tr>
+  <td><code>low_altitude_booking</code></td>
+  <td>booking-service</td>
+  <td>预约、审批流、占用、冲突、Outbox</td>
+</tr>
+<tr>
+  <td><code>low_altitude_conflict_notify</code></td>
+  <td>conflict-notify-service</td>
+  <td>通知记录、审计日志、幂等消费记录</td>
+</tr>
+</tbody>
+</table>
+<h2>2. 初始化命令</h2>
+<pre><code class="language-bat">mysql -uroot -p123123 --default-character-set=utf8mb4 &lt; docker\mysql\local-root-init.sql
+</code></pre>
+<p>必须使用 <code>--default-character-set=utf8mb4</code>，否则 Windows CMD/PowerShell 导入中文数据时可能出现 <code>Incorrect string value</code>。</p>
+<h2>3. 核心表</h2>
+<h3>3.1 用户组织库</h3>
+<table>
+<thead>
+<tr>
+  <th>表</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>organization</code></td>
+  <td>组织信息</td>
+</tr>
+<tr>
+  <td><code>sys_role</code></td>
+  <td>角色信息</td>
+</tr>
+<tr>
+  <td><code>user_account</code></td>
+  <td>用户账户</td>
+</tr>
+<tr>
+  <td><code>user_role</code></td>
+  <td>用户角色关联</td>
+</tr>
+<tr>
+  <td><code>approver_config</code></td>
+  <td>审批员配置</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 低空资源库</h3>
+<table>
+<thead>
+<tr>
+  <th>表</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>grid</code></td>
+  <td>区域网格</td>
+</tr>
+<tr>
+  <td><code>altitude_level</code></td>
+  <td>高度层</td>
+</tr>
+<tr>
+  <td><code>time_slot</code></td>
+  <td>时间片</td>
+</tr>
+<tr>
+  <td><code>route_template</code></td>
+  <td>航线模板</td>
+</tr>
+<tr>
+  <td><code>route_template_grid</code></td>
+  <td>航线经过网格序列</td>
+</tr>
+</tbody>
+</table>
+<h3>3.3 预约审批库</h3>
+<table>
+<thead>
+<tr>
+  <th>表</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>booking_record</code></td>
+  <td>预约申请主表</td>
+</tr>
+<tr>
+  <td><code>booking_time_slot</code></td>
+  <td>预约申请时间片关联</td>
+</tr>
+<tr>
+  <td><code>booking_flow_record</code></td>
+  <td>审批流转记录</td>
+</tr>
+<tr>
+  <td><code>resource_occupancy</code></td>
+  <td>资源占用记录</td>
+</tr>
+<tr>
+  <td><code>conflict_record</code></td>
+  <td>冲突记录</td>
+</tr>
+<tr>
+  <td><code>outbox_message</code></td>
+  <td>本地消息表</td>
+</tr>
+</tbody>
+</table>
+<h3>3.4 通知审计库</h3>
+<table>
+<thead>
+<tr>
+  <th>表</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>notify_record</code></td>
+  <td>通知记录</td>
+</tr>
+<tr>
+  <td><code>audit_log</code></td>
+  <td>审计日志</td>
+</tr>
+<tr>
+  <td><code>idempotent_record</code></td>
+  <td>幂等消费记录</td>
+</tr>
+</tbody>
+</table>
+<h2>4. 默认数据</h2>
+<p>初始化后包含：</p>
+<pre><code class="language-text">默认组织：ORG_DEFAULT
+默认用户：admin
+默认角色：APPLICANT / APPROVER / ADMIN
+默认审批员：admin
+默认 Grid：G-01-01、G-01-02、G-02-01、G-02-02
+默认高度层：L1、L2、L3
+默认时间片：AM-01、AM-02、PM-01、PM-02
+默认航线：RT-DEMO-01、RT-NOFLY-01
+</code></pre>
+<p>其中：</p>
+<pre><code class="language-text">G-02-01 = RISK 风险网格
+G-02-02 = NO_FLY 禁飞网格
+RT-DEMO-01 = 经过 G-01-01 / G-01-02 / G-02-01
+RT-NOFLY-01 = 经过 G-02-02
+</code></pre>
+<h2>5. 常用检查命令</h2>
+<pre><code class="language-bat">mysql -uroot -p123123 -e &quot;SHOW DATABASES LIKE 'low_altitude_%';&quot;
+mysql -uroot -p123123 -e &quot;USE low_altitude_user_org; SELECT * FROM sys_role;&quot;
+mysql -uroot -p123123 -e &quot;USE low_altitude_resource; SELECT * FROM grid;&quot;
+mysql -uroot -p123123 -e &quot;USE low_altitude_resource; SELECT * FROM route_template;&quot;
+mysql -uroot -p123123 -e &quot;USE low_altitude_booking; SHOW TABLES;&quot;
+mysql -uroot -p123123 -e &quot;USE low_altitude_conflict_notify; SHOW TABLES;&quot;
+</code></pre>
+<h2>6. 数据重置</h2>
+<p>如需清空重新开始：</p>
+<pre><code class="language-bat">mysql -uroot -p123123 -e &quot;DROP DATABASE IF EXISTS low_altitude_user_org; DROP DATABASE IF EXISTS low_altitude_resource; DROP DATABASE IF EXISTS low_altitude_booking; DROP DATABASE IF EXISTS low_altitude_conflict_notify;&quot;
+mysql -uroot -p123123 --default-character-set=utf8mb4 &lt; docker\mysql\local-root-init.sql
+</code></pre>
+
+  </article>
+  <div class='footer'>Generated from Markdown files in low-altitude-platform-phase08.</div>
+</main>
+</div>
+<script src='../assets/app.js'></script>
+</body>
+</html>

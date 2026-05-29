@@ -1,0 +1,71 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: low-altitude-gateway
+  cloud:
+    nacos:
+      server-addr: ${NACOS_ADDR:127.0.0.1:8848}
+      discovery:
+        server-addr: ${NACOS_ADDR:127.0.0.1:8848}
+        service: ${spring.application.name}
+        ip: ${NACOS_REGISTER_IP:127.0.0.1}
+        register-enabled: ${NACOS_REGISTER_ENABLED:true}
+        fail-fast: ${NACOS_FAIL_FAST:true}
+    gateway:
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        cors-configurations:
+          '[/**]':
+            allowed-origin-patterns: "*"
+            allowed-methods: "*"
+            allowed-headers: "*"
+            allow-credentials: true
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: user-auth-route
+          uri: lb://user-org-service
+          predicates:
+            - Path=/api/auth/**
+        - id: user-org-route
+          uri: lb://user-org-service
+          predicates:
+            - Path=/api/user-org/**,/api/users/**,/api/organizations/**,/api/roles/**
+        - id: resource-route
+          uri: lb://resource-service
+          predicates:
+            - Path=/api/resources/**,/api/grids/**,/api/levels/**,/api/timeslots/**,/api/routes/**
+        - id: booking-route
+          uri: lb://booking-service
+          predicates:
+            - Path=/api/bookings/**,/api/approvals/**
+        - id: conflict-notify-route
+          uri: lb://conflict-notify-service
+          predicates:
+            - Path=/api/conflicts/**,/api/notifications/**,/api/audits/**
+
+app:
+  security:
+    jwt-secret: ${JWT_SECRET:low-altitude-dev-secret-change-me}
+    jwt-ttl-seconds: 86400
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,gateway
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+logging:
+  level:
+    org.springframework.cloud.gateway: INFO
+    com.lowaltitude: INFO

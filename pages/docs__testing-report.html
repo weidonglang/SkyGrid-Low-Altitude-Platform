@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang='zh-CN'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>测试与验收记录 - 低空平台文档</title>
+<link rel='stylesheet' href='../assets/style.css'>
+</head>
+<body>
+<div class='layout'>
+<aside class='sidebar'>
+  <h1>低空时空资源协同调度平台文档</h1>
+  <div class='sub'>Phase 08 Markdown HTML 阅读版<br>打开左侧任意文档即可查看。</div>
+  <input id='searchBox' class='search' placeholder='搜索文档标题/路径...'>
+  <a style='color:#bfdbfe;display:block;margin-bottom:8px' href='../index.html'>文档首页</a>
+  <a style='color:#bfdbfe;display:block;margin-bottom:12px' href='../all-in-one.html'>单页合集</a>
+  <div class='nav'>
+<div class='nav-group'>交付文档</div>
+<a class='' data-doc-link data-path='docs/api-reference.md' href='../pages/docs__api-reference.html'>核心接口文档</a>
+<a class='' data-doc-link data-path='docs/database-initialization.md' href='../pages/docs__database-initialization.html'>数据库初始化说明</a>
+<a class='' data-doc-link data-path='docs/demo-script.md' href='../pages/docs__demo-script.html'>演示流程脚本</a>
+<a class='' data-doc-link data-path='docs/deployment-guide.md' href='../pages/docs__deployment-guide.html'>部署与运行说明</a>
+<a class='' data-doc-link data-path='docs/environment-ports.md' href='../pages/docs__environment-ports.html'>环境变量、端口与账号速查</a>
+<a class='' data-doc-link data-path='docs/frontend-running-guide.md' href='../pages/docs__frontend-running-guide.html'>前端运行与页面说明</a>
+<a class='' data-doc-link data-path='docs/monitoring-guide.md' href='../pages/docs__monitoring-guide.html'>监控、治理与压测说明</a>
+<a class='' data-doc-link data-path='docs/quick-start-windows.md' href='../pages/docs__quick-start-windows.html'>Windows 本地快速启动说明</a>
+<a class='' data-doc-link data-path='docs/release-checklist.md' href='../pages/docs__release-checklist.html'>最终交付检查清单</a>
+<a class='' data-doc-link data-path='docs/RUNNING_ON_WINDOWS_WITH_LOCAL_MYSQL.md' href='../pages/docs__RUNNING_ON_WINDOWS_WITH_LOCAL_MYSQL.html'>Windows + local MySQL(root / 123123) runbook</a>
+<a class='' data-doc-link data-path='docs/screenshot-checklist.md' href='../pages/docs__screenshot-checklist.html'>截图清单</a>
+<a class=' active' data-doc-link data-path='docs/testing-report.md' href='../pages/docs__testing-report.html'>测试与验收记录</a>
+<a class='' data-doc-link data-path='docs/troubleshooting.md' href='../pages/docs__troubleshooting.html'>常见问题排查</a>
+<a class='' data-doc-link data-path='docs/verification-commands.md' href='../pages/docs__verification-commands.html'>常用验证命令</a>
+<div class='nav-group'>阶段文档</div>
+<a class='' data-doc-link data-path='docs/phase-01-api.md' href='../pages/docs__phase-01-api.html'>Phase 01 接口说明</a>
+<a class='' data-doc-link data-path='docs/phase-01-architecture.md' href='../pages/docs__phase-01-architecture.html'>Phase 01 架构说明</a>
+<a class='' data-doc-link data-path='docs/phase-02-api.md' href='../pages/docs__phase-02-api.html'>Phase 02 API 速查</a>
+<a class='' data-doc-link data-path='docs/phase-02-development-summary.md' href='../pages/docs__phase-02-development-summary.html'>Phase 02 开发说明：用户组织与低空资源基础数据</a>
+<a class='' data-doc-link data-path='docs/phase-02-hotfix-loadbalancer.md' href='../pages/docs__phase-02-hotfix-loadbalancer.html'>Phase 02 Hotfix: Gateway lb:// 路由 503 修复</a>
+<a class='' data-doc-link data-path='docs/phase-02-next-plan.md' href='../pages/docs__phase-02-next-plan.html'>Phase 02 下一步开发计划草案</a>
+<a class='' data-doc-link data-path='docs/phase-03-api.md' href='../pages/docs__phase-03-api.html'>Phase 03 API 说明</a>
+<a class='' data-doc-link data-path='docs/phase-03-development-summary.md' href='../pages/docs__phase-03-development-summary.html'>Phase 03 开发总结：预约申请与审批业务闭环</a>
+<a class='' data-doc-link data-path='docs/phase-03-next-plan.md' href='../pages/docs__phase-03-next-plan.html'>Phase 03 下一阶段计划：预约申请与审批主流程</a>
+<a class='' data-doc-link data-path='docs/phase-04-development-summary.md' href='../pages/docs__phase-04-development-summary.html'>Phase 04 开发总结：冲突检测与低空规则</a>
+<a class='' data-doc-link data-path='docs/phase-04-next-plan.md' href='../pages/docs__phase-04-next-plan.html'>Phase 04 下一阶段计划：冲突检测与低空规则</a>
+<a class='' data-doc-link data-path='docs/phase-05-development-summary.md' href='../pages/docs__phase-05-development-summary.html'>Phase 05：低空资源可视化前端开发总结</a>
+<a class='' data-doc-link data-path='docs/phase-06-development-summary.md' href='../pages/docs__phase-06-development-summary.html'>Phase 06 开发总结：RabbitMQ、本地消息表与最终一致性</a>
+<a class='' data-doc-link data-path='docs/phase-07-development-summary.md' href='../pages/docs__phase-07-development-summary.html'>Phase 07 · 限流、降级、监控与压测</a>
+<a class='' data-doc-link data-path='docs/phase-08-delivery-summary.md' href='../pages/docs__phase-08-delivery-summary.html'>Phase 08 交付总结</a>
+<div class='nav-group'>前端文档</div>
+<a class='' data-doc-link data-path='low-altitude-web/README.md' href='../pages/low-altitude-web__README.html'>low-altitude-web</a>
+<div class='nav-group'>README</div>
+<a class='' data-doc-link data-path='README.md' href='../pages/README.html'>低空时空资源协同调度与冲突消解平台</a>
+</div>
+</aside>
+<main class='main'>
+  <div class='topbar'>
+    <span>docs/testing-report.md</span>
+    <span>本地静态 HTML，可直接双击打开</span>
+  </div>
+  <article class='doc'>
+  <div class='meta'><span class='badge'>交付文档</span>源文件：docs/testing-report.md</div>
+<h1>测试与验收记录</h1>
+<h2>1. 测试范围</h2>
+<p>本测试记录覆盖：</p>
+<pre><code class="language-text">微服务启动与注册
+用户组织基础接口
+低空资源基础接口
+预约申请与审批闭环
+冲突检测与低空规则
+RabbitMQ / Outbox / 幂等通知 / 审计
+限流 / 降级 / 重试 / Prometheus 指标
+前端页面可用性
+</code></pre>
+<h2>2. 测试环境</h2>
+<table>
+<thead>
+<tr>
+  <th>项</th>
+  <th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>OS</td>
+  <td>Windows 10/11</td>
+</tr>
+<tr>
+  <td>JDK</td>
+  <td>17 或 21</td>
+</tr>
+<tr>
+  <td>MySQL</td>
+  <td>本机 MySQL，账号 root / 123123</td>
+</tr>
+<tr>
+  <td>中间件</td>
+  <td>Docker Desktop 启动 Nacos、RabbitMQ、Redis</td>
+</tr>
+<tr>
+  <td>后端</td>
+  <td>IDEA 启动 5 个 Spring Boot 服务</td>
+</tr>
+<tr>
+  <td>前端</td>
+  <td>Vite dev server</td>
+</tr>
+<tr>
+  <td>监控</td>
+  <td>Prometheus + Grafana</td>
+</tr>
+</tbody>
+</table>
+<h2>3. 阶段测试结果</h2>
+<table>
+<thead>
+<tr>
+  <th>阶段</th>
+  <th>脚本</th>
+  <th>预期结果</th>
+  <th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Phase 02</td>
+  <td><code>scripts\phase02-smoke-test.bat</code></td>
+  <td>用户组织和资源接口返回成功</td>
+  <td>通过</td>
+</tr>
+<tr>
+  <td>Phase 03</td>
+  <td><code>scripts\phase03-smoke-test.bat</code></td>
+  <td>申请、审批、占用、取消释放完成</td>
+  <td>通过</td>
+</tr>
+<tr>
+  <td>Phase 04</td>
+  <td><code>scripts\phase04-smoke-test.bat</code></td>
+  <td>RISK 提示、HARD 阻断、NO_FLY 阻断完成</td>
+  <td>通过</td>
+</tr>
+<tr>
+  <td>Phase 06</td>
+  <td><code>scripts\phase06-smoke-test.bat</code></td>
+  <td>Outbox、MQ、通知、审计、幂等完成</td>
+  <td>通过</td>
+</tr>
+<tr>
+  <td>Phase 07</td>
+  <td><code>scripts\phase07-smoke-test.bat</code></td>
+  <td>限流、降级、重试、指标暴露完成</td>
+  <td>通过</td>
+</tr>
+<tr>
+  <td>Phase 08</td>
+  <td><code>scripts\phase08-acceptance-check.bat</code></td>
+  <td>非破坏性交付检查完成</td>
+  <td>待本机执行</td>
+</tr>
+</tbody>
+</table>
+<h2>4. 关键验收点</h2>
+<h3>4.1 微服务注册发现</h3>
+<p>验收命令：</p>
+<pre><code class="language-bat">curl http://127.0.0.1:8080/actuator/health
+</code></pre>
+<p>预期：</p>
+<pre><code class="language-text">status = UP
+discoveryClient services 包含 5 个服务
+</code></pre>
+<h3>4.2 预约审批闭环</h3>
+<p>验证内容：</p>
+<pre><code class="language-text">提交申请 -&gt; PENDING
+审批通过 -&gt; APPROVED
+生成 resource_occupancy -&gt; OCCUPIED
+取消申请 -&gt; CANCELLED
+占用释放 -&gt; RELEASED
+</code></pre>
+<h3>4.3 冲突检测</h3>
+<p>验证内容：</p>
+<pre><code class="language-text">默认航线经过 RISK 网格：允许提交，记录风险
+重复申请相同资源：返回 409 冲突
+禁飞航线：NO_FLY_GRID 阻断
+</code></pre>
+<h3>4.4 消息最终一致性</h3>
+<p>验证内容：</p>
+<pre><code class="language-text">审批通过后生成 outbox_message
+手动 dispatch 后投递 RabbitMQ
+通知服务消费后生成 notify_record
+audit_log 记录 NOTIFY_SENT
+重复投递后记录 DUPLICATE_SKIPPED
+</code></pre>
+<h3>4.5 服务治理</h3>
+<p>验证内容：</p>
+<pre><code class="language-text">RateLimiter：突发请求被限流
+CircuitBreaker：失败请求返回降级响应
+Retry：模拟前两次失败，第三次成功
+Prometheus：业务指标暴露
+</code></pre>
+<h2>5. 已知非功能问题</h2>
+<table>
+<thead>
+<tr>
+  <th>问题</th>
+  <th>影响</th>
+  <th>处理建议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>PowerShell/CMD 中文乱码</td>
+  <td>影响终端观感，不影响数据库和接口逻辑</td>
+  <td>前端演示中文；脚本输出尽量英文</td>
+</tr>
+<tr>
+  <td>Redis 6379 可能被 Docker/WSL 占用</td>
+  <td>当前主流程不受影响</td>
+  <td>后续可改 Docker Redis 外部端口为 6380</td>
+</tr>
+<tr>
+  <td>相邻 Grid 风险可能出现多条提示</td>
+  <td>展示较多，不影响硬冲突判断</td>
+  <td>后续做去重优化</td>
+</tr>
+</tbody>
+</table>
+<h2>6. 最终测试建议</h2>
+<p>交付前执行：</p>
+<pre><code class="language-bat">scripts\phase08-acceptance-check.bat
+</code></pre>
+<p>需要完整复现主链路时执行：</p>
+<pre><code class="language-bat">scripts\phase03-smoke-test.bat
+scripts\phase04-smoke-test.bat
+scripts\phase06-smoke-test.bat
+scripts\phase07-smoke-test.bat
+</code></pre>
+
+  </article>
+  <div class='footer'>Generated from Markdown files in low-altitude-platform-phase08.</div>
+</main>
+</div>
+<script src='../assets/app.js'></script>
+</body>
+</html>
