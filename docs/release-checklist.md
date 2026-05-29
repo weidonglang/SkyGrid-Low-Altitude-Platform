@@ -1,79 +1,106 @@
-# 最终交付检查清单
+# 发布检查清单
 
-## 1. 代码检查
+发布到 GitHub 或交付演示前，建议按本清单完成检查。
 
-- [ ] 项目根目录结构完整。
+## 1. 代码与仓库
+
+- [ ] 根目录结构完整，核心模块均存在。
+- [ ] `README.md`、`LICENSE`、`CONTRIBUTING.md`、`SECURITY.md`、`CHANGELOG.md` 存在且可读。
+- [ ] `.gitignore` 已排除 `target/`、`node_modules/`、`dist/`、日志和本地环境文件。
+- [ ] 未提交 `.env`、真实密钥、生产密码或个人凭据。
 - [ ] Maven 能正常 reload。
-- [ ] `mvn clean package -DskipTests` 能通过。
-- [ ] 前端 `npm install`、`npm run dev` 能启动。
-- [ ] `.env.example` 存在。
-- [ ] 未提交 `target`、`node_modules`、日志文件等临时文件。
+- [ ] 前端依赖可通过 `npm ci` 或 `npm install` 安装。
 
-## 2. 数据库检查
+## 2. 后端构建
 
-- [ ] `local-root-init.sql` 可执行。
-- [ ] 四个数据库均存在。
-- [ ] 默认用户、角色、组织存在。
+- [ ] JDK 版本为 17 或更高。
+- [ ] 执行以下命令通过：
+
+```powershell
+mvn clean package
+```
+
+如仅做快速检查，可执行：
+
+```powershell
+mvn clean package -DskipTests
+```
+
+## 3. 前端构建
+
+- [ ] Node.js 版本为 18 或更高。
+- [ ] 执行以下命令通过：
+
+```powershell
+cd low-altitude-web
+npm ci
+npm run build
+```
+
+## 4. 基础设施
+
+- [ ] Nacos 可访问：`http://127.0.0.1:8848/nacos/`
+- [ ] RabbitMQ 可访问：`http://127.0.0.1:15672/`
+- [ ] Redis 可连接。
+- [ ] MySQL 已完成初始化。
+- [ ] Prometheus 可访问：`http://127.0.0.1:9090`
+- [ ] Grafana 可访问：`http://127.0.0.1:3000`
+
+## 5. 服务启动
+
+- [ ] `user-org-service` 启动在 `8101`。
+- [ ] `resource-service` 启动在 `8102`。
+- [ ] `booking-service` 启动在 `8103`。
+- [ ] `conflict-notify-service` 启动在 `8104`。
+- [ ] `low-altitude-gateway` 启动在 `8080`。
+- [ ] Gateway 健康检查为 `UP`：`http://127.0.0.1:8080/actuator/health`
+- [ ] Nacos 服务列表能看到所有后端服务。
+
+## 6. 数据库与业务链路
+
+- [ ] 默认用户、组织、角色和审批人配置存在。
 - [ ] 默认 Grid、Level、TimeSlot、RouteTemplate 存在。
-- [ ] Outbox、通知、审计、幂等表存在。
+- [ ] 可获取 ADMIN token。
+- [ ] 可创建预约申请。
+- [ ] 审批通过后能生成资源占用。
+- [ ] 审批驳回和取消释放流程正常。
+- [ ] 冲突检测、禁飞区和风险网格校验正常。
+- [ ] Outbox 消息能投递到 RabbitMQ。
+- [ ] 通知记录和审计日志能生成。
+- [ ] 重复消息不会重复生成通知。
 
-## 3. 后端检查
-
-- [ ] Nacos 可访问。
-- [ ] RabbitMQ 可访问。
-- [ ] 5 个服务均启动。
-- [ ] Gateway health 为 UP。
-- [ ] Nacos 服务列表中能看到 5 个服务。
-- [ ] 获取 ADMIN token 正常。
-
-## 4. 前端检查
+## 7. 前端验证
 
 - [ ] `http://127.0.0.1:5173` 可打开。
-- [ ] 能获取 token。
-- [ ] 资源网格页面能加载 Grid。
-- [ ] Pre-check 能返回风险/冲突结果。
-- [ ] 审批工作台能查看预约。
+- [ ] 控制台能获取 token。
+- [ ] 资源网格页面能加载数据。
+- [ ] 预约申请页面能提交请求。
+- [ ] 审批工作台能查看并处理预约。
 - [ ] 冲突记录页面能加载数据。
+- [ ] 航路态势展示页面无明显布局错位。
 
-## 5. 消息链路检查
+## 8. 脚本验证
 
-- [ ] 审批通过生成 outbox_message。
-- [ ] dispatch 后 outbox 状态变为 SENT。
-- [ ] notify_record 生成通知。
-- [ ] audit_log 生成审计。
-- [ ] 重复投递不会重复生成通知。
+建议按需运行：
 
-## 6. 治理监控检查
-
-- [ ] `/actuator/prometheus` 可访问。
-- [ ] RateLimiter 能触发限流。
-- [ ] CircuitBreaker 能返回降级响应。
-- [ ] Retry 能在失败后成功。
-- [ ] Prometheus 可访问。
-- [ ] Grafana 可访问。
-- [ ] JMeter 脚本存在。
-
-## 7. 文档检查
-
-- [ ] README 完整。
-- [ ] 快速启动说明完整。
-- [ ] 数据库初始化说明完整。
-- [ ] 前端说明完整。
-- [ ] 监控说明完整。
-- [ ] API 文档完整。
-- [ ] 演示脚本完整。
-- [ ] 截图清单完整。
-- [ ] 测试报告完整。
-- [ ] 排错文档完整。
-
-## 8. 最终命令
-
-```bat
+```powershell
+scripts\phase03-smoke-test.bat
+scripts\phase04-smoke-test.bat
+scripts\phase06-smoke-test.bat
+scripts\phase07-smoke-test.bat
 scripts\phase08-acceptance-check.bat
 ```
 
-成功输出：
+最终验收脚本成功时应输出：
 
 ```text
 [Phase08] OK
 ```
+
+## 9. GitHub 发布
+
+- [ ] 创建版本标签，例如 `v0.1.0`。
+- [ ] Release Notes 从 `CHANGELOG.md` 提取。
+- [ ] 上传必要截图或演示说明。
+- [ ] 确认 GitHub Actions CI 通过。
+- [ ] 确认 Issue 模板和 PR 模板展示正常。
