@@ -184,6 +184,8 @@ scripts\phase08-acceptance-check.bat
 | [docs/consistency-design.md](docs/consistency-design.md) | Outbox 与 RabbitMQ 最终一致性设计 |
 | [docs/failure-recovery-demo.md](docs/failure-recovery-demo.md) | 故障恢复与补偿演示 |
 | [docs/message-flow.md](docs/message-flow.md) | 审批到通知审计的消息流 |
+| [docs/release-checklist-v0.1.0.md](docs/release-checklist-v0.1.0.md) | v0.1.0 发布检查清单 |
+| [docs/release-validation.md](docs/release-validation.md) | v0.1.0 验证记录 |
 
 ## 发布说明
 
