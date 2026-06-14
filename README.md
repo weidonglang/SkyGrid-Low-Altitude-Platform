@@ -186,6 +186,7 @@ scripts\phase08-acceptance-check.bat
 | [docs/message-flow.md](docs/message-flow.md) | 审批到通知审计的消息流 |
 | [docs/release-checklist-v0.1.0.md](docs/release-checklist-v0.1.0.md) | v0.1.0 发布检查清单 |
 | [docs/release-validation.md](docs/release-validation.md) | v0.1.0 验证记录 |
+| [docs/frontend-low-altitude-console-plan.md](docs/frontend-low-altitude-console-plan.md) | 低空运行态势控制台升级规划 |
 
 ## 发布说明
 
