@@ -181,6 +181,9 @@ scripts\phase08-acceptance-check.bat
 | [docs/release-checklist.md](docs/release-checklist.md) | 发布前检查清单 |
 | [docs/project-boundary.md](docs/project-boundary.md) | 与 LowAlt-RouteLab 的项目边界 |
 | [docs/demo-script.md](docs/demo-script.md) | 演示流程脚本 |
+| [docs/consistency-design.md](docs/consistency-design.md) | Outbox 与 RabbitMQ 最终一致性设计 |
+| [docs/failure-recovery-demo.md](docs/failure-recovery-demo.md) | 故障恢复与补偿演示 |
+| [docs/message-flow.md](docs/message-flow.md) | 审批到通知审计的消息流 |
 
 ## 发布说明
 
