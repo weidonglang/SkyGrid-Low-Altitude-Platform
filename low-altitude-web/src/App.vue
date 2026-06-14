@@ -58,7 +58,158 @@
           <div class="kpi-card"><span>Notify</span><b>{{ notificationSummary.notifySent ?? 0 }}</b><small>已发送通知</small></div>
         </section>
 
-        <section v-if="activeView === 'dashboard'" class="view-stack">
+        <section v-if="activeView === 'dashboard'" class="view-stack cockpit-stack">
+          <div class="scenario-strip">
+            <button v-for="scenario in cockpitScenarios" :key="scenario.key" :class="{ active: selectedScenario === scenario.key }" @click="applyScenario(scenario.key)">
+              <b>{{ scenario.label }}</b>
+              <span>{{ scenario.desc }}</span>
+            </button>
+          </div>
+
+          <div class="cockpit-layout">
+            <aside class="cockpit-left glass-panel">
+              <p class="eyebrow">Situation Metrics</p>
+              <h3>今日低空态势</h3>
+              <div class="cockpit-metric-list">
+                <div><span>今日任务</span><b>{{ cockpitStats.total }}</b><small>巡检/应急/仓储</small></div>
+                <div><span>执行中</span><b>{{ cockpitStats.running }}</b><small>航线流光显示</small></div>
+                <div><span>待审批</span><b>{{ cockpitStats.pending }}</b><small>审批工作台处理</small></div>
+                <div><span>硬冲突</span><b class="danger">{{ cockpitStats.hardConflicts }}</b><small>不可直接通过</small></div>
+                <div><span>风险提示</span><b class="warning">{{ cockpitStats.riskConflicts }}</b><small>建议人工复核</small></div>
+                <div><span>MQ 待补偿</span><b>{{ cockpitStats.outboxPending }}</b><small>最终一致性链路</small></div>
+              </div>
+
+              <div class="demo-script-panel">
+                <p class="eyebrow">Defense Storyline</p>
+                <h3>答辩演示步骤</h3>
+                <button
+                  v-for="step in cockpitDemoSteps"
+                  :key="step.key"
+                  :class="{ active: selectedDemoStep === step.key }"
+                  type="button"
+                  @click="selectedDemoStep = step.key"
+                >
+                  <b>{{ step.title }}</b>
+                  <span>{{ step.desc }}</span>
+                </button>
+              </div>
+            </aside>
+
+            <AirspaceRouteMap
+              title="低空园区时空资源态势"
+              :grids="cockpitGrids"
+              :route-detail="selectedCockpitMission"
+              :mission-routes="cockpitMissionRoutes"
+              :scene-features="cockpitScene"
+              :active-route-id="selectedMissionId"
+              :conflicts="cockpitConflicts"
+              :occupancies="cockpitOccupancies"
+              :selected-grid-id="selectedGrid?.id"
+              :selected-level-id="selectedLevelId"
+              :selected-time-slot-id="selectedTimeSlotId"
+              :selected-date="selectedDate"
+              :level-label="currentLevelText"
+              :time-label="currentTimeText"
+              @select-grid="selectedGrid = $event"
+              @select-conflict="selectCockpitConflict"
+              @select-route="selectCockpitMission"
+            />
+
+            <aside class="cockpit-right detail-drawer">
+              <p class="eyebrow">Mission Detail</p>
+              <h3>{{ selectedCockpitMission?.code || '请选择任务航线' }}</h3>
+              <p class="muted">{{ selectedCockpitMission?.name || '点击中间地图的航线、无人机或冲突点，查看任务占用、冲突对象和消解方案。' }}</p>
+
+              <div v-if="selectedCockpitMission" class="mission-detail-grid">
+                <div><span>任务类型</span><b>{{ selectedCockpitMission.type }}</b></div>
+                <div><span>申请组织</span><b>{{ selectedCockpitMission.org }}</b></div>
+                <div><span>高度层</span><b>{{ selectedCockpitMission.levelName }}</b></div>
+                <div><span>计划时段</span><b>{{ selectedCockpitMission.timeText }}</b></div>
+                <div><span>当前状态</span><b :class="selectedCockpitMission.status">{{ missionStatusText(selectedCockpitMission.status) }}</b></div>
+                <div><span>占用网格</span><b>{{ selectedCockpitMission.grids.length }}</b></div>
+              </div>
+
+              <div class="route-steps" v-if="selectedCockpitMission?.grids?.length">
+                <div v-for="g in selectedCockpitMission.grids" :key="`${selectedCockpitMission.id}-${g.gridId}`" class="route-step">
+                  <span>{{ g.sequenceNo }}</span>
+                  <div><b>{{ g.gridCode }}</b><small>{{ g.gridName }} / {{ g.gridStatus }}</small></div>
+                </div>
+              </div>
+
+              <div class="resolution-panel" v-if="selectedCockpitConflict">
+                <p class="eyebrow">Conflict Resolution</p>
+                <h3>{{ selectedCockpitConflict.conflictType === 'HARD' ? '检测到硬冲突' : '风险复核建议' }}</h3>
+                <p>{{ selectedCockpitConflict.message }}</p>
+                <div class="resolution-item"><b>方案 A</b><span>延后至 {{ selectedCockpitConflict.nextSlot || '下一个空闲 TimeSlot' }}</span></div>
+                <div class="resolution-item"><b>方案 B</b><span>切换至 {{ selectedCockpitConflict.altLevel || '相邻安全高度层' }}</span></div>
+                <div class="resolution-item"><b>方案 C</b><span>绕行 {{ selectedCockpitConflict.reroute || '风险网格外侧航线' }}</span></div>
+                <div class="action-row">
+                  <button class="primary-action inline" type="button" @click="adoptResolution('delay')">采用方案 A</button>
+                  <button class="secondary-action inline" type="button" @click="adoptResolution('level')">采用方案 B</button>
+                  <button class="secondary-action inline" type="button" @click="adoptResolution('review')">提交人工复核</button>
+                </div>
+              </div>
+
+              <div v-if="selectedMissionResolution" class="resolution-applied">
+                <b>{{ selectedMissionResolution.label }}</b>
+                <span>{{ selectedMissionResolution.detail }}</span>
+              </div>
+
+              <div class="ai-advisor-panel">
+                <div class="ai-advisor-head">
+                  <p class="eyebrow">Qwen3 Quick Think</p>
+                  <span :class="['ai-status-pill', aiAdvisorSource]">{{ aiAdvisorSource === 'ollama' ? 'Ollama 已接入' : '前端规则预览' }}</span>
+                </div>
+                <h3>千问3 8B 快速研判</h3>
+                <div class="ai-config-line">
+                  <span>模型：{{ ollamaModel }}</span>
+                  <span>地址：127.0.0.1:11434</span>
+                </div>
+                <p class="muted">围绕当前任务、Grid/Level/TimeSlot、冲突规则和一致性链路生成答辩可讲的调度建议。</p>
+                <div class="action-row">
+                  <button class="primary-action inline" type="button" :disabled="aiAdvisorLoading" @click="runAiQuickThink">
+                    {{ aiAdvisorLoading ? '研判中...' : '本地研判' }}
+                  </button>
+                  <button class="secondary-action inline" type="button" @click="aiAdvisorResult = fallbackAiAdvice()">规则预览</button>
+                </div>
+                <pre class="ai-output">{{ aiAdvisorResult || cockpitAiPreview }}</pre>
+              </div>
+            </aside>
+          </div>
+
+          <div class="cockpit-bottom">
+            <div class="level-panel glass-panel">
+              <p class="eyebrow">Altitude Layer</p>
+              <h3>高度层切换</h3>
+              <button v-for="level in cockpitLevels" :key="level.id" :class="{ active: String(selectedLevelId) === String(level.id) }" @click="selectedLevelId = level.id">
+                <span>{{ level.levelCode || `L${level.id}` }}</span>
+                <b>{{ level.levelName || level.name }}</b>
+                <small>{{ levelTaskCount(level.id) }} 个任务</small>
+              </button>
+            </div>
+
+            <TimeSlotTimeline
+              v-model="selectedTimeSlotId"
+              :slots="cockpitTimeSlots"
+              :occupancies="cockpitAllOccupancies"
+              :conflicts="cockpitAllConflicts"
+            />
+
+            <div class="consistency-mini glass-panel">
+              <p class="eyebrow">Event Chain</p>
+              <h3>一致性链路</h3>
+              <p class="muted">{{ cockpitScenarioBrief }}</p>
+              <div class="mini-chain">
+                <div v-for="node in cockpitChain" :key="node.key" :class="['mini-chain-node', node.state]">
+                  <b>{{ node.label }}</b>
+                  <span>{{ node.value }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section v-if="activeView === 'dashboard-old'" class="view-stack">
           <div class="layout-2-1">
             <AirspaceRouteMap
               title="今日低空航线态势"
@@ -489,8 +640,8 @@ const tomorrow = () => {
   return d.toISOString().slice(0, 10)
 }
 const selectedDate = ref(tomorrow())
-const selectedLevelId = ref(1)
-const selectedTimeSlotId = ref(1)
+const selectedLevelId = ref(2)
+const selectedTimeSlotId = ref(21)
 
 const form = reactive({
   taskName: '园区光伏板低空巡检',
@@ -515,6 +666,278 @@ const routeDraft = reactive({
 })
 const routeEditorResult = ref(null)
 const selectedOutbox = ref(null)
+const selectedScenario = ref('normal')
+const selectedMissionId = ref('M-001')
+const selectedCockpitConflict = ref(null)
+const selectedDemoStep = ref('situation')
+const appliedResolutions = ref({})
+const ollamaModel = ref('qwen3:8b')
+const aiAdvisorLoading = ref(false)
+const aiAdvisorResult = ref('')
+const aiAdvisorSource = ref('fallback')
+
+const cockpitScenarios = [
+  { key: 'normal', label: '正常巡检态势', desc: '多航线执行，风险低' },
+  { key: 'conflict', label: '冲突高发态势', desc: '硬冲突与风险集中' },
+  { key: 'notify-fault', label: '通知服务故障', desc: 'Outbox 待补偿升高' },
+  { key: 'rate-limit', label: '限流压测态势', desc: '热点 Grid 高频提交' },
+  { key: 'emergency', label: '应急任务插入', desc: '临时任务抢占空域' }
+]
+
+const cockpitDemoSteps = [
+  { key: 'situation', title: '1. 态势加载', desc: '展示 Grid、Level、TimeSlot 与今日任务密度' },
+  { key: 'conflict', title: '2. 冲突检测', desc: '点击红色冲突点说明硬冲突规则' },
+  { key: 'resolution', title: '3. 消解方案', desc: '演示改期、改高度层、人工复核' },
+  { key: 'ai', title: '4. AI 研判', desc: '调用本地 Qwen3 8B 生成快速调度口径' },
+  { key: 'event-chain', title: '5. 一致性链路', desc: '说明 Outbox、RabbitMQ、通知、审计闭环' }
+]
+
+const cockpitScene = {
+  roads: [
+    { path: [{ row: 1, col: 1 }, { row: 2, col: 3 }, { row: 4, col: 5 }, { row: 7, col: 8 }, { row: 10, col: 10 }], dy: 58 },
+    { path: [{ row: 9, col: 1 }, { row: 7, col: 3 }, { row: 5, col: 5 }, { row: 3, col: 7 }, { row: 2, col: 10 }], dy: 48 },
+    { path: [{ row: 5, col: 1 }, { row: 5, col: 4 }, { row: 5, col: 7 }, { row: 5, col: 10 }], dy: 52 }
+  ],
+  buildings: [
+    { row: 2, col: 3, label: '仓储区', dx: -18, dy: 54 },
+    { row: 4, col: 5, label: '调度中心', dx: 20, dy: 58, width: 116, height: 62 },
+    { row: 7, col: 4, label: '能源站', dx: -30, dy: 52 },
+    { row: 8, col: 8, label: '光伏阵列', dx: 14, dy: 56, width: 120 },
+    { row: 3, col: 8, label: '高压走廊', dx: 20, dy: 50, width: 100 }
+  ],
+  points: [
+    { row: 1, col: 1, label: '起降点 A', type: 'launch' },
+    { row: 10, col: 10, label: '起降点 B', type: 'launch' },
+    { row: 3, col: 7, label: '电塔 P3', type: 'tower' },
+    { row: 6, col: 2, label: '巡检点 S2', type: 'poi' },
+    { row: 8, col: 6, label: '巡检点 S6', type: 'poi' },
+    { row: 4, col: 9, label: '仓顶 W1', type: 'poi' }
+  ]
+}
+
+const demoLevelFallback = [
+  { id: 1, levelCode: 'L1', levelName: '0-60m 地表巡检层' },
+  { id: 2, levelCode: 'L2', levelName: '60-120m 常规巡检层' },
+  { id: 3, levelCode: 'L3', levelName: '120-180m 通行避让层' },
+  { id: 4, levelCode: 'L4', levelName: '180-240m 应急备用层' }
+]
+
+const demoGrids = Array.from({ length: 100 }, (_, index) => {
+  const row = Math.floor(index / 10) + 1
+  const col = (index % 10) + 1
+  const noFly = ['02-02', '04-04', '06-07', '09-03'].includes(`${String(row).padStart(2, '0')}-${String(col).padStart(2, '0')}`)
+  const risk = ['01-08', '03-04', '05-05', '07-02', '08-08', '10-06'].includes(`${String(row).padStart(2, '0')}-${String(col).padStart(2, '0')}`)
+  return {
+    id: row * 100 + col,
+    gridCode: `G-${String(row).padStart(2, '0')}-${String(col).padStart(2, '0')}`,
+    gridName: `园区 ${row} 行 ${col} 列`,
+    rowIndex: row,
+    colIndex: col,
+    status: noFly ? 'NO_FLY' : risk ? 'RISK' : 'ACTIVE'
+  }
+})
+
+const demoTimeSlots = Array.from({ length: 48 }, (_, index) => {
+  const h = Math.floor(index / 2)
+  const m = index % 2 === 0 ? '00' : '30'
+  const nextH = Math.floor((index + 1) / 2)
+  const nextM = (index + 1) % 2 === 0 ? '00' : '30'
+  return {
+    id: index + 1,
+    slotCode: `TS-${String(index + 1).padStart(2, '0')}`,
+    slotName: `${String(h).padStart(2, '0')}:${m}-${String(nextH).padStart(2, '0')}:${nextM}`
+  }
+})
+
+const missionSeeds = [
+  ['M-001', '电力巡检 T-001', '电力巡检', '电力运维一组', 2, 21, 'running', [[1, 1], [2, 3], [3, 5], [4, 6], [5, 7]]],
+  ['M-002', '光伏阵列 T-002', '光伏巡检', '新能源运维组', 2, 21, 'conflict', [[6, 4], [7, 5], [8, 6], [8, 8], [9, 9]]],
+  ['M-003', '仓储屋顶 T-003', '仓储巡检', '园区安防组', 1, 28, 'pending', [[5, 1], [5, 3], [4, 5], [3, 7]]],
+  ['M-004', '河道边界 T-004', '边界巡检', '水务巡检组', 3, 30, 'risk', [[9, 1], [8, 2], [7, 3], [6, 4], [5, 5]]],
+  ['M-005', '应急插入 T-005', '应急处置', '应急指挥组', 2, 21, 'conflict', [[2, 5], [3, 5], [4, 6], [5, 7], [6, 8]]],
+  ['M-006', '南区巡逻 T-006', '安防巡逻', '园区安防组', 1, 36, 'running', [[10, 2], [9, 3], [8, 4], [7, 5], [6, 6]]],
+  ['M-007', '高压走廊 T-007', '电力巡检', '电力运维二组', 3, 24, 'risk', [[1, 8], [2, 8], [3, 8], [4, 9]]],
+  ['M-008', '仓库补盲 T-008', '仓储巡检', '仓储管理组', 1, 18, 'completed', [[3, 2], [3, 3], [3, 4], [4, 5]]]
+]
+
+const extraMissionTypes = ['管线巡检', '光伏巡检', '安防巡逻', '屋顶巡检', '道路巡检']
+
+const cockpitMissionBase = [
+  ...missionSeeds.map(toMission),
+  ...Array.from({ length: 22 }, (_, index) => {
+    const id = index + 9
+    const startRow = (index % 8) + 1
+    const startCol = ((index * 3) % 8) + 1
+    const levelId = (index % 4) + 1
+    const slotId = 12 + (index * 2) % 30
+    const status = index % 7 === 0 ? 'risk' : index % 5 === 0 ? 'pending' : index % 4 === 0 ? 'completed' : 'running'
+    const path = Array.from({ length: 4 }, (_, step) => [
+      Math.min(10, startRow + step),
+      Math.min(10, startCol + Math.floor(step / 2) + (index % 2))
+    ])
+    return toMission([
+      `M-${String(id).padStart(3, '0')}`,
+      `${extraMissionTypes[index % extraMissionTypes.length]} T-${String(id).padStart(3, '0')}`,
+      extraMissionTypes[index % extraMissionTypes.length],
+      ['电力运维组', '园区安防组', '新能源运维组', '水务巡检组'][index % 4],
+      levelId,
+      slotId,
+      status,
+      path
+    ])
+  })
+]
+
+function toMission(seed) {
+  const [id, name, type, org, levelId, timeSlotId, status, path] = seed
+  const level = demoLevelFallback.find(l => Number(l.id) === Number(levelId)) || demoLevelFallback[0]
+  const slot = demoTimeSlots.find(s => Number(s.id) === Number(timeSlotId)) || demoTimeSlots[0]
+  const mission = {
+    id,
+    code: id.replace('M-', 'T-20260603-'),
+    name,
+    type,
+    org,
+    levelId,
+    levelName: `${level.levelCode} ${level.levelName}`,
+    timeSlotId,
+    timeText: slot.slotName,
+    status,
+    meta: `${level.levelCode} / ${slot.slotName}`,
+    showDrone: status !== 'completed',
+    grids: path.map(([row, col], index) => {
+      const grid = demoGrids.find(g => Number(g.rowIndex) === Number(row) && Number(g.colIndex) === Number(col))
+      return {
+        gridId: grid.id,
+        gridCode: grid.gridCode,
+        gridName: grid.gridName,
+        gridStatus: grid.status,
+        rowIndex: row,
+        colIndex: col,
+        sequenceNo: index + 1,
+        plannedDurationMinutes: 5
+      }
+    })
+  }
+  mission.routeCode = mission.code
+  mission.routeName = mission.name
+  return mission
+}
+
+function scenarioMissions(key) {
+  return cockpitMissionBase.map(mission => {
+    const copy = { ...mission, grids: mission.grids.map(g => ({ ...g })) }
+    if (key === 'conflict' && ['M-003', 'M-004', 'M-009', 'M-014'].includes(copy.id)) copy.status = 'conflict'
+    if (key === 'notify-fault' && copy.id === 'M-001') copy.status = 'running'
+    if (key === 'rate-limit' && copy.id.startsWith('M-01')) copy.status = 'pending'
+    if (key === 'emergency' && ['M-005', 'M-011', 'M-017'].includes(copy.id)) copy.status = 'conflict'
+    const resolution = appliedResolutions.value[copy.id]
+    if (resolution) {
+      copy.status = resolution.status || copy.status
+      copy.timeText = resolution.timeText || copy.timeText
+      if (resolution.levelId) {
+        const level = demoLevelFallback.find(l => Number(l.id) === Number(resolution.levelId)) || demoLevelFallback[0]
+        copy.levelId = level.id
+        copy.levelName = `${level.levelCode} ${level.levelName}`
+      }
+      copy.meta = `${copy.levelName?.split(' ')[0] || `L${copy.levelId}`} / ${copy.timeText}`
+    }
+    return copy
+  })
+}
+
+function scenarioConflicts(key, missions) {
+  const base = [
+    makeConflict(missions.find(m => m.id === 'M-002'), 'HARD', 'SAME_GRID_LEVEL_TIME', '与 T-20260603-001 在 G-05-07 / L2 / 10:00-10:30 发生硬冲突', '10:45-11:15', 'L3', 'G-06-08 -> G-07-09'),
+    makeConflict(missions.find(m => m.id === 'M-004'), 'RISK', 'ADJACENT_GRID_OCCUPIED', '相邻 Grid 同高度层存在运行任务，建议人工复核', '15:30-16:00', 'L4', 'G-07-04 -> G-08-05'),
+    makeConflict(missions.find(m => m.id === 'M-007'), 'RISK', 'RISK_GRID', '航线经过高压走廊风险区，建议降低速度并复核天气', '12:30-13:00', 'L4', 'G-04-08 -> G-04-09')
+  ].filter(Boolean)
+  if (key === 'conflict') {
+    base.push(
+      makeConflict(missions.find(m => m.id === 'M-003'), 'HARD', 'NO_FLY_GRID', '候选航线穿越禁飞网格 G-04-04，系统阻断审批', '14:30-15:00', 'L2', 'G-03-04 -> G-03-05'),
+      makeConflict(missions.find(m => m.id === 'M-014'), 'HARD', 'SAME_GRID_LEVEL_TIME', '热点仓储区出现同层同时段重复占用', '16:00-16:30', 'L3', 'G-05-06 -> G-06-06')
+    )
+  }
+  if (key === 'emergency') {
+    base.push(makeConflict(missions.find(m => m.id === 'M-005'), 'HARD', 'EMERGENCY_INSERT', '应急任务插入占用原计划航线，需要调整普通巡检任务', '立即执行应急窗口', 'L4', 'G-02-06 -> G-03-06'))
+  }
+  return base.filter(Boolean).filter(conflict => !appliedResolutions.value[conflict.bookingId]?.resolved)
+}
+
+function makeConflict(mission, type, ruleCode, message, nextSlot, altLevel, reroute) {
+  if (!mission?.grids?.length) return null
+  const point = mission.grids[Math.min(2, mission.grids.length - 1)]
+  return {
+    id: `${mission.id}-${ruleCode}`,
+    bookingId: mission.id,
+    bookingNo: mission.code,
+    conflictType: type,
+    conflictLevel: type === 'HARD' ? 'BLOCKING' : 'RISK',
+    ruleCode,
+    gridId: point.gridId,
+    gridCode: point.gridCode,
+    gridName: point.gridName,
+    levelId: mission.levelId,
+    timeSlotId: mission.timeSlotId,
+    bookingDate: selectedDate.value,
+    message,
+    status: 'ACTIVE',
+    blocking: type === 'HARD',
+    nextSlot,
+    altLevel,
+    reroute
+  }
+}
+
+function missionOccupancies(missions, includeAllSlots = false) {
+  return missions.flatMap(mission => mission.grids.map(grid => ({
+    bookingId: mission.id,
+    bookingNo: mission.code,
+    gridId: grid.gridId,
+    gridCode: grid.gridCode,
+    gridName: grid.gridName,
+    levelId: mission.levelId,
+    timeSlotId: includeAllSlots ? mission.timeSlotId : mission.timeSlotId,
+    bookingDate: selectedDate.value,
+    status: mission.status === 'running' ? 'RUNNING' : mission.status === 'conflict' ? 'CONFLICT' : mission.status === 'completed' ? 'RELEASED' : 'OCCUPIED'
+  })))
+}
+
+const cockpitLevels = computed(() => levels.value.length >= 4 ? levels.value : demoLevelFallback)
+const cockpitTimeSlots = computed(() => timeSlots.value.length >= 24 ? timeSlots.value : demoTimeSlots)
+const cockpitGrids = computed(() => grids.value.length >= 80 ? grids.value : demoGrids)
+const cockpitMissionRoutes = computed(() => scenarioMissions(selectedScenario.value))
+const cockpitAllConflicts = computed(() => scenarioConflicts(selectedScenario.value, cockpitMissionRoutes.value))
+const cockpitAllOccupancies = computed(() => missionOccupancies(cockpitMissionRoutes.value, true))
+const cockpitConflicts = computed(() => cockpitAllConflicts.value.filter(c => String(c.levelId) === String(selectedLevelId.value) && String(c.timeSlotId) === String(selectedTimeSlotId.value)))
+const cockpitOccupancies = computed(() => cockpitAllOccupancies.value.filter(o => String(o.levelId) === String(selectedLevelId.value) && String(o.timeSlotId) === String(selectedTimeSlotId.value)))
+const selectedCockpitMission = computed(() => cockpitMissionRoutes.value.find(m => String(m.id) === String(selectedMissionId.value)) || cockpitMissionRoutes.value[0])
+const cockpitStats = computed(() => {
+  const missions = cockpitMissionRoutes.value
+  return {
+    total: missions.length,
+    running: missions.filter(m => m.status === 'running').length,
+    pending: missions.filter(m => m.status === 'pending').length,
+    hardConflicts: cockpitAllConflicts.value.filter(c => c.conflictType === 'HARD').length,
+    riskConflicts: cockpitAllConflicts.value.filter(c => c.conflictType !== 'HARD').length,
+    outboxPending: selectedScenario.value === 'notify-fault' ? 7 : Number(outboxSummary.value.pending ?? 2)
+  }
+})
+const selectedMissionResolution = computed(() => appliedResolutions.value[selectedCockpitMission.value?.id])
+const cockpitScenarioBrief = computed(() => {
+  const scenario = cockpitScenarios.find(s => s.key === selectedScenario.value)
+  const step = cockpitDemoSteps.find(s => s.key === selectedDemoStep.value)
+  return `${scenario?.label || '当前态势'}：${scenario?.desc || ''}。当前演示节点：${step?.title || '态势加载'}，${step?.desc || '展示低空资源占用闭环'}。`
+})
+const cockpitAiPreview = computed(() => fallbackAiAdvice())
+const cockpitChain = computed(() => [
+  { key: 'booking', label: '审批服务', value: `${cockpitStats.value.pending} pending`, state: 'ok' },
+  { key: 'occupancy', label: '资源占用', value: `${cockpitOccupancies.value.length} slices`, state: cockpitConflicts.value.length ? 'warn' : 'ok' },
+  { key: 'outbox', label: 'Outbox', value: `${cockpitStats.value.outboxPending} pending`, state: cockpitStats.value.outboxPending > 3 ? 'warn' : 'ok' },
+  { key: 'mq', label: 'RabbitMQ', value: selectedScenario.value === 'notify-fault' ? 'retrying' : 'normal', state: selectedScenario.value === 'notify-fault' ? 'warn' : 'ok' },
+  { key: 'notify', label: '通知服务', value: selectedScenario.value === 'notify-fault' ? 'degraded' : 'sent', state: selectedScenario.value === 'notify-fault' ? 'bad' : 'ok' },
+  { key: 'audit', label: '审计日志', value: `${notificationSummary.value.auditTotal || 18} logs`, state: 'ok' }
+])
 
 const navItems = [
   { key: 'dashboard', label: '态势总览', icon: '◎' },
@@ -756,6 +1179,140 @@ async function requeueOutboxMessage(message) {
 }
 
 function syncTimeSlotFromForm() { if (form.timeSlotIds?.length) selectedTimeSlotId.value = form.timeSlotIds[0] }
+function applyScenario(key) {
+  selectedScenario.value = key
+  selectedCockpitConflict.value = null
+  aiAdvisorResult.value = ''
+  selectedDemoStep.value = key === 'notify-fault' ? 'event-chain' : key === 'conflict' ? 'conflict' : key === 'emergency' ? 'resolution' : 'situation'
+  const preferred = key === 'emergency' ? 'M-005' : key === 'conflict' ? 'M-002' : 'M-001'
+  selectedMissionId.value = preferred
+  const mission = cockpitMissionRoutes.value.find(m => m.id === preferred) || cockpitMissionRoutes.value[0]
+  if (mission) {
+    selectedLevelId.value = mission.levelId
+    selectedTimeSlotId.value = mission.timeSlotId
+  }
+}
+function selectCockpitMission(route) {
+  if (!route?.id) return
+  selectedMissionId.value = route.id
+  selectedCockpitConflict.value = cockpitAllConflicts.value.find(c => String(c.bookingId) === String(route.id)) || null
+  aiAdvisorResult.value = ''
+  selectedLevelId.value = route.levelId || selectedLevelId.value
+  selectedTimeSlotId.value = route.timeSlotId || selectedTimeSlotId.value
+}
+function selectCockpitConflict(conflict) {
+  selectedConflict.value = conflict
+  selectedCockpitConflict.value = conflict
+  if (conflict?.bookingId) selectedMissionId.value = conflict.bookingId
+  selectedDemoStep.value = 'conflict'
+  aiAdvisorResult.value = ''
+}
+function levelTaskCount(levelId) {
+  return cockpitMissionRoutes.value.filter(m => String(m.levelId) === String(levelId)).length
+}
+function missionStatusText(status) {
+  return {
+    running: '执行中',
+    risk: '风险复核',
+    conflict: '冲突待处理',
+    completed: '已完成',
+    pending: '待审批'
+  }[status] || status || '未知'
+}
+function levelIdFromLabel(label) {
+  const match = String(label || '').match(/L(\d+)/i)
+  return match ? Number(match[1]) : null
+}
+function adoptResolution(type) {
+  const conflict = selectedCockpitConflict.value
+  const mission = selectedCockpitMission.value
+  if (!conflict || !mission) return
+  const nextLevelId = type === 'level' ? levelIdFromLabel(conflict.altLevel) : null
+  const patch = {
+    resolved: type !== 'review',
+    status: type === 'review' ? 'pending' : type === 'delay' ? 'pending' : 'risk',
+    label: type === 'delay' ? '已采用方案 A：改期避让' : type === 'level' ? '已采用方案 B：高度层避让' : '已提交人工复核',
+    detail: type === 'delay'
+      ? `任务调整到 ${conflict.nextSlot || '下一个空闲 TimeSlot'}，等待审批服务重新占用资源。`
+      : type === 'level'
+        ? `任务切换到 ${conflict.altLevel || '相邻安全高度层'}，保留原时间片重新做冲突检测。`
+        : `任务保持阻断状态，交由审批员结合天气、组织优先级和现场风险复核。`,
+    timeText: type === 'delay' ? (conflict.nextSlot || mission.timeText) : mission.timeText,
+    levelId: nextLevelId || mission.levelId
+  }
+  appliedResolutions.value = { ...appliedResolutions.value, [mission.id]: patch }
+  if (type !== 'review') selectedCockpitConflict.value = null
+  selectedDemoStep.value = type === 'review' ? 'resolution' : 'event-chain'
+  aiAdvisorResult.value = fallbackAiAdvice()
+  ElMessage.success(patch.label)
+}
+function buildAiPrompt() {
+  const mission = selectedCockpitMission.value
+  const conflict = selectedCockpitConflict.value
+  return [
+    '你是低空时空资源调度平台的快速研判助手，模型定位为本地 Ollama 千问3 8B 快速思考。',
+    '请用简洁中文输出：风险判断、推荐方案、审批口径、消息一致性关注点。',
+    `场景：${cockpitScenarioBrief.value}`,
+    `任务：${mission?.code || '未选择'}，${mission?.name || ''}，${mission?.levelName || ''}，${mission?.timeText || ''}`,
+    `占用网格：${mission?.grids?.map(g => g.gridCode).join(', ') || '无'}`,
+    `冲突：${conflict ? `${conflict.conflictType}/${conflict.ruleCode}/${conflict.message}` : '当前无显式冲突'}`,
+    `统计：任务 ${cockpitStats.value.total}，执行中 ${cockpitStats.value.running}，待审批 ${cockpitStats.value.pending}，硬冲突 ${cockpitStats.value.hardConflicts}，风险 ${cockpitStats.value.riskConflicts}，Outbox 待补偿 ${cockpitStats.value.outboxPending}`
+  ].join('\n')
+}
+function fallbackAiAdvice() {
+  const mission = selectedCockpitMission.value
+  const conflict = selectedCockpitConflict.value
+  if (!mission) return '请选择任务后生成研判。'
+  const riskLine = conflict
+    ? `${conflict.conflictType === 'HARD' ? '硬冲突阻断' : '风险复核'}：${conflict.message}`
+    : `${mission.status === 'running' ? '当前任务可继续执行' : '当前任务需结合审批状态复核'}。`
+  const actionLine = conflict
+    ? `建议优先采用 ${conflict.conflictType === 'HARD' ? '改期或切换高度层' : '人工复核后放行'}；备选绕行路径为 ${conflict.reroute || '风险网格外侧航线'}。`
+    : `建议保持 ${mission.levelName} / ${mission.timeText}，持续观察相邻 Grid 占用和通知链路。`
+  return [
+    `风险判断：${riskLine}`,
+    `推荐方案：${actionLine}`,
+    `审批口径：说明任务 ${mission.code} 已映射为 Grid + Level + TimeSlot 占用单元，审批通过前必须完成冲突检测。`,
+    `一致性关注：Outbox 当前 ${cockpitStats.value.outboxPending} 条待补偿，审批后需确认 RabbitMQ、通知服务、审计日志最终一致。`
+  ].join('\n')
+}
+async function runAiQuickThink() {
+  aiAdvisorLoading.value = true
+  aiAdvisorSource.value = 'fallback'
+  const prompt = buildAiPrompt()
+  try {
+    const data = await http.post('/api/bookings/ai/quick-think', {
+      model: ollamaModel.value,
+      prompt,
+      think: false
+    })
+    aiAdvisorResult.value = data.response || fallbackAiAdvice()
+    aiAdvisorSource.value = data.response ? 'ollama' : 'fallback'
+  } catch (backendError) {
+    try {
+      const response = await fetch('http://127.0.0.1:11434/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: ollamaModel.value,
+          prompt,
+          stream: false,
+          think: false,
+          options: { temperature: 0.2, num_predict: 360 }
+        })
+      })
+      if (!response.ok) throw new Error(`Ollama HTTP ${response.status}`)
+      const data = await response.json()
+      aiAdvisorResult.value = data.response || fallbackAiAdvice()
+      aiAdvisorSource.value = data.response ? 'ollama' : 'fallback'
+    } catch (browserError) {
+      aiAdvisorResult.value = `${fallbackAiAdvice()}\n\n本地 Ollama 未返回，已使用前端规则研判。请确认 booking-service 已启动，ollama serve 已启动，且模型名为 ${ollamaModel.value}。`
+      aiAdvisorSource.value = 'fallback'
+    }
+  } finally {
+    aiAdvisorLoading.value = false
+  }
+}
 
 const routeTemplatesWithDetails = computed(() => routeTemplates.value.map(r => routeDetails.value.get(Number(r.id)) || r))
 const compareRouteDetails = computed(() => compareRouteIds.value.map(id => routeDetails.value.get(Number(id))).filter(Boolean))
@@ -785,8 +1342,8 @@ const occupiedCount = computed(() => visibleOccupancies.value.filter(o => o.stat
 const visualConflicts = computed(() => preCheckResult.value?.conflicts?.length ? preCheckResult.value.conflicts : conflicts.value)
 const selectedBookingConflicts = computed(() => conflicts.value.filter(c => Number(c.bookingId) === Number(selectedBooking.value?.id)))
 const selectedBookingRoute = computed(() => selectedBooking.value?.routeTemplateId ? routeDetails.value.get(Number(selectedBooking.value.routeTemplateId)) : null)
-const currentLevelText = computed(() => levelLabel(levels.value.find(l => String(l.id) === String(selectedLevelId.value)) || { id: selectedLevelId.value }))
-const currentTimeText = computed(() => timeSlotLabel(timeSlots.value.find(t => String(t.id) === String(selectedTimeSlotId.value)) || { id: selectedTimeSlotId.value }))
+const currentLevelText = computed(() => levelLabel(cockpitLevels.value.find(l => String(l.id) === String(selectedLevelId.value)) || { id: selectedLevelId.value }))
+const currentTimeText = computed(() => timeSlotLabel(cockpitTimeSlots.value.find(t => String(t.id) === String(selectedTimeSlotId.value)) || { id: selectedTimeSlotId.value }))
 const formLevelText = computed(() => levelLabel(levels.value.find(l => String(l.id) === String(form.levelId)) || { id: form.levelId }))
 const formTimeText = computed(() => (form.timeSlotIds || []).map(id => timeSlotLabel(timeSlots.value.find(t => String(t.id) === String(id)) || { id })).join(', '))
 const recentEvents = computed(() => [

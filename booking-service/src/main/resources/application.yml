@@ -52,6 +52,9 @@ logging:
     com.lowaltitude: INFO
 
 low-altitude:
+  ai:
+    ollama-url: ${OLLAMA_GENERATE_URL:http://127.0.0.1:11434/api/generate}
+    default-model: ${OLLAMA_MODEL:qwen3:8b}
   outbox:
     publisher-enabled: ${OUTBOX_PUBLISHER_ENABLED:true}
     batch-size: ${OUTBOX_BATCH_SIZE:20}
