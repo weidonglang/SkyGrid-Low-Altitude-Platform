@@ -16,5 +16,4 @@ if %EXITCODE%==0 (
   echo.
   echo [Phase08] FAILED with exit code %EXITCODE%.
 )
-pause
 exit /b %EXITCODE%

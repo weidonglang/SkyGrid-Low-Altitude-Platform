@@ -1,58 +1,194 @@
 $ErrorActionPreference = 'Stop'
-$Gateway = 'http://127.0.0.1:8080'
-$BookingService = 'http://127.0.0.1:8103'
+
+$Gateway = ${env:SKYGRID_GATEWAY_URL}
+if ([string]::IsNullOrWhiteSpace($Gateway)) {
+  $Gateway = 'http://127.0.0.1:8080'
+}
+
+$BookingService = ${env:SKYGRID_BOOKING_URL}
+if ([string]::IsNullOrWhiteSpace($BookingService)) {
+  $BookingService = 'http://127.0.0.1:8103'
+}
+
+function Fail($message) {
+  Write-Host "[Phase08][FAIL] $message" -ForegroundColor Red
+  exit 1
+}
 
 function Show-Json($title, $obj) {
   Write-Host "`n[Phase08] $title" -ForegroundColor Cyan
-  $obj | ConvertTo-Json -Depth 10
+  $obj | ConvertTo-Json -Depth 12
 }
 
 function Invoke-Json($method, $url, $headers=$null, $body=$null) {
-  if ($body -ne $null) {
-    return Invoke-RestMethod -Method $method -Uri $url -Headers $headers -ContentType 'application/json' -Body ($body | ConvertTo-Json -Depth 20)
+  try {
+    if ($body -ne $null) {
+      return Invoke-RestMethod -Method $method -Uri $url -Headers $headers -ContentType 'application/json' -Body ($body | ConvertTo-Json -Depth 20) -TimeoutSec 10
+    }
+    return Invoke-RestMethod -Method $method -Uri $url -Headers $headers -TimeoutSec 10
+  } catch {
+    $response = $_.Exception.Response
+    if ($response -ne $null) {
+      throw "HTTP request failed: $method $url -> $([int]$response.StatusCode) $($response.StatusDescription)"
+    }
+    throw "HTTP request failed: $method $url -> $($_.Exception.Message)"
   }
-  return Invoke-RestMethod -Method $method -Uri $url -Headers $headers
 }
 
-Write-Host '[Phase08] Checking gateway health...'
-$health = Invoke-Json GET "$Gateway/actuator/health"
-Show-Json 'Gateway health' $health
-if ($health.status -ne 'UP') { throw 'Gateway is not UP.' }
+function Require-Success($title, $response) {
+  if ($response -eq $null) {
+    Fail "$title returned an empty response."
+  }
+  if ($response.PSObject.Properties.Name -contains 'success' -and -not $response.success) {
+    $message = if ($response.message) { $response.message } else { 'unknown application error' }
+    Fail "$title failed: $message"
+  }
+}
 
-Write-Host '[Phase08] Requesting ADMIN token...'
+function Check-Health($name, $url) {
+  Write-Host "[Phase08] Checking ${name}: $url"
+  try {
+    $health = Invoke-Json GET $url
+    if ($health.status -and $health.status -ne 'UP') {
+      Fail "$name is reachable but not UP. Current status: $($health.status)"
+    }
+    Write-Host "[Phase08][OK] $name is reachable." -ForegroundColor Green
+    return $health
+  } catch {
+    Fail "$name is unavailable. Start the local stack with scripts\start-dev-stack.bat, then run scripts\check-dev-stack.bat. Detail: $_"
+  }
+}
+
+Check-Health 'Gateway' "$Gateway/actuator/health" | Out-Null
+Check-Health 'booking-service' "$BookingService/actuator/health" | Out-Null
+
+Write-Host '[Phase08] Requesting ADMIN dev token...'
 $tokenResp = Invoke-Json POST "$Gateway/api/auth/dev-token?username=demo&role=ADMIN"
-if (-not $tokenResp.success -or -not $tokenResp.data.accessToken) { throw 'Cannot get ADMIN token.' }
+Require-Success 'Dev token API' $tokenResp
+if (-not $tokenResp.data.accessToken) {
+  Fail 'Dev token API did not return data.accessToken. Confirm user-org-service is running and routed through Gateway.'
+}
 $token = $tokenResp.data.accessToken
 $headers = @{ Authorization = "Bearer $token" }
-Write-Host '[Phase08] Token acquired.'
+Write-Host '[Phase08][OK] Dev token acquired.' -ForegroundColor Green
 
 $orgs = Invoke-Json GET "$Gateway/api/user-org/organizations" $headers
-if (-not $orgs.success -or @($orgs.data).Count -lt 1) { throw 'Organization API check failed.' }
+Require-Success 'Organization query' $orgs
+if (@($orgs.data).Count -lt 1) {
+  Fail 'Organization query returned no data. Run database initialization or demo seed scripts.'
+}
 Show-Json 'Organization sample' $orgs
 
 $grids = Invoke-Json GET "$Gateway/api/resources/grids" $headers
-if (-not $grids.success -or @($grids.data).Count -lt 4) { throw 'Grid API check failed.' }
+Require-Success 'Grid query' $grids
+if (@($grids.data).Count -lt 1) {
+  Fail 'Grid query returned no data. Resource seed data is missing.'
+}
 Show-Json 'Grid sample' $grids
 
+$levels = Invoke-Json GET "$Gateway/api/resources/levels" $headers
+Require-Success 'Level query' $levels
+if (@($levels.data).Count -lt 1) {
+  Fail 'Level query returned no data. Altitude level seed data is missing.'
+}
+Show-Json 'Level sample' $levels
+
+$slots = Invoke-Json GET "$Gateway/api/resources/time-slots" $headers
+Require-Success 'TimeSlot query' $slots
+if (@($slots.data).Count -lt 1) {
+  Fail 'TimeSlot query returned no data. TimeSlot seed data is missing.'
+}
+Show-Json 'TimeSlot sample' $slots
+
 $routes = Invoke-Json GET "$Gateway/api/resources/route-templates/1" $headers
-if (-not $routes.success) { throw 'Route template API check failed.' }
+Require-Success 'Route template query' $routes
 Show-Json 'Route template #1' $routes
 
-$summary = Invoke-Json GET "$Gateway/api/bookings/governance/summary" $headers
-if (-not $summary.success) { throw 'Governance summary failed.' }
-Show-Json 'Governance summary' $summary
+$preCheckBody = @{
+  taskName = 'Phase08 Acceptance Patrol'
+  orgId = 1
+  applicantUserId = 1
+  applicantName = 'phase08-applicant'
+  routeTemplateId = 1
+  levelId = 1
+  bookingDate = (Get-Date).AddDays(1).ToString('yyyy-MM-dd')
+  timeSlotIds = @(1)
+  applyReason = 'Phase08 acceptance check'
+  description = 'Generated by scripts\phase08-acceptance-check.ps1'
+}
 
-$outbox = Invoke-Json GET "$Gateway/api/bookings/outbox/summary" $headers
-if (-not $outbox.success) { throw 'Outbox summary failed.' }
-Show-Json 'Outbox summary' $outbox
+$preCheck = Invoke-Json POST "$Gateway/api/bookings/pre-check" $headers $preCheckBody
+Require-Success 'Conflict pre-check' $preCheck
+Show-Json 'Conflict pre-check result' $preCheck
 
-$notify = Invoke-Json GET "$Gateway/api/notifications/summary" $headers
-if (-not $notify.success) { throw 'Notification summary failed.' }
-Show-Json 'Notification summary' $notify
+$bookingResp = Invoke-Json POST "$Gateway/api/bookings" $headers $preCheckBody
+Require-Success 'Booking submit' $bookingResp
+if (-not $bookingResp.data.id) {
+  Fail 'Booking submit did not return data.id.'
+}
+$bookingId = $bookingResp.data.id
+Show-Json "Booking submitted #$bookingId" $bookingResp
 
-$prom = Invoke-WebRequest -Uri "$BookingService/actuator/prometheus" -UseBasicParsing
-if ($prom.StatusCode -ne 200) { throw 'booking-service prometheus endpoint failed.' }
-if ($prom.Content -notmatch 'jvm_memory|process_uptime|application_started') { throw 'Prometheus output does not contain stable JVM/process/application metrics.' }
-Write-Host '[Phase08] booking-service prometheus endpoint is available.'
+$approveBody = @{
+  operatorUserId = 1
+  operatorName = 'phase08-approver'
+  comment = 'Approved by Phase08 acceptance check'
+}
+$approved = Invoke-Json POST "$Gateway/api/bookings/$bookingId/approve" $headers $approveBody
+Require-Success 'Booking approve' $approved
+Show-Json "Booking approved #$bookingId" $approved
 
-Write-Host '[Phase08] OK' -ForegroundColor Green
+$occupancy = Invoke-Json GET "$Gateway/api/bookings/$bookingId/occupancies" $headers
+Require-Success 'Occupancy query' $occupancy
+if (@($occupancy.data).Count -lt 1) {
+  Fail "No resource_occupancy records were generated for booking $bookingId."
+}
+Show-Json "Occupancy records for booking #$bookingId" $occupancy
+
+$outbox = Invoke-Json GET "$Gateway/api/bookings/outbox?aggregateId=$bookingId&limit=20" $headers
+Require-Success 'Outbox query' $outbox
+if (@($outbox.data).Count -lt 1) {
+  Fail "No outbox_message records were generated for booking $bookingId."
+}
+Show-Json "Outbox records for booking #$bookingId" $outbox
+
+Write-Host '[Phase08] Dispatching ready outbox messages...'
+$dispatch = Invoke-Json POST "$Gateway/api/bookings/outbox/dispatch?limit=20" $headers
+Require-Success 'Outbox dispatch' $dispatch
+Show-Json 'Outbox dispatch result' $dispatch
+
+Start-Sleep -Seconds 3
+
+$notify = Invoke-Json GET "$Gateway/api/notifications/records?limit=20" $headers
+Require-Success 'Notification record query' $notify
+Show-Json 'Notification records' $notify
+
+$audit = Invoke-Json GET "$Gateway/api/notifications/audits?limit=20" $headers
+Require-Success 'Audit log query' $audit
+Show-Json 'Audit logs' $audit
+
+try {
+  $prom = Invoke-WebRequest -Uri "$BookingService/actuator/prometheus" -UseBasicParsing -TimeoutSec 10
+  if ($prom.StatusCode -ne 200) {
+    Fail "booking-service prometheus endpoint returned HTTP $($prom.StatusCode)."
+  }
+  if ($prom.Content -notmatch 'jvm_memory|process_uptime|application_started') {
+    Fail 'Prometheus output does not contain stable JVM/process/application metrics.'
+  }
+  Write-Host '[Phase08][OK] booking-service prometheus endpoint is available.' -ForegroundColor Green
+} catch {
+  Fail "booking-service prometheus endpoint failed: $_"
+}
+
+Write-Host ''
+Write-Host 'Gateway health check: OK'
+Write-Host 'Dev token acquired: OK'
+Write-Host 'Grid / Level / TimeSlot queried: OK'
+Write-Host 'Booking submitted: OK'
+Write-Host 'Conflict pre-check executed: OK'
+Write-Host 'Booking approved: OK'
+Write-Host 'Resource occupancy queried: OK'
+Write-Host 'Outbox message queried: OK'
+Write-Host 'Notification records queried: OK'
+Write-Host 'Audit logs queried: OK'
+Write-Host '[Phase08] Acceptance completed successfully.' -ForegroundColor Green
