@@ -8,6 +8,26 @@
 
 当前版本为 `0.1.0-SNAPSHOT`，后端采用 Spring Cloud 微服务架构，前端采用 Vue 3 + Vite。
 
+## 与 LowAlt-RouteLab 的关系
+
+SkyGrid 是低空资源调度与冲突治理平台，负责空域资源建模、预约审批、占用记录、冲突检测、消息通知和治理监控。LowAlt-RouteLab 是低空航线规划与风险评估仿真系统，负责根据起点、终点、高度层、禁飞区、风险区和障碍物生成航线，并将航线转换为 SkyGrid 可识别的 `Grid + Level + TimeSlot` 占用序列。
+
+两个项目组合后形成完整闭环：
+
+```text
+LowAlt-RouteLab
+航线规划 / 风险评估 / 能耗估计 / TimeSlot 转换
+        ↓
+SkyGrid
+空域预约 / 审批流转 / 冲突检测 / 占用记录 / 消息通知 / 监控治理
+```
+
+主链路：
+
+```text
+航线规划 → 风险评估 → TimeSlot 占用转换 → SkyGrid 冲突检测 → 预约审批 → 通知审计 → 监控治理
+```
+
 ## 项目总结
 
 本项目是一套完整的低空资源预约与冲突治理演示平台，覆盖从资源建模、申请审批、冲突预检、资源占用到消息通知、审计留痕和监控观测的主链路。它既可以作为低空经济、无人机巡检、空域预约调度等课题的工程原型，也可以作为 Spring Cloud 微服务、消息最终一致性、服务治理和前端可视化的综合实践项目。
@@ -159,6 +179,8 @@ scripts\phase08-acceptance-check.bat
 | [docs/monitoring-guide.md](docs/monitoring-guide.md) | Prometheus、Grafana、JMeter |
 | [docs/troubleshooting.md](docs/troubleshooting.md) | 常见问题排查 |
 | [docs/release-checklist.md](docs/release-checklist.md) | 发布前检查清单 |
+| [docs/project-boundary.md](docs/project-boundary.md) | 与 LowAlt-RouteLab 的项目边界 |
+| [docs/demo-script.md](docs/demo-script.md) | 演示流程脚本 |
 
 ## 发布说明
 
