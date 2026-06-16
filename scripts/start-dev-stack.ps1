@@ -13,7 +13,24 @@ function Start-MavenService($name, $module, $port) {
 }
 
 Write-Host '[SkyGrid] Starting infrastructure with docker compose...'
+$previousErrorActionPreference = $ErrorActionPreference
+$ErrorActionPreference = 'Continue'
+docker info *> $null
+$dockerInfoExitCode = $LASTEXITCODE
+$ErrorActionPreference = $previousErrorActionPreference
+if ($dockerInfoExitCode -ne 0) {
+  Write-Host '[SkyGrid][FAIL] Docker daemon is not available. Start Docker Desktop, then rerun scripts\start-dev-stack.bat.' -ForegroundColor Red
+  exit 1
+}
+
+$ErrorActionPreference = 'Continue'
 docker compose -f (Join-Path $repoRoot 'docker-compose.infra.yml') up -d
+$composeExitCode = $LASTEXITCODE
+$ErrorActionPreference = $previousErrorActionPreference
+if ($composeExitCode -ne 0) {
+  Write-Host '[SkyGrid][FAIL] docker compose failed to start infrastructure. Check Docker Desktop and port conflicts, then rerun.' -ForegroundColor Red
+  exit $composeExitCode
+}
 
 Write-Host '[SkyGrid] Waiting 20 seconds for infrastructure to become reachable...'
 Start-Sleep -Seconds 20

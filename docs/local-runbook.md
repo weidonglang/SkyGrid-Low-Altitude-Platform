@@ -113,6 +113,7 @@ The script stops processes listening on the SkyGrid development ports and then s
 
 | Symptom | Likely Cause | Action |
 |---|---|---|
+| `start-dev-stack.bat` reports Docker daemon unavailable | Docker Desktop is not running or the Linux engine pipe is unavailable | Start Docker Desktop, wait until it reports ready, then rerun `scripts\start-dev-stack.bat` |
 | Gateway health is unavailable | Gateway process not started or Nacos unavailable | Run `scripts\check-dev-stack.bat`; inspect `logs\dev-stack\low-altitude-gateway.err.log` |
 | Gateway returns 503 | A downstream service is not registered in Nacos | Check user-org/resource/booking/notify service health endpoints |
 | Booking submit fails with seed data errors | MySQL schema or demo data is missing | Re-run Docker initialization or prepare demo data before acceptance |

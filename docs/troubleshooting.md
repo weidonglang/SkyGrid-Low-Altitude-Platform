@@ -22,6 +22,22 @@ logs\dev-stack\low-altitude-gateway.out.log
 logs\dev-stack\low-altitude-gateway.err.log
 ```
 
+## Docker Daemon Is Unavailable
+
+If startup stops with:
+
+```text
+[SkyGrid][FAIL] Docker daemon is not available.
+```
+
+Docker CLI is installed but Docker Desktop is not ready. Start Docker Desktop, wait until the Linux engine is running, then retry:
+
+```bat
+scripts\start-dev-stack.bat
+```
+
+The startup script stops at this point so the Java services are not launched against missing Redis, RabbitMQ, or Nacos infrastructure.
+
 ## Gateway Returns 503
 
 This usually means the Gateway is running but at least one downstream service is not registered in Nacos.
