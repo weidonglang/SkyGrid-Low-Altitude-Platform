@@ -42,11 +42,11 @@ spring:
         - id: booking-route
           uri: lb://booking-service
           predicates:
-            - Path=/api/bookings/**,/api/approvals/**
+            - Path=/api/bookings/**,/api/approvals/**,/api/dashboard/**,/api/conflicts/**
         - id: conflict-notify-route
           uri: lb://conflict-notify-service
           predicates:
-            - Path=/api/conflicts/**,/api/notifications/**,/api/audits/**
+            - Path=/api/notifications/**,/api/audits/**
 
 app:
   security:
