@@ -1,0 +1,5 @@
+name: skygrid-full-demo
+
+include:
+  - docker-compose.infra.yml
+  - docker-compose.monitor.yml

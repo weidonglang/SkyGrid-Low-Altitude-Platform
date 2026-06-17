@@ -1,0 +1,4 @@
+name: skygrid-monitoring
+
+include:
+  - docker-compose.monitor.yml
