@@ -1,12 +1,29 @@
-# Low Altitude Platform
+# SkyGrid
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Java](https://img.shields.io/badge/Java-17%2B-blue.svg)](pom.xml)
 [![Vue](https://img.shields.io/badge/Vue-3-42b883.svg)](low-altitude-web/package.json)
 
-低空时空资源协同调度与冲突消解平台。项目面向无人机巡检、低空航线预约、空域资源审批和运行监测等场景，将低空资源抽象为 `Grid 区域网格 + Level 高度层 + TimeSlot 时间片 + Date 日期` 的时空切片模型，并围绕该模型提供预约、审批、占用、冲突检测、通知审计、限流降级和可视化控制台能力。
+SkyGrid 是低空空域资源调度、预约审批、冲突检测、Outbox/RabbitMQ 最终一致性、通知审计、治理监控和驾驶舱看板平台。
 
-当前版本为 `0.1.0-SNAPSHOT`，后端采用 Spring Cloud 微服务架构，前端采用 Vue 3 + Vite。
+项目面向无人机巡检、低空航线预约、空域资源审批和运行监测等场景，将低空资源抽象为 `Grid 区域网格 + Level 高度层 + TimeSlot 时间片 + Date 日期` 的时空切片模型，并围绕该模型提供完整工程闭环。
+
+当前工程封版目标为 `v1.0.0`。Maven 构建版本仍保持 `0.1.0-SNAPSHOT`，用于本地开发迭代。
+
+## Quick Links
+
+| 内容 | 入口 |
+| --- | --- |
+| 本地运行 | [docs/local-runbook.md](docs/local-runbook.md) |
+| Docker 部署 | [docs/docker-deployment.md](docs/docker-deployment.md) |
+| v1.0.0 演示场景 | [docs/demo-scenario-v1.0.0.md](docs/demo-scenario-v1.0.0.md) |
+| 一致性链路 | [docs/consistency-design.md](docs/consistency-design.md) |
+| 故障恢复演示 | [docs/failure-recovery-real-demo.md](docs/failure-recovery-real-demo.md) |
+| 治理设计 | [docs/resilience-design.md](docs/resilience-design.md) |
+| 可观测性 | [docs/observability-guide.md](docs/observability-guide.md) |
+| 性能报告 | [docs/performance-report.md](docs/performance-report.md) |
+| v1.0.0 检查清单 | [docs/release-checklist-v1.0.0.md](docs/release-checklist-v1.0.0.md) |
+| v1.0.0 验证记录 | [docs/release-validation-v1.0.0.md](docs/release-validation-v1.0.0.md) |
 
 ## 与 LowAlt-RouteLab 的关系
 
@@ -159,11 +176,15 @@ npm run build
 本项目还提供阶段性冒烟测试和最终验收脚本：
 
 ```powershell
+scripts\check-dev-stack.bat
 scripts\phase03-smoke-test.bat
 scripts\phase04-smoke-test.bat
 scripts\phase06-smoke-test.bat
 scripts\phase07-smoke-test.bat
 scripts\phase08-acceptance-check.bat
+scripts\demo-e2e-check.bat
+scripts\demo-outbox-recovery.bat
+performance\skygrid-smoke.bat
 ```
 
 ## 文档索引
@@ -177,6 +198,11 @@ scripts\phase08-acceptance-check.bat
 | [docs/api-reference.md](docs/api-reference.md) | 核心 API 参考 |
 | [docs/frontend-running-guide.md](docs/frontend-running-guide.md) | 前端运行与演示说明 |
 | [docs/monitoring-guide.md](docs/monitoring-guide.md) | Prometheus、Grafana、JMeter |
+| [docs/resilience-design.md](docs/resilience-design.md) | 限流、熔断、重试治理设计 |
+| [docs/observability-guide.md](docs/observability-guide.md) | Actuator、Prometheus、Grafana 观测指南 |
+| [docs/demo-scenario-v1.0.0.md](docs/demo-scenario-v1.0.0.md) | v1.0.0 完整演示链路 |
+| [docs/release-checklist-v1.0.0.md](docs/release-checklist-v1.0.0.md) | v1.0.0 发布检查清单 |
+| [docs/release-validation-v1.0.0.md](docs/release-validation-v1.0.0.md) | v1.0.0 验证记录 |
 | [docs/troubleshooting.md](docs/troubleshooting.md) | 常见问题排查 |
 | [docs/release-checklist.md](docs/release-checklist.md) | 发布前检查清单 |
 | [docs/project-boundary.md](docs/project-boundary.md) | 与 LowAlt-RouteLab 的项目边界 |
@@ -201,7 +227,7 @@ cd ..
 scripts\phase08-acceptance-check.bat
 ```
 
-发布版本建议使用语义化版本，例如 `v0.1.0`、`v0.2.0`。
+发布版本建议使用语义化版本。`v1.0.0` 前必须先完成 [docs/release-checklist-v1.0.0.md](docs/release-checklist-v1.0.0.md) 中的验证项。
 
 ## 贡献
 
