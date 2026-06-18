@@ -1,0 +1,12 @@
+NACOS_ADDR: nacos.example.internal:8848
+MYSQL_HOST: mysql.example.internal
+MYSQL_PORT: 3306
+MYSQL_USER: skygrid_app
+MYSQL_PASSWORD: change-me
+REDIS_HOST: redis.example.internal
+REDIS_PORT: 6379
+RABBITMQ_HOST: rabbitmq.example.internal
+RABBITMQ_PORT: 5672
+RABBITMQ_USER: skygrid
+RABBITMQ_PASSWORD: change-me
+JWT_SECRET: change-me-to-a-long-random-secret
