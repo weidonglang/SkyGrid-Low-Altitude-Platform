@@ -25,6 +25,25 @@ SkyGrid 是低空空域资源调度、预约审批、冲突检测、Outbox/Rabbi
 | v1.0.0 检查清单 | [docs/release-checklist-v1.0.0.md](docs/release-checklist-v1.0.0.md) |
 | v1.0.0 验证记录 | [docs/release-validation-v1.0.0.md](docs/release-validation-v1.0.0.md) |
 
+## Demo Screenshots
+
+The slots below are reserved for real runtime screenshots. Save images to the listed paths after the local stack is running; the README will render them automatically.
+
+| Cockpit Dashboard | Airspace Grid |
+| --- | --- |
+| <img src="assets/screenshots/cockpit-dashboard.png" alt="SkyGrid cockpit dashboard" width="360"> | <img src="assets/screenshots/airspace-grid.png" alt="SkyGrid airspace grid" width="360"> |
+| Save to `assets/screenshots/cockpit-dashboard.png` | Save to `assets/screenshots/airspace-grid.png` |
+
+| Booking Approval | Conflict Resolution |
+| --- | --- |
+| <img src="assets/screenshots/booking-approval.png" alt="SkyGrid booking approval" width="360"> | <img src="assets/screenshots/conflict-resolution.png" alt="SkyGrid conflict resolution" width="360"> |
+| Save to `assets/screenshots/booking-approval.png` | Save to `assets/screenshots/conflict-resolution.png` |
+
+| Outbox Recovery | Audit Log |
+| --- | --- |
+| <img src="assets/screenshots/outbox-pending.png" alt="SkyGrid outbox pending and retry state" width="360"> | <img src="assets/screenshots/audit-log.png" alt="SkyGrid audit log" width="360"> |
+| Save to `assets/screenshots/outbox-pending.png` | Save to `assets/screenshots/audit-log.png` |
+
 ## 与 LowAlt-RouteLab 的关系
 
 SkyGrid 是低空资源调度与冲突治理平台，负责空域资源建模、预约审批、占用记录、冲突检测、消息通知和治理监控。LowAlt-RouteLab 是低空航线规划与风险评估仿真系统，负责根据起点、终点、高度层、禁飞区、风险区和障碍物生成航线，并将航线转换为 SkyGrid 可识别的 `Grid + Level + TimeSlot` 占用序列。
