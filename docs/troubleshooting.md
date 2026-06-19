@@ -1,155 +1,171 @@
-# 常见问题排查
+# SkyGrid Troubleshooting
 
-## 1. MySQL 中文导入失败
+## Gateway Is Unavailable
 
-现象：
-
-```text
-ERROR 1366 Incorrect string value
-```
-
-原因：Windows 下 mysql 客户端未按 utf8mb4 读取 SQL 文件。
-
-解决：
-
-```bat
-mysql -uroot -p123123 --default-character-set=utf8mb4 < docker\mysql\local-root-init.sql
-```
-
-## 2. Gateway 返回 503
-
-可能原因：
-
-```text
-业务服务未启动
-服务未注册到 Nacos
-Gateway 缺少 loadbalancer 依赖
-Nacos 未完全启动
-```
-
-检查：
+Check:
 
 ```bat
 curl http://127.0.0.1:8080/actuator/health
 ```
 
-进入 Nacos 控制台检查服务实例。
-
-## 3. 报 parameter name information not available
-
-现象：
-
-```text
-Name for argument of type ... not specified
-```
-
-原因：Controller 中 `@RequestParam` 或 `@PathVariable` 未显式指定 name，或代码未重新 clean 编译。
-
-解决：
-
-```java
-@RequestParam(name = "keyword", required = false)
-@PathVariable("id")
-```
-
-重新编译：
+If the request fails, start the local stack:
 
 ```bat
-mvn clean package -DskipTests
+scripts\start-dev-stack.bat
+scripts\check-dev-stack.bat
 ```
 
-## 4. Redis 6379 端口被占用
+Then inspect:
 
-检查：
+```text
+logs\dev-stack\low-altitude-gateway.out.log
+logs\dev-stack\low-altitude-gateway.err.log
+```
+
+## Docker Daemon Is Unavailable
+
+If startup stops with:
+
+```text
+[SkyGrid][FAIL] Docker daemon is not available.
+```
+
+Docker CLI is installed but Docker Desktop is not ready. Start Docker Desktop, wait until the Linux engine is running, then retry:
+
+```bat
+scripts\start-dev-stack.bat
+```
+
+The startup script stops at this point so the Java services are not launched against missing Redis, RabbitMQ, or Nacos infrastructure.
+
+## Gateway Returns 503
+
+This usually means the Gateway is running but at least one downstream service is not registered in Nacos.
+
+Check these endpoints:
+
+```text
+http://127.0.0.1:8101/actuator/health
+http://127.0.0.1:8102/actuator/health
+http://127.0.0.1:8103/actuator/health
+http://127.0.0.1:8104/actuator/health
+```
+
+Also open Nacos:
+
+```text
+http://127.0.0.1:8848/nacos/
+```
+
+Confirm that `user-org-service`, `resource-service`, `booking-service`, `conflict-notify-service`, and `low-altitude-gateway` are registered.
+
+## MySQL Connection Fails
+
+Default local settings:
+
+```text
+host: 127.0.0.1
+port: 3306
+root password: 123123
+application user: lowaltitude / lowaltitude123
+```
+
+Check the port:
+
+```bat
+netstat -ano | findstr :3306
+```
+
+If Docker MySQL is not running:
+
+```bat
+docker compose -f docker-compose.infra.yml up -d mysql
+```
+
+## Redis or RabbitMQ Is Unavailable
+
+Check ports:
 
 ```bat
 netstat -ano | findstr :6379
-```
-
-如果是 Docker/WSL 占用，可暂时忽略；如需 Docker Redis 独立端口，把 compose 改为：
-
-```yaml
-ports:
-  - "6380:6379"
-```
-
-并设置：
-
-```text
-REDIS_PORT=6380
-```
-
-## 5. RabbitMQ 无法连接
-
-检查 RabbitMQ 管理台：
-
-```text
-http://127.0.0.1:15672/
-lowaltitude / lowaltitude123
-```
-
-检查端口：
-
-```bat
 netstat -ano | findstr :5672
 ```
 
-## 6. Nacos 可访问但服务注册失败
-
-检查：
+Open RabbitMQ management:
 
 ```text
-NACOS_ADDR=127.0.0.1:8848
-NACOS_REGISTER_IP=127.0.0.1
+http://127.0.0.1:15672/
 ```
 
-确认 Nacos 8848 和 9848 端口可用。
+Default demo account:
 
-## 7. 前端无法调用接口
+```text
+lowaltitude / lowaltitude123
+```
 
-检查 Gateway：
+## Dev Token API Fails
+
+Check that user-org-service is running and Gateway can route to it:
+
+```bat
+curl -X POST "http://127.0.0.1:8080/api/auth/dev-token?username=demo&role=ADMIN"
+```
+
+If Gateway returns 503, fix service registration first.
+
+## Phase08 Booking Submit Fails
+
+The acceptance script requires seeded resource data:
+
+- At least one organization.
+- Grid records.
+- Altitude level records.
+- TimeSlot records.
+- Route template `1`.
+
+Run the local database initialization described in `docs\database-initialization.md`, then retry:
+
+```bat
+scripts\phase08-acceptance-check.bat
+```
+
+## Outbox Exists but Notify Record Is Missing
+
+Check:
+
+```text
+http://127.0.0.1:8104/actuator/health
+http://127.0.0.1:15672/
+```
+
+Then dispatch messages manually:
+
+```bat
+curl -X POST "http://127.0.0.1:8080/api/bookings/outbox/dispatch?limit=20" -H "Authorization: Bearer <token>"
+```
+
+If RabbitMQ or conflict-notify-service is down, outbox messages remain pending or retrying until the service recovers.
+
+## Frontend Cannot Reach APIs
+
+Check Gateway first:
 
 ```bat
 curl http://127.0.0.1:8080/actuator/health
 ```
 
-检查 `low-altitude-web/vite.config.js` 中代理是否指向：
+Then confirm the frontend proxy target in `low-altitude-web/vite.config.js` points to:
 
 ```text
 http://127.0.0.1:8080
 ```
 
-## 8. Phase07 脚本提示 Prometheus 指标不存在
+## PowerShell Encoding
 
-先确认 booking-service 已启动 Phase 07 版本，并访问：
-
-```bat
-curl http://127.0.0.1:8103/actuator/prometheus
-```
-
-如果 actuator 有内容但没有 HTTP 指标，可先调用业务接口，再刷新指标。
-
-## 9. Grafana 没有 Dashboard
-
-检查容器：
-
-```bat
-docker ps
-```
-
-重启监控：
-
-```bat
-scripts\stop-monitor.bat
-scripts\start-monitor.bat
-```
-
-## 10. PowerShell 输出中文乱码
-
-这是终端编码问题。可尝试：
+Use Windows Terminal or run:
 
 ```bat
 chcp 65001
 ```
 
-或使用 Windows Terminal。演示时优先展示前端页面。
+The v0.2.0 scripts use ASCII output to avoid console encoding issues.

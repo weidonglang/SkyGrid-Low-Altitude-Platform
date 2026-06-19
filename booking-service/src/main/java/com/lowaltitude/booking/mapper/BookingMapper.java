@@ -195,9 +195,32 @@ public interface BookingMapper {
     @Select("SELECT COUNT(1) FROM booking_record WHERE deleted = 0 AND status = #{status}")
     int countBookingByStatus(String status);
 
+    @Select("SELECT COUNT(1) FROM booking_record WHERE deleted = 0 AND booking_date = #{bookingDate}")
+    int countBookingByDate(LocalDate bookingDate);
+
+    @Select("SELECT COUNT(1) FROM booking_record WHERE deleted = 0 AND booking_date = #{bookingDate} AND status = #{status}")
+    int countBookingByDateAndStatus(@Param("bookingDate") LocalDate bookingDate, @Param("status") String status);
+
     @Select("SELECT COUNT(1) FROM resource_occupancy WHERE status = #{status}")
     int countOccupancyByStatus(String status);
 
+    @Select("SELECT COUNT(1) FROM resource_occupancy")
+    int countOccupancyAll();
+
     @Select("SELECT COUNT(1) FROM conflict_record WHERE status = #{status}")
     int countConflictByStatus(String status);
+
+    @Select("SELECT COUNT(1) FROM conflict_record WHERE status = #{status} AND conflict_type = #{conflictType}")
+    int countConflictByStatusAndType(@Param("status") String status, @Param("conflictType") String conflictType);
+
+    @Select("""
+            SELECT id, booking_id AS bookingId, booking_no AS bookingNo, route_template_id AS routeTemplateId,
+                   grid_id AS gridId, grid_code AS gridCode, grid_name AS gridName,
+                   level_id AS levelId, time_slot_id AS timeSlotId, booking_date AS bookingDate, status,
+                   created_at AS createdAt, released_at AS releasedAt
+            FROM resource_occupancy
+            ORDER BY id DESC
+            LIMIT #{limit}
+            """)
+    List<ResourceOccupancy> listRecentOccupancies(int limit);
 }

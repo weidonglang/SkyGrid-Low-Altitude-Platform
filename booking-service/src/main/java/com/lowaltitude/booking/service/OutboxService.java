@@ -209,6 +209,7 @@ public class OutboxService {
         result.put("pending", mapper.countByStatus("PENDING"));
         result.put("sent", mapper.countByStatus("SENT"));
         result.put("failed", mapper.countByStatus("FAILED"));
+        result.put("retrying", mapper.countByStatus("FAILED"));
         return result;
     }
 
