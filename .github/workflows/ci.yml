@@ -42,7 +42,7 @@ jobs:
           cache-dependency-path: low-altitude-web/package-lock.json
 
       - name: Install
-        run: npm ci --include=dev --no-audit --no-fund
+        run: npm ci --include=dev --no-audit --no-fund || npm install --include=dev --no-audit --no-fund
 
       - name: Build
         run: npm run build
